@@ -89,7 +89,24 @@ Secondary: Drywall/Painting, Small Repairs, Handyman services
 2. Открываем в браузере — заказчик смотрит
 3. Если одобрено → добавляем **адаптив** (tablet 768px + mobile 375px)
 4. **Тестируем:** TypeScript + ESLint + браузер + мобилка
-5. Переходим к следующему блоку
+5. **Коммитим и пушим на GitHub** — обязательно после каждого одобренного блока
+6. Переходим к следующему блоку
+
+## Git / Deploy
+
+**Репозиторий:** https://github.com/vitaliy015/bildfamily
+**Ветка:** main
+**Deploy:** Vercel (автодеплой при пуше в main)
+
+**После каждого одобренного блока обязательно запускать:**
+```bash
+git add .
+git commit -m "Add [BlockName] block"
+git push
+```
+
+Credentials сохранены в macOS Keychain — пуш без пароля.
+Dev сервер запускать только через `npm run dev -- --webpack` (Turbopack нестабилен на этом проекте).
 
 ## Брейкпоинты (Tailwind)
 
