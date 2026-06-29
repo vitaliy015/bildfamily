@@ -2,6 +2,7 @@ import { Nav } from "@/components/blocks/Nav"
 import { Hero } from "@/components/blocks/Hero"
 import { Marquee } from "@/components/blocks/Marquee"
 import { Services } from "@/components/blocks/Services"
+import { FAQ } from "@/components/blocks/FAQ"
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Services />
+      <FAQ />
 
       {/* Placeholder sections for scroll testing */}
       {["Bathrooms", "Kitchens", "Basements", "Flooring", "About Us"].map((title) => (

@@ -89,8 +89,7 @@ Secondary: Drywall/Painting, Small Repairs, Handyman services
 2. Открываем в браузере — заказчик смотрит
 3. Если одобрено → добавляем **адаптив** (tablet 768px + mobile 375px)
 4. **Тестируем:** TypeScript + ESLint + браузер + мобилка
-5. **Коммитим и пушим на GitHub** — обязательно после каждого одобренного блока
-6. Переходим к следующему блоку
+5. Переходим к следующему блоку
 
 ## Git / Deploy
 
@@ -98,7 +97,8 @@ Secondary: Drywall/Painting, Small Repairs, Handyman services
 **Ветка:** main
 **Deploy:** Vercel (автодеплой при пуше в main)
 
-**После каждого одобренного блока обязательно запускать:**
+**Пушить ТОЛЬКО когда пользователь явно говорит "запуш на гит" — не раньше.**
+
 ```bash
 git add .
 git commit -m "Add [BlockName] block"
