@@ -1,0 +1,636 @@
+"use client"
+
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "motion/react"
+import Image from "next/image"
+
+// ── Constants ──────────────────────────────────────────────────────────────
+
+const EASE = [0.25, 0.46, 0.45, 0.94] as const
+
+const UPLOADS = "https://insidethehouseca.com/wp-content/uploads"
+
+/** Couple portrait — Anatolii & Nataliia */
+const COUPLE_PHOTO = `${UPLOADS}/2025/09/photo_2025-09-16_17-18-30.jpg`
+/** Anatolii on the job — installing a round mirror */
+const ANATOLII_AT_WORK = `${UPLOADS}/2025/10/image-1111.jpg`
+
+const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
+
+const SKILLS = [
+  { label: "Bathroom Remodeling", percent: 95 },
+  { label: "Flooring Installation", percent: 90 },
+  { label: "Kitchen Updates",      percent: 88 },
+  { label: "Basement Finishing",   percent: 85 },
+]
+
+const STATS = [
+  { value: "10+", label: "Years of Experience"   },
+  { value: "100+",label: "Projects Completed"    },
+  { value: "5★",  label: "Average Client Rating" },
+  { value: "$0",  label: "Hidden Fees. Ever."    },
+]
+
+const FAMILY_BULLETS = [
+  "You speak directly to the person doing the work — no middlemen, no hand-offs",
+  "Our family name is on every project. That's not a slogan. It's accountability.",
+  "We take fewer clients so every job gets our full attention — quality over volume",
+  "We treat your home exactly the way we'd treat our own — with care and respect",
+]
+
+const ANATOLII_BULLETS = [
+  "10+ years hands-on construction experience",
+  "Canadian & international projects",
+  "Punctual. Precise. On every job site.",
+]
+
+const NATALIIA_BULLETS = [
+  "Client communication & scheduling",
+  "Material sourcing & procurement",
+  "Project coordination, start to finish",
+]
+
+// ── ProgressBar ────────────────────────────────────────────────────────────
+
+function ProgressBar({ label, percent, index }: { label: string; percent: number; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5, ease: EASE }}
+      className="flex flex-col gap-3"
+    >
+      <div className="flex items-center justify-between">
+        <span
+          className="text-sm font-semibold uppercase tracking-widest"
+          style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)" }}
+        >
+          {label}
+        </span>
+        <span className="text-sm font-bold tabular-nums" style={{ color: "var(--brand-accent-olive)" }}>
+          {percent}%
+        </span>
+      </div>
+      <div className="h-[2px] rounded-full overflow-hidden" style={{ backgroundColor: "var(--brand-border-light)" }}>
+        <motion.div
+          initial={{ width: "0%" }}
+          whileInView={{ width: `${percent}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: index * 0.15 + 0.2, ease: EASE }}
+          className="h-full rounded-full"
+          style={{ backgroundColor: "var(--brand-accent-olive)" }}
+        />
+      </div>
+    </motion.div>
+  )
+}
+
+// ── Bullet list reused across panels ──────────────────────────────────────
+
+function BulletList({ items, accentColor }: { items: string[]; accentColor: string }) {
+  return (
+    <div className="flex flex-col gap-2.5">
+      {items.map((item) => (
+        <div key={item} className="flex items-center gap-3">
+          <div className="w-5 h-px shrink-0" style={{ backgroundColor: accentColor }} />
+          <span className="text-sm leading-snug" style={{ color: "var(--brand-text-muted-light)", fontFamily: "var(--font-heading)" }}>
+            {item}
+          </span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ── Arrow signpost — park / yard "OPEN HOUSE →" style directional marker ───
+
+function HangingSign() {
+  return (
+    <motion.div
+      className="relative h-[320px] w-[260px]"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: EASE }}
+    >
+      {/* Bracket post — vertical */}
+      <div className="absolute left-[14px] top-0 bottom-[20px] w-[8px] rounded" style={{ backgroundColor: "var(--brand-silver)" }} />
+      {/* Bracket arm — horizontal */}
+      <div className="absolute left-[14px] top-0 h-[8px] w-[180px] rounded" style={{ backgroundColor: "var(--brand-silver)" }} />
+      {/* Decorative finial + corner bolt */}
+      <div className="absolute left-[8px] top-[-10px] h-[18px] w-[18px] rounded-full border-2" style={{ borderColor: "var(--brand-silver)", backgroundColor: "var(--brand-bg-light)" }} />
+      <div className="absolute left-[186px] top-[-3px] h-[14px] w-[14px] rounded-full" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
+
+      {/* Hanging group — swings from the arm like a pendulum */}
+      <motion.div
+        className="absolute"
+        style={{ left: "62px", top: "8px", transformOrigin: "top center" }}
+        animate={{ rotate: [-3.5, 3.5, -3.5] }}
+        transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {/* Two chains */}
+        <div className="flex justify-between" style={{ width: "176px", padding: "0 22px" }}>
+          <div className="w-[2px] h-7" style={{ backgroundColor: "var(--brand-silver)" }} />
+          <div className="w-[2px] h-7" style={{ backgroundColor: "var(--brand-silver)" }} />
+        </div>
+
+        {/* Sign board — arrow pointing right */}
+        <div
+          className="relative flex items-center justify-end h-[78px] w-44 pr-6"
+          style={{
+            backgroundColor: "var(--brand-accent-olive)",
+            clipPath: "polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%)",
+            boxShadow: "0 10px 24px -8px rgba(0,0,0,0.35)",
+          }}
+        >
+          {/* Inner border line */}
+          <div className="absolute inset-[7px] border" style={{ borderColor: "rgba(245,242,238,0.35)", clipPath: "polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%)" }} />
+          {/* Chevron pointer */}
+          <svg viewBox="0 0 24 24" className="w-9 h-9 relative" fill="none" aria-hidden>
+            <path d="M8 5l7 7-7 7" stroke="var(--brand-accent-gold)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+// ── Desktop: 4-panel sticky horizontal scroll ──────────────────────────────
+
+function HorizontalPanels() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", "-300vw"])
+
+  return (
+    <div ref={ref} className="relative h-[400vh]">
+      <div className="sticky top-0 h-screen overflow-hidden">
+
+        {/* Scroll progress bar — bottom of viewport, large gold track + glowing fill */}
+        <div className="absolute bottom-0 left-0 right-0 z-50">
+          {/* Label row */}
+          <div className="flex items-center px-6 md:px-10 pb-2.5">
+            <span
+              className="text-xs font-bold uppercase tracking-[0.3em]"
+              style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)", mixBlendMode: "difference" }}
+            >
+              Our Story
+            </span>
+          </div>
+
+          {/* The track */}
+          <div
+            className="relative h-[10px] w-full"
+            style={{ backgroundColor: "rgba(255,255,255,0.10)" }}
+          >
+            <motion.div
+              className="absolute inset-y-0 left-0 origin-left h-full w-full"
+              style={{
+                scaleX: scrollYProgress,
+                backgroundColor: "var(--brand-accent-gold)",
+                boxShadow: "0 0 24px 2px var(--brand-accent-gold), 0 0 8px 0 var(--brand-accent-gold)",
+              }}
+            />
+
+            {/* Leading dot that rides the bar */}
+            <motion.div
+              className="absolute top-1/2 -translate-y-1/2 h-[20px] w-[20px] rounded-full"
+              style={{
+                left: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+                x: "-50%",
+                backgroundColor: "var(--brand-accent-gold)",
+                boxShadow: "0 0 20px 3px var(--brand-accent-gold)",
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Horizontal strip */}
+        <motion.div style={{ x, width: "400vw" }} className="flex h-full">
+
+          {/* ── Panel 1: Philosophy ─────────────────────────────────── */}
+          <div
+            className="relative flex-shrink-0 w-screen h-full flex items-center overflow-hidden"
+            style={{ backgroundColor: "var(--brand-bg-light)" }}
+          >
+            <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
+
+            {/* Decorative grid */}
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              style={{
+                backgroundImage: "linear-gradient(rgba(100,100,70,1) 1px,transparent 1px),linear-gradient(90deg,rgba(100,100,70,1) 1px,transparent 1px)",
+                backgroundSize: "60px 60px",
+              }}
+            />
+
+            {/* Decorative hanging arrow sign — right */}
+            <div className="absolute right-[200px] top-1/2 -translate-y-1/2 z-0 hidden lg:block">
+              <HangingSign />
+            </div>
+
+            {/* Content — aligned to the same left line as the Hero heading */}
+            <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-20 w-full">
+              <div className="max-w-2xl">
+                <p
+                  className="text-xs font-bold uppercase tracking-[0.35em] mb-7"
+                  style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}
+                >
+                  About Inside The House
+                </p>
+
+                {/* Heading with giant faded 02 — mirrors the Hero */}
+                <div className="relative">
+                  <span
+                    className="absolute -top-10 -left-2 text-[160px] font-black leading-none select-none pointer-events-none"
+                    style={{ color: "rgba(28,26,24,0.04)", fontFamily: "var(--font-heading)" }}
+                  >
+                    02
+                  </span>
+                  <h2
+                    className="relative text-5xl md:text-7xl font-black uppercase leading-[0.88] mb-8"
+                    style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
+                  >
+                    Renovation
+                    <br />
+                    <span style={{ color: "var(--brand-accent-olive)" }}>Is Our Art.</span>
+                    <br />
+                    Your Home
+                    <br />
+                    Is Our Canvas.
+                  </h2>
+                </div>
+
+                <p
+                  className="text-base leading-relaxed max-w-md mb-10"
+                  style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
+                >
+                  {"When your name is on the line — not a logo, not a brand — every nail, every tile, every finish matters. That's the standard Anatolii and Nataliia have held for over a decade."}
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+          {/* ── Panel 2: Anatolii ────────────────────────────────────── */}
+          <div
+            className="relative flex-shrink-0 w-screen h-full flex items-center overflow-hidden"
+            style={{ backgroundColor: "var(--brand-bg-light)" }}
+          >
+            <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
+
+            {/* Photo — left */}
+            <div className="absolute left-0 top-0 h-full w-[44%]">
+              <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill className="object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#eae6df] via-[#eae6df]/40 to-transparent" />
+            </div>
+
+            {/* Content — right */}
+            <div className="relative z-10 ml-auto px-10 md:px-20 lg:px-24 max-w-lg">
+              <p
+                className="text-xs font-bold uppercase tracking-[0.35em] mb-5"
+                style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}
+              >
+                The Hands Behind The Work
+              </p>
+
+              <h3
+                className="text-6xl md:text-7xl font-black uppercase leading-none mb-6"
+                style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
+              >
+                Anatolii
+              </h3>
+
+              <p
+                className="text-base leading-relaxed mb-8"
+                style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
+              >
+                {"Over a decade of hands-on construction across Canadian and international projects. Anatolii doesn't manage renovations from an office — he's on the tools, on the site, and on the phone with you. Every measurement is precise. Every finish is personal."}
+              </p>
+
+              <BulletList items={ANATOLII_BULLETS} accentColor="var(--brand-accent-olive)" />
+            </div>
+          </div>
+
+          {/* ── Panel 3: Nataliia ────────────────────────────────────── */}
+          <div
+            className="relative flex-shrink-0 w-screen h-full flex items-center overflow-hidden"
+            style={{ backgroundColor: "var(--brand-bg-dark)" }}
+          >
+            <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
+
+            {/* Photo — right */}
+            <div className="absolute right-0 top-0 h-full w-[44%]">
+              <Image src={COUPLE_PHOTO} alt="Nataliia and Anatolii — Inside The House Calgary" fill className="object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1c1a17] via-[#1c1a17]/40 to-transparent" />
+            </div>
+
+            {/* Content — left */}
+            <div className="relative z-10 px-10 md:px-20 lg:px-28 max-w-lg">
+              <p
+                className="text-xs font-bold uppercase tracking-[0.35em] mb-5"
+                style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
+              >
+                The Mind Behind The Team
+              </p>
+
+              <h3
+                className="text-6xl md:text-7xl font-black uppercase leading-none mb-6"
+                style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
+              >
+                Nataliia
+              </h3>
+
+              <p
+                className="text-base leading-relaxed mb-8"
+                style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-body)" }}
+              >
+                {"Every project that runs on time, every material that arrives on schedule, every client call answered same-day — that's Nataliia. She manages the entire operation so Anatolii can focus on what he does best: the craft."}
+              </p>
+
+              <div className="flex flex-col gap-2.5">
+                {NATALIIA_BULLETS.map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="w-5 h-px shrink-0" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
+                    <span className="text-sm leading-snug" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-heading)" }}>
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Panel 4: Family advantage ────────────────────────────── */}
+          <div
+            className="relative flex-shrink-0 w-screen h-full flex items-center overflow-hidden"
+            style={{ backgroundColor: "var(--brand-bg-dark)" }}
+          >
+            <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
+
+            {/* Big decorative text */}
+            <div
+              aria-hidden
+              className="absolute right-12 top-1/2 -translate-y-1/2 text-[18vw] font-black uppercase leading-none select-none pointer-events-none"
+              style={{ color: "rgba(255,255,255,0.03)", fontFamily: "var(--font-heading)" }}
+            >
+              FAMILY
+            </div>
+
+            <div className="relative z-10 px-10 md:px-20 lg:px-28 max-w-3xl">
+              <p
+                className="text-xs font-bold uppercase tracking-[0.35em] mb-6"
+                style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
+              >
+                Why Family-Owned Changes Everything
+              </p>
+
+              <h3
+                className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight mb-10"
+                style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}
+              >
+                {"When It's Your Name on the Door —"}<br className="hidden md:block" />{" You Don't Cut Corners."}
+              </h3>
+
+              <div className="flex flex-col gap-7 mb-12">
+                {FAMILY_BULLETS.map((bullet, i) => (
+                  <div key={i} className="flex items-start gap-6">
+                    <span
+                      className="shrink-0 text-xl font-black leading-none mt-0.5 tabular-nums"
+                      style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-muted-dark)" }}>
+                      {bullet}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 px-8 py-4 text-sm font-black uppercase tracking-widest transition-opacity duration-200 hover:opacity-80"
+                style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
+              >
+                Get Your Free Quote
+              </a>
+            </div>
+          </div>
+
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
+// ── Mobile: vertical panels ────────────────────────────────────────────────
+
+function MobilePanels() {
+  return (
+    <div>
+      {/* Panel 1 */}
+      <div className="relative min-h-[90vh] flex items-center px-6 py-20 overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
+        <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
+        <div className="relative z-10">
+          <p className="text-xs font-bold uppercase tracking-[0.35em] mb-6" style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}>
+            About Inside The House
+          </p>
+          <h2 className="text-5xl font-black uppercase leading-[0.88] mb-6" style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}>
+            Renovation<br />
+            <span style={{ color: "var(--brand-accent-olive)" }}>Is Our Art.</span><br />
+            Your Home<br />
+            Is Our Canvas.
+          </h2>
+          <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}>
+            {"When your name is on the line — not a logo, not a brand — every nail, every tile, every finish matters. That's the standard Anatolii and Nataliia have held for over a decade."}
+          </p>
+        </div>
+      </div>
+
+      {/* Photo + Anatolii */}
+      <div className="relative min-h-[90vh] flex flex-col overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
+        <div className="relative h-[60vw] min-h-[320px] w-full">
+          <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill className="object-cover object-center" />
+        </div>
+        <div className="px-6 py-10 flex-1" style={{ backgroundColor: "var(--brand-bg-light)" }}>
+          <p className="text-xs font-bold uppercase tracking-[0.35em] mb-3" style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}>
+            The Hands Behind The Work
+          </p>
+          <h3 className="text-5xl font-black uppercase leading-none mb-5" style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}>
+            Anatolii
+          </h3>
+          <p className="text-base leading-relaxed mb-6" style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}>
+            Over a decade of hands-on construction across Canadian and international projects. On the tools, on the site, and on the phone with you.
+          </p>
+          <BulletList items={ANATOLII_BULLETS} accentColor="var(--brand-accent-olive)" />
+        </div>
+      </div>
+
+      {/* Nataliia */}
+      <div className="px-6 py-16 min-h-[80vh] flex flex-col justify-center" style={{ backgroundColor: "var(--brand-bg-dark)" }}>
+        <p className="text-xs font-bold uppercase tracking-[0.35em] mb-3" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
+          The Mind Behind The Team
+        </p>
+        <h3 className="text-5xl font-black uppercase leading-none mb-5" style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}>
+          Nataliia
+        </h3>
+        <p className="text-base leading-relaxed mb-6" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-body)" }}>
+          {"Every project that runs on time, every material on schedule, every call answered same-day — that's Nataliia."}
+        </p>
+        <div className="flex flex-col gap-2.5">
+          {NATALIIA_BULLETS.map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-5 h-px shrink-0" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
+              <span className="text-sm" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-heading)" }}>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Family advantage */}
+      <div className="px-6 py-16 min-h-[80vh] flex flex-col justify-center" style={{ backgroundColor: "var(--brand-bg-dark)" }}>
+        <p className="text-xs font-bold uppercase tracking-[0.35em] mb-5" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
+          Why Family-Owned Changes Everything
+        </p>
+        <h3 className="text-3xl font-black uppercase leading-tight mb-8" style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}>
+          {"When It's Your Name on the Door — You Don't Cut Corners."}
+        </h3>
+        <div className="flex flex-col gap-6 mb-10">
+          {FAMILY_BULLETS.map((bullet, i) => (
+            <div key={i} className="flex items-start gap-5">
+              <span className="shrink-0 text-lg font-black tabular-nums mt-0.5" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--brand-text-muted-dark)" }}>{bullet}</p>
+            </div>
+          ))}
+        </div>
+        <a
+          href="#contact"
+          className="self-start px-7 py-3.5 text-sm font-black uppercase tracking-widest hover:opacity-80 transition-opacity"
+          style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
+        >
+          Get Your Free Quote
+        </a>
+      </div>
+    </div>
+  )
+}
+
+// ── Stats + Progress bars ──────────────────────────────────────────────────
+
+function StatsAndSkills() {
+  return (
+    <div className="py-24 md:py-32 px-8 md:px-16 lg:px-24" style={{ backgroundColor: "var(--brand-bg-light)" }}>
+      <div className="max-w-7xl mx-auto">
+
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-xs font-bold uppercase tracking-[0.35em] mb-16"
+          style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}
+        >
+          By The Numbers
+        </motion.p>
+
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
+
+          {/* Stats grid */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-12">
+            {STATS.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.55, ease: EASE }}
+              >
+                <div
+                  className="text-5xl md:text-6xl font-black leading-none mb-2"
+                  style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)" }}
+                >
+                  {stat.value}
+                </div>
+                <div
+                  className="text-xs uppercase tracking-[0.2em]"
+                  style={{ color: "var(--brand-text-muted-light)", fontFamily: "var(--font-heading)" }}
+                >
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Progress bars */}
+          <div className="flex flex-col gap-8 justify-center">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-xs font-bold uppercase tracking-[0.35em] mb-2"
+              style={{ color: "var(--brand-text-muted-light)", fontFamily: "var(--font-heading)" }}
+            >
+              Our Expertise
+            </motion.p>
+            {SKILLS.map((skill, i) => (
+              <ProgressBar key={skill.label} label={skill.label} percent={skill.percent} index={i} />
+            ))}
+          </div>
+
+        </div>
+
+        {/* Pull quote */}
+        <motion.blockquote
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 pt-10 border-t"
+          style={{ borderColor: "var(--brand-border-light)" }}
+        >
+          <p
+            className="text-xl md:text-2xl leading-relaxed mb-4 max-w-3xl"
+            style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-body)", fontStyle: "italic" }}
+          >
+            {`"Always arrived on time and cleaned the work site after every day. Completed ahead of schedule and under budget — I couldn't recommend them more highly."`}
+          </p>
+          <cite
+            className="text-xs font-bold uppercase tracking-[0.25em] not-italic"
+            style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}
+          >
+            — Jennifer Yaholnitsky, Calgary
+          </cite>
+        </motion.blockquote>
+
+      </div>
+    </div>
+  )
+}
+
+// ── Main export ────────────────────────────────────────────────────────────
+
+export function About() {
+  return (
+    <section aria-label="About Inside The House">
+      {/* Desktop: scroll-driven horizontal panels */}
+      <div className="hidden lg:block">
+        <HorizontalPanels />
+      </div>
+
+      {/* Mobile / tablet: vertical stack */}
+      <div className="lg:hidden">
+        <MobilePanels />
+      </div>
+
+      {/* Stats + skills (all screen sizes) */}
+      <StatsAndSkills />
+    </section>
+  )
+}

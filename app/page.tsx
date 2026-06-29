@@ -2,6 +2,8 @@ import { Nav } from "@/components/blocks/Nav"
 import { Hero } from "@/components/blocks/Hero"
 import { Marquee } from "@/components/blocks/Marquee"
 import { Services } from "@/components/blocks/Services"
+import { About } from "@/components/blocks/About"
+import { Gallery } from "@/components/blocks/Gallery"
 import { FAQ } from "@/components/blocks/FAQ"
 
 export default function Home() {
@@ -11,6 +13,8 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Services />
+      <About />
+      <Gallery />
       <FAQ />
 
       {/* Placeholder sections for scroll testing */}

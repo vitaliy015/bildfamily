@@ -170,7 +170,7 @@ function FAQItem({
           transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           aria-hidden
           className="hidden sm:block shrink-0 text-5xl font-bold leading-none select-none"
-          style={{ color: "#c4a962", fontFamily: "var(--font-heading)" }}
+          style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
         >
           {String(item.id).padStart(2, "0")}
         </motion.span>
@@ -179,7 +179,7 @@ function FAQItem({
         <span
           className="flex-1 text-[17px] font-semibold leading-snug transition-colors duration-200"
           style={{
-            color: isOpen ? "#c4a962" : "#f0ede8",
+            color: isOpen ? "var(--brand-accent-gold)" : "var(--brand-text-light)",
             fontFamily: "var(--font-heading)",
             letterSpacing: "0.01em",
           }}
@@ -193,7 +193,7 @@ function FAQItem({
           transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
           aria-hidden
           className="shrink-0 mt-0.5 text-2xl leading-none select-none"
-          style={{ color: "#c4a962" }}
+          style={{ color: "var(--brand-accent-gold)" }}
         >
           +
         </motion.span>
@@ -214,7 +214,7 @@ function FAQItem({
           >
             <p
               className="pb-7 text-base leading-relaxed sm:pl-[68px]"
-              style={{ color: "#9a9a8a" }}
+              style={{ color: "var(--brand-text-muted-dark)" }}
             >
               {item.answer}
             </p>
@@ -245,14 +245,14 @@ function FAQTabs({
             style={{
               fontFamily: "var(--font-heading)",
               letterSpacing: "0.05em",
-              color: active === cat.id ? "#1c1a17" : "#9a9a8a",
+              color: active === cat.id ? "var(--brand-bg-dark)" : "var(--brand-text-muted-dark)",
             }}
           >
             {active === cat.id && (
               <motion.span
                 layoutId="faq-tab-pill"
                 className="absolute inset-0 rounded-full"
-                style={{ backgroundColor: "#c4a962" }}
+                style={{ backgroundColor: "var(--brand-accent-gold)" }}
                 transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
               />
             )}
@@ -285,7 +285,7 @@ export function FAQ() {
   }
 
   return (
-    <section className="relative py-24 md:py-32" style={{ backgroundColor: "#1c1a17" }}>
+    <section className="relative py-24 md:py-32" style={{ backgroundColor: "var(--brand-bg-dark)" }}>
 
       {/* Noise texture — matches Hero */}
       <div
@@ -307,7 +307,7 @@ export function FAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="text-xs font-bold uppercase tracking-[0.3em] mb-4"
-            style={{ color: "#c4a962", fontFamily: "var(--font-heading)" }}
+            style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
           >
             Got Questions?
           </motion.p>
@@ -318,7 +318,7 @@ export function FAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.05 }}
             className="text-4xl md:text-5xl font-bold uppercase leading-tight mb-6"
-            style={{ color: "#f0ede8", fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}
+            style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}
           >
             Everything You Need to Know<br className="hidden md:block" /> Before You Call
           </motion.h2>
@@ -329,7 +329,7 @@ export function FAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-base leading-relaxed max-w-lg"
-            style={{ color: "#9a9a8a" }}
+            style={{ color: "var(--brand-text-muted-dark)" }}
           >
             Straight answers from the people actually doing the work. Anatolii and Nataliia personally stand behind every word on this page.
           </motion.p>
@@ -379,18 +379,18 @@ export function FAQ() {
           <div className="flex-1">
             <p
               className="text-lg font-semibold mb-1"
-              style={{ color: "#f0ede8", fontFamily: "var(--font-heading)", letterSpacing: "0.01em" }}
+              style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "0.01em" }}
             >
               Still have a question?
             </p>
-            <p className="text-sm" style={{ color: "#9a9a8a" }}>
+            <p className="text-sm" style={{ color: "var(--brand-text-muted-dark)" }}>
               Talk to Anatolii directly — no sales team, no waiting, no runaround.
             </p>
           </div>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold uppercase tracking-widest rounded transition-opacity duration-200 hover:opacity-80"
-            style={{ backgroundColor: "#c4a962", color: "#1c1a17", fontFamily: "var(--font-heading)" }}
+            style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
           >
             Get a Free Quote
           </a>

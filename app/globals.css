@@ -117,6 +117,40 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   BRAND PALETTE — Inside The House
+   Единый источник правды для всех цветов проекта.
+   Использовать как: var(--brand-*) в inline styles или как Tailwind-класс
+   через @theme ниже (bg-brand-bg-light, text-brand-accent-gold и т.д.)
+──────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Фоны */
+  --brand-bg-light:          #eae6df; /* тёплый бежевый — Hero, Services     */
+  --brand-bg-dark:           #1c1a17; /* тёплый near-black — FAQ, тёмные секции */
+  --brand-bg-subtle:         #faf9f5; /* почти белый — slideshow, карточки   */
+
+  /* Акценты */
+  --brand-accent-olive:      #8a8a5c; /* оливковый — кнопки CTA, акценты на светлом */
+  --brand-accent-olive-hover:#7a7a4e; /* оливковый hover                     */
+  --brand-accent-gold:       #c4a962; /* золото — FAQ, акценты на тёмном     */
+  --brand-accent-amber:      #d97706; /* янтарный — лейблы в Slideshow       */
+  --brand-silver:            #b8b8b0; /* серебро — разделители, shimmer      */
+
+  /* Текст на светлом фоне */
+  --brand-text-dark:         #1c1a17; /* основной заголовок                  */
+  --brand-text-body:         #6a6460; /* основной текст / body               */
+  --brand-text-muted-light:  #9a9690; /* вторичный мелкий текст              */
+  --brand-text-on-accent:    #f5f2ee; /* текст поверх olive/gold кнопок      */
+
+  /* Текст на тёмном фоне */
+  --brand-text-light:        #f0ede8; /* основной заголовок                  */
+  --brand-text-muted-dark:   #9a9a8a; /* вторичный текст                    */
+
+  /* Рамки */
+  --brand-border-light:      #c4c0b8; /* рамки на светлых секциях            */
+  --brand-border-dark:       rgba(255,255,255,0.10); /* рамки на тёмных     */
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
