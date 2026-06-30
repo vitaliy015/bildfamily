@@ -569,7 +569,7 @@ function MobileHorizontalPanels() {
             {/* Signpost — decorative corner element, full scale */}
             <div
               className="absolute z-0"
-              style={{ right: 10, bottom: 48, transform: "scale(0.62)", transformOrigin: "bottom right" }}
+              style={{ right: 10, bottom: "15%", transform: "scale(0.62)", transformOrigin: "bottom right" }}
             >
               <HangingSign />
             </div>
