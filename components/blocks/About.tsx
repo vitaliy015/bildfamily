@@ -260,7 +260,7 @@ function HangingSign() {
   )
 }
 
-// ── Desktop: 4-panel sticky horizontal scroll ──────────────────────────────
+// ── 4-panel sticky horizontal scroll — all screen sizes ───────────────────────
 
 function HorizontalPanels() {
   const ref = useRef<HTMLDivElement>(null)
@@ -269,42 +269,34 @@ function HorizontalPanels() {
 
   return (
     <div ref={ref} className="relative h-[400vh]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
 
-        {/* Scroll progress bar — bottom of viewport, large gold track + glowing fill */}
+        {/* Progress bar */}
         <div className="absolute bottom-0 left-0 right-0 z-50">
-          {/* Label row */}
-          <div className="flex items-center px-6 md:px-10 pb-2.5">
+          <div className="flex items-center px-5 md:px-10 pb-2">
             <span
-              className="text-xs font-bold uppercase tracking-[0.3em]"
+              className="text-[10px] font-bold uppercase tracking-[0.3em]"
               style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)", mixBlendMode: "difference" }}
             >
               Our Story
             </span>
           </div>
-
-          {/* The track */}
-          <div
-            className="relative h-[10px] w-full"
-            style={{ backgroundColor: "rgba(255,255,255,0.10)" }}
-          >
+          <div className="relative h-[8px] md:h-[10px] w-full" style={{ backgroundColor: "rgba(255,255,255,0.10)" }}>
             <motion.div
               className="absolute inset-y-0 left-0 origin-left h-full w-full"
               style={{
                 scaleX: scrollYProgress,
                 backgroundColor: "var(--brand-accent-gold)",
-                boxShadow: "0 0 24px 2px var(--brand-accent-gold), 0 0 8px 0 var(--brand-accent-gold)",
+                boxShadow: "0 0 20px 2px var(--brand-accent-gold)",
               }}
             />
-
-            {/* Leading dot that rides the bar */}
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 h-[20px] w-[20px] rounded-full"
+              className="absolute top-1/2 -translate-y-1/2 h-[18px] w-[18px] md:h-[20px] md:w-[20px] rounded-full"
               style={{
                 left: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
                 x: "-50%",
                 backgroundColor: "var(--brand-accent-gold)",
-                boxShadow: "0 0 20px 3px var(--brand-accent-gold)",
+                boxShadow: "0 0 16px 3px var(--brand-accent-gold)",
               }}
             />
           </div>
@@ -313,48 +305,41 @@ function HorizontalPanels() {
         {/* Horizontal strip */}
         <motion.div style={{ x, width: "400vw" }} className="flex h-full">
 
-          {/* ── Panel 1: Philosophy ─────────────────────────────────── */}
+          {/* ── Panel 1: Philosophy + Signpost ──────────────────────── */}
           <div
             className="relative flex-shrink-0 w-screen h-full flex items-center overflow-hidden"
             style={{ backgroundColor: "var(--brand-bg-light)" }}
           >
             <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
-
-            {/* Decorative grid */}
-            <div
-              aria-hidden
-              className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            <div aria-hidden className="absolute inset-0 opacity-[0.04] pointer-events-none"
               style={{
                 backgroundImage: "linear-gradient(rgba(100,100,70,1) 1px,transparent 1px),linear-gradient(90deg,rgba(100,100,70,1) 1px,transparent 1px)",
                 backgroundSize: "60px 60px",
               }}
             />
 
-            {/* Decorative sign post — centred vertically opposite the heading */}
-            <div className="absolute right-[160px] top-1/2 -translate-y-1/2 z-0 hidden lg:block">
-              <HangingSign />
-            </div>
+            {/* Flex row: text ← → signpost */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-20 flex items-center justify-between gap-4 sm:gap-6 md:gap-10">
 
-            {/* Content — aligned to the same left line as the Hero heading */}
-            <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-20 w-full">
-              <div className="max-w-2xl">
+              {/* ── Text ── */}
+              <div className="min-w-0 flex-1">
                 <p
-                  className="text-xs font-bold uppercase tracking-[0.35em] mb-7"
+                  className="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.35em] mb-3 sm:mb-5 md:mb-7"
                   style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}
                 >
                   About Inside The House
                 </p>
 
-                {/* Heading with giant faded 02 — mirrors the Hero */}
                 <div className="relative">
                   <span
-                    className="absolute -top-10 -left-2 text-[160px] font-black leading-none select-none pointer-events-none"
+                    aria-hidden
+                    className="absolute -top-3 sm:-top-6 md:-top-10 -left-1 text-[56px] sm:text-[100px] md:text-[160px] font-black leading-none select-none pointer-events-none"
                     style={{ color: "rgba(28,26,24,0.04)", fontFamily: "var(--font-heading)" }}
                   >
                     02
                   </span>
                   <h2
-                    className="relative text-5xl md:text-7xl font-black uppercase leading-[0.88] mb-8"
+                    className="relative text-[21px] sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase leading-[0.88] mb-3 sm:mb-6 md:mb-8"
                     style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
                   >
                     Renovation
@@ -368,12 +353,19 @@ function HorizontalPanels() {
                 </div>
 
                 <p
-                  className="text-base leading-relaxed max-w-md mb-10"
+                  className="hidden sm:block text-xs sm:text-sm md:text-base leading-relaxed max-w-md"
                   style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
                 >
                   {"When your name is on the line — not a logo, not a brand — every nail, every tile, every finish matters. That's the standard Anatolii and Nataliia have held for over a decade."}
                 </p>
+              </div>
 
+              {/* ── Signpost — shrinks on small screens via scale wrapper ── */}
+              {/* Outer div reserves layout space; inner div scales the component */}
+              <div className="relative shrink-0 w-[126px] h-[179px] sm:w-[162px] sm:h-[230px] md:w-[192px] md:h-[272px] lg:w-[240px] lg:h-[340px]">
+                <div className="absolute top-0 left-0 origin-top-left scale-[0.525] sm:scale-[0.675] md:scale-[0.8] lg:scale-100">
+                  <HangingSign />
+                </div>
               </div>
             </div>
           </div>
@@ -386,34 +378,31 @@ function HorizontalPanels() {
             <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
 
             {/* Photo — left */}
-            <div className="absolute left-0 top-0 h-full w-[44%]">
+            <div className="absolute left-0 top-0 h-full w-[38%] sm:w-[44%]">
               <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill className="object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-l from-[#eae6df] via-[#eae6df]/40 to-transparent" />
             </div>
 
             {/* Content — right */}
-            <div className="relative z-10 ml-auto px-10 md:px-20 lg:px-24 max-w-lg">
+            <div className="relative z-10 ml-auto px-5 sm:px-10 md:px-20 lg:px-24 w-[62%] sm:w-[56%] max-w-lg">
               <p
-                className="text-xs font-bold uppercase tracking-[0.35em] mb-5"
+                className="text-[9px] sm:text-xs font-bold uppercase tracking-[0.35em] mb-3 sm:mb-5"
                 style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}
               >
                 The Hands Behind The Work
               </p>
-
               <h3
-                className="text-6xl md:text-7xl font-black uppercase leading-none mb-6"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-none mb-3 sm:mb-6"
                 style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
               >
                 Anatolii
               </h3>
-
               <p
-                className="text-base leading-relaxed mb-8"
+                className="text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-8"
                 style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
               >
                 {"Over a decade of hands-on construction across Canadian and international projects. Anatolii doesn't manage renovations from an office — he's on the tools, on the site, and on the phone with you. Every measurement is precise. Every finish is personal."}
               </p>
-
               <BulletList items={ANATOLII_BULLETS} accentColor="var(--brand-accent-olive)" />
             </div>
           </div>
@@ -426,39 +415,36 @@ function HorizontalPanels() {
             <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
 
             {/* Photo — right */}
-            <div className="absolute right-0 top-0 h-full w-[44%]">
+            <div className="absolute right-0 top-0 h-full w-[38%] sm:w-[44%]">
               <Image src={COUPLE_PHOTO} alt="Nataliia and Anatolii — Inside The House Calgary" fill className="object-cover object-top" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1c1a17] via-[#1c1a17]/40 to-transparent" />
             </div>
 
             {/* Content — left */}
-            <div className="relative z-10 px-10 md:px-20 lg:px-28 max-w-lg">
+            <div className="relative z-10 px-5 sm:px-10 md:px-20 lg:px-28 w-[62%] sm:w-[56%] max-w-lg">
               <p
-                className="text-xs font-bold uppercase tracking-[0.35em] mb-5"
+                className="text-[9px] sm:text-xs font-bold uppercase tracking-[0.35em] mb-3 sm:mb-5"
                 style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
               >
                 The Mind Behind The Team
               </p>
-
               <h3
-                className="text-6xl md:text-7xl font-black uppercase leading-none mb-6"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-none mb-3 sm:mb-6"
                 style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
               >
                 Nataliia
               </h3>
-
               <p
-                className="text-base leading-relaxed mb-8"
+                className="text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-8"
                 style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-body)" }}
               >
                 {"Every project that runs on time, every material that arrives on schedule, every client call answered same-day — that's Nataliia. She manages the entire operation so Anatolii can focus on what he does best: the craft."}
               </p>
-
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2 sm:gap-2.5">
                 {NATALIIA_BULLETS.map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="w-5 h-px shrink-0" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
-                    <span className="text-sm leading-snug" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-heading)" }}>
+                  <div key={item} className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 sm:w-5 h-px shrink-0" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
+                    <span className="text-xs sm:text-sm leading-snug" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-heading)" }}>
                       {item}
                     </span>
                   </div>
@@ -473,50 +459,44 @@ function HorizontalPanels() {
             style={{ backgroundColor: "var(--brand-bg-dark)" }}
           >
             <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
-
-            {/* Big decorative text */}
-            <div
-              aria-hidden
-              className="absolute right-12 top-1/2 -translate-y-1/2 text-[18vw] font-black uppercase leading-none select-none pointer-events-none"
+            <div aria-hidden
+              className="absolute right-4 sm:right-12 top-1/2 -translate-y-1/2 text-[22vw] sm:text-[18vw] font-black uppercase leading-none select-none pointer-events-none"
               style={{ color: "rgba(255,255,255,0.03)", fontFamily: "var(--font-heading)" }}
             >
               FAMILY
             </div>
 
-            <div className="relative z-10 px-10 md:px-20 lg:px-28 max-w-3xl">
+            <div className="relative z-10 px-5 sm:px-10 md:px-20 lg:px-28 max-w-3xl">
               <p
-                className="text-xs font-bold uppercase tracking-[0.35em] mb-6"
+                className="text-[9px] sm:text-xs font-bold uppercase tracking-[0.35em] mb-3 sm:mb-6"
                 style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
               >
                 Why Family-Owned Changes Everything
               </p>
-
               <h3
-                className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight mb-10"
+                className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black uppercase leading-tight mb-5 sm:mb-10"
                 style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}
               >
-                {"When It's Your Name on the Door —"}<br className="hidden md:block" />{" You Don't Cut Corners."}
+                {"When It's Your Name on the Door —"}<br className="hidden sm:block" />{" You Don't Cut Corners."}
               </h3>
-
-              <div className="flex flex-col gap-7 mb-12">
+              <div className="flex flex-col gap-3 sm:gap-7 mb-6 sm:mb-12">
                 {FAMILY_BULLETS.map((bullet, i) => (
-                  <div key={i} className="flex items-start gap-6">
+                  <div key={i} className="flex items-start gap-3 sm:gap-6">
                     <span
-                      className="shrink-0 text-xl font-black leading-none mt-0.5 tabular-nums"
+                      className="shrink-0 text-base sm:text-xl font-black leading-none mt-0.5 tabular-nums"
                       style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-muted-dark)" }}>
+                    <p className="text-xs sm:text-sm md:text-base leading-relaxed" style={{ color: "var(--brand-text-muted-dark)" }}>
                       {bullet}
                     </p>
                   </div>
                 ))}
               </div>
-
               <a
                 href="#contact"
-                className="inline-flex items-center gap-3 px-8 py-4 text-sm font-black uppercase tracking-widest transition-opacity duration-200 hover:opacity-80"
+                className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-widest transition-opacity duration-200 hover:opacity-80"
                 style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
               >
                 Get Your Free Quote
@@ -525,100 +505,6 @@ function HorizontalPanels() {
           </div>
 
         </motion.div>
-      </div>
-    </div>
-  )
-}
-
-// ── Mobile: vertical panels ────────────────────────────────────────────────
-
-function MobilePanels() {
-  return (
-    <div>
-      {/* Panel 1 */}
-      <div className="relative min-h-[90vh] flex items-center px-6 py-20 overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
-        <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
-        <div className="relative z-10">
-          <p className="text-xs font-bold uppercase tracking-[0.35em] mb-6" style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}>
-            About Inside The House
-          </p>
-          <h2 className="text-5xl font-black uppercase leading-[0.88] mb-6" style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}>
-            Renovation<br />
-            <span style={{ color: "var(--brand-accent-olive)" }}>Is Our Art.</span><br />
-            Your Home<br />
-            Is Our Canvas.
-          </h2>
-          <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}>
-            {"When your name is on the line — not a logo, not a brand — every nail, every tile, every finish matters. That's the standard Anatolii and Nataliia have held for over a decade."}
-          </p>
-        </div>
-      </div>
-
-      {/* Photo + Anatolii */}
-      <div className="relative min-h-[90vh] flex flex-col overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
-        <div className="relative h-[60vw] min-h-[320px] w-full">
-          <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill className="object-cover object-center" />
-        </div>
-        <div className="px-6 py-10 flex-1" style={{ backgroundColor: "var(--brand-bg-light)" }}>
-          <p className="text-xs font-bold uppercase tracking-[0.35em] mb-3" style={{ color: "var(--brand-accent-olive)", fontFamily: "var(--font-heading)" }}>
-            The Hands Behind The Work
-          </p>
-          <h3 className="text-5xl font-black uppercase leading-none mb-5" style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}>
-            Anatolii
-          </h3>
-          <p className="text-base leading-relaxed mb-6" style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}>
-            Over a decade of hands-on construction across Canadian and international projects. On the tools, on the site, and on the phone with you.
-          </p>
-          <BulletList items={ANATOLII_BULLETS} accentColor="var(--brand-accent-olive)" />
-        </div>
-      </div>
-
-      {/* Nataliia */}
-      <div className="px-6 py-16 min-h-[80vh] flex flex-col justify-center" style={{ backgroundColor: "var(--brand-bg-dark)" }}>
-        <p className="text-xs font-bold uppercase tracking-[0.35em] mb-3" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
-          The Mind Behind The Team
-        </p>
-        <h3 className="text-5xl font-black uppercase leading-none mb-5" style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}>
-          Nataliia
-        </h3>
-        <p className="text-base leading-relaxed mb-6" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-body)" }}>
-          {"Every project that runs on time, every material on schedule, every call answered same-day — that's Nataliia."}
-        </p>
-        <div className="flex flex-col gap-2.5">
-          {NATALIIA_BULLETS.map((item) => (
-            <div key={item} className="flex items-center gap-3">
-              <div className="w-5 h-px shrink-0" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
-              <span className="text-sm" style={{ color: "var(--brand-text-muted-dark)", fontFamily: "var(--font-heading)" }}>{item}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Family advantage */}
-      <div className="px-6 py-16 min-h-[80vh] flex flex-col justify-center" style={{ backgroundColor: "var(--brand-bg-dark)" }}>
-        <p className="text-xs font-bold uppercase tracking-[0.35em] mb-5" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
-          Why Family-Owned Changes Everything
-        </p>
-        <h3 className="text-3xl font-black uppercase leading-tight mb-8" style={{ color: "var(--brand-text-light)", fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}>
-          {"When It's Your Name on the Door — You Don't Cut Corners."}
-        </h3>
-        <div className="flex flex-col gap-6 mb-10">
-          {FAMILY_BULLETS.map((bullet, i) => (
-            <div key={i} className="flex items-start gap-5">
-              <span className="shrink-0 text-lg font-black tabular-nums mt-0.5" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--brand-text-muted-dark)" }}>{bullet}</p>
-            </div>
-          ))}
-        </div>
-        <a
-          href="#contact"
-          className="self-start px-7 py-3.5 text-sm font-black uppercase tracking-widest hover:opacity-80 transition-opacity"
-          style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
-        >
-          Get Your Free Quote
-        </a>
       </div>
     </div>
   )
@@ -723,17 +609,7 @@ function StatsAndSkills() {
 export function About() {
   return (
     <section aria-label="About Inside The House">
-      {/* Desktop: scroll-driven horizontal panels */}
-      <div className="hidden lg:block">
-        <HorizontalPanels />
-      </div>
-
-      {/* Mobile / tablet: vertical stack */}
-      <div className="lg:hidden">
-        <MobilePanels />
-      </div>
-
-      {/* Stats + skills (all screen sizes) */}
+      <HorizontalPanels />
       <StatsAndSkills />
     </section>
   )
