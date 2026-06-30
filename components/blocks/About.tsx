@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useScroll, useTransform } from "motion/react"
+import { motion, useScroll, useTransform, easeIn, easeOut } from "motion/react"
 import Image from "next/image"
 
 // ── Constants ──────────────────────────────────────────────────────────────
@@ -265,8 +265,8 @@ function HangingSign() {
 function HorizontalPanels() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-300vw"])
-  const dotLeftDesktop = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"])
+  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-300vw"], { ease: [easeOut, easeIn] })
+  const dotLeftDesktop = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"], { ease: [easeOut, easeIn] })
 
   return (
     <div ref={ref} className="relative h-[400vh]">
@@ -513,8 +513,8 @@ function HorizontalPanels() {
 function MobileHorizontalPanels() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-500vw"])
-  const dotLeft = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"])
+  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-500vw"], { ease: [easeOut, easeIn] })
+  const dotLeft = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"], { ease: [easeOut, easeIn] })
 
   return (
     <div ref={ref} className="relative h-[600vh]">
