@@ -273,16 +273,21 @@ function HorizontalPanels() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] })
 
-  const x        = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw",  "0vw",  "-300vw"])
-  const barScale = useTransform(scrollYProgress, [0, 0.15, 1], [0,      0,      1])
-  const dotLeft  = useTransform(scrollYProgress, [0, 0.15, 1], ["0%",   "0%",   "100%"])
+  // Pixel-based x — avoids string parsing on every frame (performance fix)
+  const x = useTransform(scrollYProgress, (v) => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 0
+    const p = Math.max(0, Math.min(1, (v - 0.15) / 0.85))
+    return -p * w * 3
+  })
+  const barScale = useTransform(scrollYProgress, [0, 0.15, 1], [0, 0, 1])
+  const dotLeft  = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"])
 
   return (
     <div ref={sectionRef} className="relative h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-50">
+        <div className="absolute bottom-3 left-0 right-0 z-50">
           <div className="flex items-center px-5 md:px-10 pb-2">
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em]"
@@ -312,7 +317,7 @@ function HorizontalPanels() {
         </div>
 
         {/* Horizontal strip */}
-        <motion.div style={{ x, width: "400vw" }} className="flex h-full">
+        <motion.div style={{ x, width: "400vw", willChange: "transform" }} className="flex h-full">
 
           {/* ── Panel 1: Philosophy + Signpost ──────────────────────── */}
           <div
@@ -522,16 +527,21 @@ function MobileHorizontalPanels() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] })
 
-  const x           = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw",  "0vw",  "-500vw"])
-  const barScaleMob = useTransform(scrollYProgress, [0, 0.15, 1], [0,      0,      1])
-  const dotLeftMob  = useTransform(scrollYProgress, [0, 0.15, 1], ["0%",   "0%",   "100%"])
+  // Pixel-based x — avoids string parsing on every frame (performance fix)
+  const x = useTransform(scrollYProgress, (v) => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 0
+    const p = Math.max(0, Math.min(1, (v - 0.15) / 0.85))
+    return -p * w * 5
+  })
+  const barScaleMob = useTransform(scrollYProgress, [0, 0.15, 1], [0, 0, 1])
+  const dotLeftMob  = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"])
 
   return (
     <div ref={sectionRef} className="relative h-[600vh]">
       <div className="sticky top-0 h-[100svh] overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-50">
+        <div className="absolute bottom-3 left-0 right-0 z-50">
           <div className="flex items-center px-5 pb-2">
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em]"
@@ -553,7 +563,7 @@ function MobileHorizontalPanels() {
         </div>
 
         {/* 6-panel strip */}
-        <motion.div style={{ x, width: "600vw" }} className="flex h-full">
+        <motion.div style={{ x, width: "600vw", willChange: "transform" }} className="flex h-full">
 
           {/* ── 1: Heading + Signpost ── */}
           <div
