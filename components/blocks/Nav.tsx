@@ -188,13 +188,30 @@ export function Nav() {
         </motion.div>
 
         <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-1">
-          <a
-            href={PHONE_TEL}
-            aria-label="Call Inside The House"
-            className="w-11 h-11 flex items-center justify-center rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setPhoneOpen((v) => !v) }}
+            aria-label="Show phone number"
+            className="flex items-center h-11 px-3 rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
           >
-            <Phone size={20} strokeWidth={1.8} aria-hidden />
-          </a>
+            <Phone size={20} strokeWidth={1.8} className="shrink-0" aria-hidden />
+            <AnimatePresence initial={false}>
+              {phoneOpen && (
+                <motion.a
+                  href={PHONE_TEL}
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                  className="overflow-hidden whitespace-nowrap pl-2 text-sm font-bold text-[#1c1a18]"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {PHONE}
+                </motion.a>
+              )}
+            </AnimatePresence>
+          </button>
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
