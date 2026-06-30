@@ -71,6 +71,8 @@ export function Nav() {
     return () => window.removeEventListener("resize", onResize)
   }, [menuOpen])
 
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
+
   const showLinks = !isScrolled || isHovered
   // Nav list grows to fit the phone number when it's revealed inside the list
   const navWidth = showLinks ? (phoneOpen ? 628 : 480) : 0
@@ -87,7 +89,7 @@ export function Nav() {
       >
         {/* Logo */}
         <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }}>
-          <Link href="/" className="flex items-center px-3 py-1.5 shrink-0">
+          <Link href="/" onClick={scrollToTop} className="flex items-center px-3 py-1.5 shrink-0">
             <Image
               src={LOGO_SRC}
               alt="Inside The House — Calgary Renovations"
@@ -175,7 +177,7 @@ export function Nav() {
         className={`flex lg:hidden items-center gap-2 rounded-full bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] pl-4 pr-2 py-2 pointer-events-auto ${isScrolled ? "w-auto" : "w-full max-w-md justify-between"}`}
       >
         <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }}>
-          <Link href="/" className="flex items-center shrink-0" aria-label="Inside The House — home">
+          <Link href="/" onClick={scrollToTop} className="flex items-center shrink-0" aria-label="Inside The House — home">
             <Image
               src={LOGO_SRC}
               alt="Inside The House — Calgary Renovations"
@@ -236,13 +238,20 @@ export function Nav() {
           >
             {/* Top row — logo + close */}
             <div className="flex items-center justify-between px-6 pt-7">
-              <Image
-                src={LOGO_SRC}
-                alt="Inside The House — Calgary Renovations"
-                width={160}
-                height={48}
-                className="h-8 w-auto object-contain"
-              />
+              <Link
+                href="/"
+                onClick={() => { setMenuOpen(false); scrollToTop() }}
+                className="flex items-center shrink-0"
+                aria-label="Inside The House — home"
+              >
+                <Image
+                  src={LOGO_SRC}
+                  alt="Inside The House — Calgary Renovations"
+                  width={160}
+                  height={48}
+                  className="h-8 w-auto object-contain"
+                />
+              </Link>
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}
