@@ -168,20 +168,26 @@ export function Nav() {
         </motion.div>
       </motion.div>
 
-      {/* ───────────── Mobile bar (below lg) ───────────── */}
-      <div className="flex lg:hidden items-center justify-between w-full max-w-md mx-auto rounded-full bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] pl-4 pr-2 py-2 pointer-events-auto">
-        <Link href="/" className="flex items-center shrink-0" aria-label="Inside The House — home">
-          <Image
-            src={LOGO_SRC}
-            alt="Inside The House — Calgary Renovations"
-            width={160}
-            height={48}
-            className="h-8 w-auto object-contain"
-            priority
-          />
-        </Link>
+      {/* ───────────── Mobile bar (below lg) — compresses on scroll ───────────── */}
+      <motion.div
+        layout
+        transition={{ duration: 0.5, ease: EASE }}
+        className={`flex lg:hidden items-center gap-2 rounded-full bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] pl-4 pr-2 py-2 pointer-events-auto ${isScrolled ? "w-auto" : "w-full max-w-md justify-between"}`}
+      >
+        <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }}>
+          <Link href="/" className="flex items-center shrink-0" aria-label="Inside The House — home">
+            <Image
+              src={LOGO_SRC}
+              alt="Inside The House — Calgary Renovations"
+              width={160}
+              height={48}
+              className="h-8 w-auto object-contain"
+              priority
+            />
+          </Link>
+        </motion.div>
 
-        <div className="flex items-center gap-1">
+        <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-1">
           <a
             href={PHONE_TEL}
             aria-label="Call Inside The House"
@@ -198,8 +204,8 @@ export function Nav() {
           >
             <Menu size={22} strokeWidth={1.8} aria-hidden />
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* ───────────── Mobile full-screen overlay ───────────── */}
       <AnimatePresence>
