@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useScroll, useTransform, easeIn, easeOut } from "motion/react"
+import { motion, useScroll, useTransform } from "motion/react"
 import Image from "next/image"
 
 // ── Constants ──────────────────────────────────────────────────────────────
@@ -121,6 +121,12 @@ function HangingSign() {
       viewport={{ once: true }}
       transition={{ duration: 0.85, ease: EASE }}
     >
+      {/* Float wrapper — bobs continuously after entrance completes */}
+      <motion.div
+        style={{ position: "absolute", inset: 0 }}
+        animate={{ y: [0, -9, 0] }}
+        transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1.0 }}
+      >
 
       {/* ── Post + cross base (static) ── */}
       <svg
@@ -179,8 +185,8 @@ function HangingSign() {
       <motion.div
         className="absolute"
         style={{ left: 10, top: 60, width: 220, height: 78, transformOrigin: "105px 39px" }}
-        animate={{ rotate: [-1.8, 1.8, -1.8] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ rotate: [-3, 3, -3] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       >
         {/* Arrow-shaped board */}
         <div
@@ -256,6 +262,7 @@ function HangingSign() {
         </div>
       </motion.div>
 
+      </motion.div>{/* end float wrapper */}
     </motion.div>
   )
 }
@@ -263,15 +270,16 @@ function HangingSign() {
 // ── 4-panel sticky horizontal scroll — all screen sizes ───────────────────────
 
 function HorizontalPanels() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-300vw"], { ease: [easeOut, easeIn] })
-  const dotLeftDesktop = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"], { ease: [easeOut, easeIn] })
-  const barScaleDesktop = useTransform(scrollYProgress, [0, 0.15, 1], [0, 0, 1], { ease: [easeOut, easeIn] })
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] })
+
+  const x        = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw",  "0vw",  "-300vw"])
+  const barScale = useTransform(scrollYProgress, [0, 0.15, 1], [0,      0,      1])
+  const dotLeft  = useTransform(scrollYProgress, [0, 0.15, 1], ["0%",   "0%",   "100%"])
 
   return (
-    <div ref={ref} className="relative h-[400vh]">
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
+    <div ref={sectionRef} className="relative h-[400vh]">
+      <div className="sticky top-0 h-screen overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
         <div className="absolute bottom-0 left-0 right-0 z-50">
@@ -285,18 +293,17 @@ function HorizontalPanels() {
           </div>
           <div className="relative h-[8px] md:h-[10px] w-full" style={{ backgroundColor: "rgba(255,255,255,0.10)" }}>
             <motion.div
-              className="absolute inset-y-0 left-0 origin-left h-full w-full"
+              className="absolute inset-y-0 left-0 h-full w-full origin-left"
               style={{
-                scaleX: barScaleDesktop,
+                scaleX: barScale,
                 backgroundColor: "var(--brand-accent-gold)",
                 boxShadow: "0 0 20px 2px var(--brand-accent-gold)",
               }}
             />
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 h-[18px] w-[18px] md:h-[20px] md:w-[20px] rounded-full"
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-[18px] w-[18px] md:h-[20px] md:w-[20px] rounded-full"
               style={{
-                left: dotLeftDesktop,
-                x: "-50%",
+                left: dotLeft,
                 backgroundColor: "var(--brand-accent-gold)",
                 boxShadow: "0 0 16px 3px var(--brand-accent-gold)",
               }}
@@ -321,7 +328,7 @@ function HorizontalPanels() {
             />
 
             {/* Signpost — decorative, desktop only */}
-            <div className="absolute right-[160px] top-1/2 -translate-y-1/2 z-0">
+            <div className="absolute right-[15%] top-1/2 -translate-y-1/2 z-0">
               <HangingSign />
             </div>
 
@@ -512,15 +519,16 @@ function HorizontalPanels() {
 // Each panel is full-screen — no squeezing of content.
 
 function MobileHorizontalPanels() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-500vw"], { ease: [easeOut, easeIn] })
-  const dotLeft = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"], { ease: [easeOut, easeIn] })
-  const barScale = useTransform(scrollYProgress, [0, 0.15, 1], [0, 0, 1], { ease: [easeOut, easeIn] })
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] })
+
+  const x           = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw",  "0vw",  "-500vw"])
+  const barScaleMob = useTransform(scrollYProgress, [0, 0.15, 1], [0,      0,      1])
+  const dotLeftMob  = useTransform(scrollYProgress, [0, 0.15, 1], ["0%",   "0%",   "100%"])
 
   return (
-    <div ref={ref} className="relative h-[600vh]">
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
+    <div ref={sectionRef} className="relative h-[600vh]">
+      <div className="sticky top-0 h-[100svh] overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
         <div className="absolute bottom-8 left-0 right-0 z-50">
@@ -534,26 +542,17 @@ function MobileHorizontalPanels() {
           </div>
           <div className="relative h-[8px] w-full" style={{ backgroundColor: "rgba(255,255,255,0.10)" }}>
             <motion.div
-              className="absolute inset-y-0 left-0 origin-left h-full w-full"
-              style={{
-                scaleX: barScale,
-                backgroundColor: "var(--brand-accent-gold)",
-                boxShadow: "0 0 16px 2px var(--brand-accent-gold)",
-              }}
+              className="absolute inset-y-0 left-0 h-full w-full origin-left"
+              style={{ scaleX: barScaleMob, backgroundColor: "var(--brand-accent-gold)", boxShadow: "0 0 16px 2px var(--brand-accent-gold)" }}
             />
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 h-[16px] w-[16px] rounded-full"
-              style={{
-                left: dotLeft,
-                x: "-50%",
-                backgroundColor: "var(--brand-accent-gold)",
-                boxShadow: "0 0 12px 3px var(--brand-accent-gold)",
-              }}
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-[16px] w-[16px] rounded-full"
+              style={{ left: dotLeftMob, backgroundColor: "var(--brand-accent-gold)", boxShadow: "0 0 12px 3px var(--brand-accent-gold)" }}
             />
           </div>
         </div>
 
-        {/* 6-panel strip — 600vw total */}
+        {/* 6-panel strip */}
         <motion.div style={{ x, width: "600vw" }} className="flex h-full">
 
           {/* ── 1: Heading + Signpost ── */}
@@ -571,7 +570,7 @@ function MobileHorizontalPanels() {
 
             {/* Signpost — decorative corner element, right mirrors heading's px-6 sm:px-10 */}
             <div
-              className="absolute z-0 right-[20%]"
+              className="absolute z-0 right-[25%]"
               style={{ bottom: "15%", transform: "scale(0.62)", transformOrigin: "bottom right" }}
             >
               <HangingSign />
