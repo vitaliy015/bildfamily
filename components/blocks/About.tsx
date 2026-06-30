@@ -267,6 +267,7 @@ function HorizontalPanels() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
   const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-300vw"], { ease: [easeOut, easeIn] })
   const dotLeftDesktop = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"], { ease: [easeOut, easeIn] })
+  const barScaleDesktop = useTransform(scrollYProgress, [0, 0.15, 1], [0, 0, 1], { ease: [easeOut, easeIn] })
 
   return (
     <div ref={ref} className="relative h-[400vh]">
@@ -286,7 +287,7 @@ function HorizontalPanels() {
             <motion.div
               className="absolute inset-y-0 left-0 origin-left h-full w-full"
               style={{
-                scaleX: scrollYProgress,
+                scaleX: barScaleDesktop,
                 backgroundColor: "var(--brand-accent-gold)",
                 boxShadow: "0 0 20px 2px var(--brand-accent-gold)",
               }}
@@ -515,6 +516,7 @@ function MobileHorizontalPanels() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
   const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-500vw"], { ease: [easeOut, easeIn] })
   const dotLeft = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"], { ease: [easeOut, easeIn] })
+  const barScale = useTransform(scrollYProgress, [0, 0.15, 1], [0, 0, 1], { ease: [easeOut, easeIn] })
 
   return (
     <div ref={ref} className="relative h-[600vh]">
@@ -534,7 +536,7 @@ function MobileHorizontalPanels() {
             <motion.div
               className="absolute inset-y-0 left-0 origin-left h-full w-full"
               style={{
-                scaleX: scrollYProgress,
+                scaleX: barScale,
                 backgroundColor: "var(--brand-accent-gold)",
                 boxShadow: "0 0 16px 2px var(--brand-accent-gold)",
               }}
@@ -567,10 +569,10 @@ function MobileHorizontalPanels() {
               }}
             />
 
-            {/* Signpost — decorative corner element, full scale */}
+            {/* Signpost — decorative corner element, right mirrors heading's px-6 sm:px-10 */}
             <div
-              className="absolute z-0"
-              style={{ right: 10, bottom: "15%", transform: "scale(0.62)", transformOrigin: "bottom right" }}
+              className="absolute z-0 right-6 sm:right-10"
+              style={{ bottom: "15%", transform: "scale(0.62)", transformOrigin: "bottom right" }}
             >
               <HangingSign />
             </div>
