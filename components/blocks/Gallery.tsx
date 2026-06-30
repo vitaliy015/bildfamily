@@ -43,27 +43,48 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
         />
 
-        {/* Dark gradient — appears on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {/* Caption */}
-        <figcaption className="absolute inset-x-0 bottom-0 p-6 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-          <span
-            className="block text-[10px] font-bold uppercase tracking-[0.3em] mb-1.5"
-            style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}
-          >
+        {/* ── Desktop: hover reveal ── */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <figcaption className="hidden lg:block absolute inset-x-0 bottom-0 p-6 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+          <span className="block text-[10px] font-bold uppercase tracking-[0.3em] mb-1.5" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
             {project.type}
           </span>
-          <span
-            className="block text-xl font-bold leading-tight"
-            style={{ color: "#ffffff", fontFamily: "var(--font-heading)" }}
-          >
+          <span className="block text-xl font-bold leading-tight" style={{ color: "#ffffff", fontFamily: "var(--font-heading)" }}>
             {project.title}
           </span>
         </figcaption>
+        <div className="hidden lg:block absolute top-0 left-0 h-10 w-[3px] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
 
-        {/* Corner accent line */}
-        <div className="absolute top-0 left-0 h-10 w-[3px] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
+        {/* ── Mobile: scroll reveal ── */}
+        <motion.div
+          className="lg:hidden absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.5, ease: EASE }}
+        />
+        <motion.figcaption
+          className="lg:hidden absolute inset-x-0 bottom-0 p-5"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
+        >
+          <span className="block text-[10px] font-bold uppercase tracking-[0.3em] mb-1.5" style={{ color: "var(--brand-accent-gold)", fontFamily: "var(--font-heading)" }}>
+            {project.type}
+          </span>
+          <span className="block text-lg font-bold leading-tight" style={{ color: "#ffffff", fontFamily: "var(--font-heading)" }}>
+            {project.title}
+          </span>
+        </motion.figcaption>
+        <motion.div
+          className="lg:hidden absolute top-0 left-0 h-10 w-[3px] origin-top"
+          style={{ backgroundColor: "var(--brand-accent-gold)" }}
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.4, ease: EASE }}
+        />
       </div>
     </motion.figure>
   )
