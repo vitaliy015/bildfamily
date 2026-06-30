@@ -287,7 +287,7 @@ function HorizontalPanels() {
       <div className="sticky top-0 h-screen overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
-        <div className="absolute bottom-3 left-0 right-0 z-50">
+        <div className="absolute bottom-0 left-0 right-0 z-50">
           <div className="flex items-center px-5 md:px-10 pb-2">
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em]"
@@ -541,7 +541,7 @@ function MobileHorizontalPanels() {
       <div className="sticky top-0 h-[100svh] overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
-        <div className="absolute bottom-3 left-0 right-0 z-50">
+        <div className="absolute bottom-0 left-0 right-0 z-50">
           <div className="flex items-center px-5 pb-2">
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em]"
@@ -578,10 +578,10 @@ function MobileHorizontalPanels() {
               }}
             />
 
-            {/* Signpost — decorative corner element, right mirrors heading's px-6 sm:px-10 */}
+            {/* Signpost — centered horizontally on mobile */}
             <div
-              className="absolute z-0 right-[25%]"
-              style={{ bottom: "15%", transform: "scale(0.62)", transformOrigin: "bottom right" }}
+              className="absolute z-0 left-1/2"
+              style={{ bottom: "15%", transform: "translateX(-50%) scale(0.62)", transformOrigin: "bottom center" }}
             >
               <HangingSign />
             </div>
