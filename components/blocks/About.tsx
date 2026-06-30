@@ -571,7 +571,7 @@ function MobileHorizontalPanels() {
 
             {/* Signpost — decorative corner element, right mirrors heading's px-6 sm:px-10 */}
             <div
-              className="absolute z-0 right-6 sm:right-10"
+              className="absolute z-0 right-[20%]"
               style={{ bottom: "15%", transform: "scale(0.62)", transformOrigin: "bottom right" }}
             >
               <HangingSign />
