@@ -103,55 +103,159 @@ function BulletList({ items, accentColor }: { items: string[]; accentColor: stri
   )
 }
 
-// ── Arrow signpost — park / yard "OPEN HOUSE →" style directional marker ───
+// ── Directional signpost — wooden post + cross base + swaying arrow board ─────
 
 function HangingSign() {
+  // Warm dark walnut palette (test colours, close to --brand-bg-dark #1c1a17)
+  const W0 = "#190e05"  // deepest shadow
+  const W1 = "#2c1a0a"  // dark wood
+  const W2 = "#3d2710"  // main mid-tone
+  const W3 = "#5c3b1c"  // lighter grain / highlight
+
   return (
     <motion.div
-      className="relative h-[320px] w-[260px]"
-      initial={{ opacity: 0, y: 18 }}
+      className="relative"
+      style={{ width: 240, height: 340 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: EASE }}
+      transition={{ duration: 0.85, ease: EASE }}
     >
-      {/* Bracket post — vertical */}
-      <div className="absolute left-[14px] top-0 bottom-[20px] w-[8px] rounded" style={{ backgroundColor: "var(--brand-silver)" }} />
-      {/* Bracket arm — horizontal */}
-      <div className="absolute left-[14px] top-0 h-[8px] w-[180px] rounded" style={{ backgroundColor: "var(--brand-silver)" }} />
-      {/* Decorative finial + corner bolt */}
-      <div className="absolute left-[8px] top-[-10px] h-[18px] w-[18px] rounded-full border-2" style={{ borderColor: "var(--brand-silver)", backgroundColor: "var(--brand-bg-light)" }} />
-      <div className="absolute left-[186px] top-[-3px] h-[14px] w-[14px] rounded-full" style={{ backgroundColor: "var(--brand-accent-gold)" }} />
 
-      {/* Hanging group — swings from the arm like a pendulum */}
+      {/* ── Post + cross base (static) ── */}
+      <svg
+        viewBox="0 0 240 340"
+        width="240"
+        height="340"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute inset-0"
+        aria-hidden
+      >
+        {/* Vertical post */}
+        <rect x="103" y="32" width="24" height="260" rx="3" fill={W2} />
+        {/* Left-edge shadow */}
+        <rect x="103" y="32" width="7"  height="260" rx="3" fill={W0} opacity="0.5" />
+        {/* Right-edge highlight */}
+        <rect x="119" y="32" width="5"  height="260"        fill={W3} opacity="0.2" />
+
+        {/* Post top cap */}
+        <rect x="97" y="28" width="36" height="10" rx="3" fill={W2} />
+        <rect x="97" y="28" width="36" height="4"  rx="2" fill={W3} opacity="0.38" />
+
+        {/* ── Cross base ── */}
+
+        {/* Centre hub block */}
+        <rect x="91" y="284" width="48" height="18" rx="3" fill={W2} />
+        <rect x="91" y="284" width="48" height="5"  rx="2" fill={W3} opacity="0.28" />
+
+        {/* Left diagonal brace */}
+        <path d="M 94 290 L 30 310 L 40 322 L 104 300 Z"   fill={W2} />
+        <path d="M 94 290 L 30 310 L 33 308 L 97 288 Z"    fill={W3} opacity="0.2" />
+        <path d="M 40 322 L 104 300 L 104 304 L 44 326 Z"  fill={W0} opacity="0.3" />
+
+        {/* Right diagonal brace */}
+        <path d="M 136 290 L 200 310 L 190 322 L 126 300 Z" fill={W2} />
+        <path d="M 136 290 L 200 310 L 197 308 L 133 288 Z" fill={W3} opacity="0.2" />
+        <path d="M 190 322 L 126 300 L 126 304 L 186 326 Z" fill={W0} opacity="0.3" />
+
+        {/* Main horizontal foot plank */}
+        <rect x="20"  y="312" width="200" height="20" rx="4" fill={W2} />
+        {/* Top-face bevel */}
+        <rect x="20"  y="312" width="200" height="5"  rx="3" fill={W3} opacity="0.3" />
+        {/* Bottom shadow strip */}
+        <rect x="23"  y="327" width="194" height="5"         fill={W0} opacity="0.42" />
+        {/* Wood grain lines on plank */}
+        <line x1="20" y1="319" x2="220" y2="319" stroke={W0} strokeWidth="0.7" opacity="0.2" />
+        <line x1="20" y1="325" x2="220" y2="325" stroke={W0} strokeWidth="0.7" opacity="0.2" />
+      </svg>
+
+      {/* ── Arrow sign board (sways around post centre) ── */}
+      {/*
+        Sign div: left=10, top=60, width=220, height=78
+        Post centre in div coords: x = 115 − 10 = 105 , y = 78/2 = 39
+        transformOrigin "105px 39px"  → pivot = post axis ✓
+      */}
       <motion.div
         className="absolute"
-        style={{ left: "62px", top: "8px", transformOrigin: "top center" }}
-        animate={{ rotate: [-3.5, 3.5, -3.5] }}
-        transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+        style={{ left: 10, top: 60, width: 220, height: 78, transformOrigin: "105px 39px" }}
+        animate={{ rotate: [-1.8, 1.8, -1.8] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* Two chains */}
-        <div className="flex justify-between" style={{ width: "176px", padding: "0 22px" }}>
-          <div className="w-[2px] h-7" style={{ backgroundColor: "var(--brand-silver)" }} />
-          <div className="w-[2px] h-7" style={{ backgroundColor: "var(--brand-silver)" }} />
-        </div>
-
-        {/* Sign board — arrow pointing right */}
+        {/* Arrow-shaped board */}
         <div
-          className="relative flex items-center justify-end h-[78px] w-44 pr-6"
           style={{
-            backgroundColor: "var(--brand-accent-olive)",
-            clipPath: "polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%)",
-            boxShadow: "0 10px 24px -8px rgba(0,0,0,0.35)",
+            width: "100%",
+            height: "100%",
+            backgroundColor: W2,
+            clipPath: "polygon(0 0, 81% 0, 100% 50%, 81% 100%, 0 100%)",
+            boxShadow: "0 18px 44px -14px rgba(0,0,0,0.6)",
+            position: "relative",
           }}
         >
-          {/* Inner border line */}
-          <div className="absolute inset-[7px] border" style={{ borderColor: "rgba(245,242,238,0.35)", clipPath: "polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%)" }} />
-          {/* Chevron pointer */}
-          <svg viewBox="0 0 24 24" className="w-9 h-9 relative" fill="none" aria-hidden>
-            <path d="M8 5l7 7-7 7" stroke="var(--brand-accent-gold)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          {/* Left shadow strip */}
+          <div style={{ position: "absolute", inset: 0, width: 9, backgroundColor: W0, opacity: 0.55 }} />
+
+          {/* Wood grain lines */}
+          {[20, 39, 57].map((y) => (
+            <div
+              key={y}
+              style={{
+                position: "absolute",
+                left: 9, top: y,
+                width: "72%", height: 1,
+                backgroundColor: W0, opacity: 0.25,
+              }}
+            />
+          ))}
+
+          {/* Gold accent rules */}
+          <div style={{ position: "absolute", left: 14, top: 10,    right: "22%", height: 1, backgroundColor: "var(--brand-accent-gold)", opacity: 0.5 }} />
+          <div style={{ position: "absolute", left: 14, bottom: 10, right: "22%", height: 1, backgroundColor: "var(--brand-accent-gold)", opacity: 0.5 }} />
+
+          {/* Brand text */}
+          <div
+            style={{
+              position: "absolute", inset: 0,
+              display: "flex", flexDirection: "column", justifyContent: "center",
+              paddingLeft: 18, paddingRight: 52,
+            }}
+          >
+            <span
+              style={{
+                display: "block",
+                fontSize: 7.5, fontWeight: 700,
+                letterSpacing: "0.26em", textTransform: "uppercase",
+                color: "var(--brand-accent-gold)",
+                fontFamily: "var(--font-heading)",
+                marginBottom: 5, opacity: 0.9,
+              }}
+            >
+              Inside The House
+            </span>
+            <span
+              style={{
+                display: "block",
+                fontSize: 17, fontWeight: 800,
+                letterSpacing: "0.05em", textTransform: "uppercase",
+                color: "rgba(244,238,226,0.96)",
+                fontFamily: "var(--font-heading)",
+                lineHeight: 1,
+              }}
+            >
+              Our Story
+            </span>
+          </div>
+
+          {/* Gold chevron at arrow tip */}
+          <div style={{ position: "absolute", right: 22, top: "50%", transform: "translateY(-50%)" }}>
+            <svg viewBox="0 0 14 22" width="13" height="20" fill="none" aria-hidden>
+              <path d="M3 3l8 8-8 8" stroke="var(--brand-accent-gold)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
         </div>
       </motion.div>
+
     </motion.div>
   )
 }
@@ -226,8 +330,8 @@ function HorizontalPanels() {
               }}
             />
 
-            {/* Decorative hanging arrow sign — right */}
-            <div className="absolute right-[200px] top-1/2 -translate-y-1/2 z-0 hidden lg:block">
+            {/* Decorative sign post — centred vertically opposite the heading */}
+            <div className="absolute right-[160px] top-1/2 -translate-y-1/2 z-0 hidden lg:block">
               <HangingSign />
             </div>
 
