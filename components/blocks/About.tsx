@@ -265,7 +265,8 @@ function HangingSign() {
 function HorizontalPanels() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const x = useTransform(scrollYProgress, [0, 1], ["0vw", "-300vw"])
+  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-300vw"])
+  const dotLeftDesktop = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"])
 
   return (
     <div ref={ref} className="relative h-[400vh]">
@@ -293,7 +294,7 @@ function HorizontalPanels() {
             <motion.div
               className="absolute top-1/2 -translate-y-1/2 h-[18px] w-[18px] md:h-[20px] md:w-[20px] rounded-full"
               style={{
-                left: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+                left: dotLeftDesktop,
                 x: "-50%",
                 backgroundColor: "var(--brand-accent-gold)",
                 boxShadow: "0 0 16px 3px var(--brand-accent-gold)",
@@ -512,8 +513,8 @@ function HorizontalPanels() {
 function MobileHorizontalPanels() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const x = useTransform(scrollYProgress, [0, 1], ["0vw", "-500vw"])
-  const dotLeft = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+  const x = useTransform(scrollYProgress, [0, 0.15, 1], ["0vw", "0vw", "-500vw"])
+  const dotLeft = useTransform(scrollYProgress, [0, 0.15, 1], ["0%", "0%", "100%"])
 
   return (
     <div ref={ref} className="relative h-[600vh]">
