@@ -79,7 +79,7 @@ function ProgressBar({ label, percent, index }: { label: string; percent: number
           viewport={{ once: true }}
           transition={{ duration: 1.2, delay: index * 0.15 + 0.2, ease: EASE }}
           className="h-full rounded-full"
-          style={{ backgroundColor: "var(--brand-accent-olive)" }}
+          style={{ backgroundColor: "var(--brand-bg-dark)" }}
         />
       </div>
     </motion.div>
@@ -531,7 +531,7 @@ function MobileHorizontalPanels() {
       <div className="sticky top-0 h-[100svh] overflow-hidden" style={{ backgroundColor: "var(--brand-bg-light)" }}>
 
         {/* Progress bar */}
-        <div className="absolute bottom-8 left-0 right-0 z-50">
+        <div className="absolute bottom-0 left-0 right-0 z-50">
           <div className="flex items-center px-5 pb-2">
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em]"
