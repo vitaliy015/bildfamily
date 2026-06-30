@@ -520,7 +520,7 @@ function MobileHorizontalPanels() {
       <div className="sticky top-0 h-[100svh] overflow-hidden">
 
         {/* Progress bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-50">
+        <div className="absolute bottom-8 left-0 right-0 z-50">
           <div className="flex items-center px-5 pb-2">
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em]"
@@ -555,7 +555,7 @@ function MobileHorizontalPanels() {
 
           {/* ── 1: Heading + Signpost ── */}
           <div
-            className="relative flex-shrink-0 w-screen h-full flex items-center overflow-hidden"
+            className="relative flex-shrink-0 w-screen h-full flex items-start pt-[18vh] overflow-hidden"
             style={{ backgroundColor: "var(--brand-bg-light)" }}
           >
             <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: NOISE, backgroundSize: "120px" }} />
