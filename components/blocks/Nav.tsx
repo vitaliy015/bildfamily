@@ -8,8 +8,8 @@ import Image from "next/image"
 
 const NAV_LINKS = [
   { label: "Home",     href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "About Us", href: "/#about" },
+  { label: "Services", href: "/#services" },
   { label: "Works",    href: "/portfolio" },
   { label: "Contact",  href: "/contact" },
 ]
@@ -120,6 +120,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={link.href === "/" ? scrollToTop : undefined}
                 className="flex-1 text-center py-1.5 rounded-full text-base text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
@@ -282,7 +283,7 @@ export function Nav() {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => { setMenuOpen(false); if (link.href === "/") scrollToTop() }}
                     className="block py-2 text-3xl text-[#1c1a18] hover:text-[#8a8a5c] transition-colors duration-200"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >

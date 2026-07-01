@@ -31,7 +31,7 @@ const SERVICES = [
 
 export function Services() {
   return (
-    <section className="bg-[#eae6df] py-24 px-8 md:px-16 overflow-hidden">
+    <section id="services" className="bg-[#eae6df] py-24 px-8 md:px-16 overflow-hidden scroll-mt-28">
 
       {/* Section header */}
       <div className="max-w-7xl mx-auto mb-16">
@@ -154,7 +154,7 @@ export function Services() {
           + Drywall · Painting · Small Repairs · Handyman
         </p>
         <a
-          href="/services"
+          href="/contact"
           className="flex items-center gap-3 border border-[#8a8a5c] text-[#8a8a5c] px-6 py-3 hover:bg-[#8a8a5c] hover:text-[#f5f2ee] transition-colors duration-300 text-sm font-black uppercase tracking-widest"
           style={{ fontFamily: "var(--font-heading)" }}
         >

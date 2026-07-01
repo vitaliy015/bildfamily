@@ -388,7 +388,7 @@ export function FAQ() {
             </p>
           </div>
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold uppercase tracking-widest rounded transition-opacity duration-200 hover:opacity-80"
             style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
           >

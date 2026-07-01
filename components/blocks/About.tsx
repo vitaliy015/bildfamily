@@ -504,7 +504,7 @@ function HorizontalPanels() {
                 ))}
               </div>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-widest transition-opacity duration-200 hover:opacity-80"
                 style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
               >
@@ -770,7 +770,7 @@ function MobileHorizontalPanels() {
                 ))}
               </div>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 text-xs font-black uppercase tracking-widest transition-opacity duration-200 hover:opacity-80"
                 style={{ backgroundColor: "var(--brand-accent-gold)", color: "var(--brand-bg-dark)", fontFamily: "var(--font-heading)" }}
               >
@@ -883,7 +883,7 @@ function StatsAndSkills() {
 
 export function About() {
   return (
-    <section aria-label="About Inside The House">
+    <section id="about" aria-label="About Inside The House" className="scroll-mt-28">
       {/* Desktop lg+: 4-panel horizontal scroll */}
       <div className="hidden lg:block">
         <HorizontalPanels />

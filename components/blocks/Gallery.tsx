@@ -160,7 +160,7 @@ export function Gallery() {
             Your home could be next.
           </p>
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center gap-3 px-8 py-4 text-sm font-black uppercase tracking-widest transition-opacity duration-200 hover:opacity-80"
             style={{ backgroundColor: "var(--brand-accent-olive)", color: "var(--brand-text-on-accent)", fontFamily: "var(--font-heading)" }}
           >
