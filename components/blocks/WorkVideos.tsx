@@ -2,20 +2,22 @@
 
 import { useRef, useState } from "react"
 import { motion } from "motion/react"
+import Image from "next/image"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
 type Clip = {
   src: string
+  poster: string
   label: string
   caption: string
 }
 
 const CLIPS: Clip[] = [
-  { src: "/work/walkthrough-1.mp4", label: "Deck Restoration", caption: "Freshly sanded & re-stained" },
-  { src: "/work/walkthrough-2.mp4", label: "Ensuite Reveal", caption: "Marble, brass & glass" },
-  { src: "/work/walkthrough-3.mp4", label: "Finished Space", caption: "Walkthrough tour" },
-  { src: "/work/walkthrough-4.mp4", label: "Room Tour", caption: "Bathroom walkthrough" },
+  { src: "/work/walkthrough-1.mp4", poster: "/work/deck-after.jpg",     label: "Deck Restoration", caption: "Freshly sanded & re-stained" },
+  { src: "/work/walkthrough-2.mp4", poster: "/work/ensuite-after.jpg",  label: "Ensuite Reveal",   caption: "Marble, brass & glass" },
+  { src: "/work/walkthrough-3.mp4", poster: "/work/showcase-4.jpg",     label: "Finished Space",   caption: "Walkthrough tour" },
+  { src: "/work/walkthrough-4.mp4", poster: "/work/basement-after.jpg", label: "Room Tour",        caption: "Bathroom walkthrough" },
 ]
 
 function VideoCard({ clip, index }: { clip: Clip; index: number }) {
@@ -43,6 +45,7 @@ function VideoCard({ clip, index }: { clip: Clip; index: number }) {
         <video
           ref={ref}
           src={clip.src}
+          poster={clip.poster}
           controls={started}
           muted
           loop
@@ -51,21 +54,29 @@ function VideoCard({ clip, index }: { clip: Clip; index: number }) {
           className="absolute inset-0 h-full w-full object-contain"
         />
 
-        {/* Poster / click-to-play overlay */}
+        {/* Poster preview / click-to-play overlay */}
         {!started && (
           <button
             type="button"
             onClick={play}
             aria-label={`Play ${clip.label} walkthrough`}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-[#2a2822] to-[#1c1a17] group"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-4 overflow-hidden group"
           >
-            <span className="flex items-center justify-center w-16 h-16 rounded-full bg-[#8a8a5c] group-hover:bg-[#7a7a4e] transition-colors duration-200 shadow-lg">
+            <Image
+              src={clip.poster}
+              alt=""
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors duration-200" />
+            <span className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-[#8a8a5c] group-hover:bg-[#7a7a4e] transition-colors duration-200 shadow-lg">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-[#f5f2ee] ml-1">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </span>
             <span
-              className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#f0ede8]/80"
+              className="relative z-10 text-[11px] font-bold uppercase tracking-[0.25em] text-white/90"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Watch

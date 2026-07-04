@@ -6,10 +6,15 @@ import { BeforeAfter } from "@/components/blocks/BeforeAfter"
 import { WorkVideos } from "@/components/blocks/WorkVideos"
 import { WorkGallery } from "@/components/blocks/WorkGallery"
 
+const title = "Bathroom Renovations & Our Work | Inside The House — Calgary"
+const description =
+  "Before & after sliders, a bathroom gallery, and video walkthroughs of real ensuite, basement bath and shower renovations by Inside The House — a family-owned renovation company in Calgary, AB."
+
 export const metadata: Metadata = {
-  title: "Bathroom Renovations & Our Work | Inside The House — Calgary",
-  description:
-    "Before & after sliders, a bathroom gallery, and video walkthroughs of real ensuite, basement bath and shower renovations by Inside The House — a family-owned renovation company in Calgary, AB.",
+  title,
+  description,
+  openGraph: { title, description, url: "/works" },
+  twitter: { title, description },
 }
 
 export default function WorksPage() {

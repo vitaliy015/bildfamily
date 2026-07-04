@@ -108,7 +108,6 @@ function BulletList({ items, accentColor }: { items: string[]; accentColor: stri
 function HangingSign() {
   // Warm dark walnut palette (test colours, close to --brand-bg-dark #1c1a17)
   const W0 = "#190e05"  // deepest shadow
-  const W1 = "#2c1a0a"  // dark wood
   const W2 = "#3d2710"  // main mid-tone
   const W3 = "#5c3b1c"  // lighter grain / highlight
 

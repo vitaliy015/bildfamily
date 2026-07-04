@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { Phone, Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -71,6 +71,11 @@ export function Nav() {
     return () => window.removeEventListener("resize", onResize)
   }, [menuOpen])
 
+  const reduce = useReducedMotion()
+  // Slow olive "breathing" pulse to flag the Works page as the key destination.
+  const worksPulse = reduce ? undefined : { color: ["#1c1a18", "#8a8a5c", "#1c1a18"] }
+  const worksPulseTransition = { duration: 3.6, repeat: Infinity, ease: "easeInOut" as const }
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 
   const showLinks = !isScrolled || isHovered
@@ -116,17 +121,35 @@ export function Nav() {
           style={{ pointerEvents: showLinks ? "auto" : "none" }}
         >
           <div className="flex items-center rounded-full bg-[#d8d4cc]/50 border border-[#c4c0b8]/50 px-2 py-2">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={link.href === "/" ? scrollToTop : undefined}
-                className="flex-1 text-center py-1.5 rounded-full text-base text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200 whitespace-nowrap"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.label === "Works" ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="flex-1 text-center py-1.5 rounded-full text-base whitespace-nowrap"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  <motion.span
+                    className="inline-block font-semibold"
+                    style={{ color: "#8a8a5c" }}
+                    animate={worksPulse}
+                    transition={reduce ? undefined : worksPulseTransition}
+                  >
+                    {link.label}
+                  </motion.span>
+                </Link>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={link.href === "/" ? scrollToTop : undefined}
+                  className="flex-1 text-center py-1.5 rounded-full text-base text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200 whitespace-nowrap"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
 
             {/* Phone — list member, expands inline to reveal the number */}
             <button
@@ -287,7 +310,18 @@ export function Nav() {
                     className="block py-2 text-3xl text-[#1c1a18] hover:text-[#8a8a5c] transition-colors duration-200"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
-                    {link.label}
+                    {link.label === "Works" ? (
+                      <motion.span
+                        className="inline-block font-semibold"
+                        style={{ color: "#8a8a5c" }}
+                        animate={worksPulse}
+                        transition={reduce ? undefined : worksPulseTransition}
+                      >
+                        {link.label}
+                      </motion.span>
+                    ) : (
+                      link.label
+                    )}
                   </Link>
                 </motion.div>
               ))}
