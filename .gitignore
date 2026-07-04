@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# editor
+.vscode/
+
+# raw source media (site uses optimized copies in /public)
+/image_family-bild/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

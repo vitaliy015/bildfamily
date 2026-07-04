@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Nav } from "@/components/blocks/Nav"
 import { Portfolio } from "@/components/blocks/Portfolio"
+import { Footer } from "@/components/blocks/Footer"
 
 export const metadata: Metadata = {
   title: "Our Work | Inside The House — Calgary Renovations",
@@ -15,6 +16,7 @@ export default function PortfolioPage() {
       <main>
         <Portfolio />
       </main>
+      <Footer />
     </>
   )
 }

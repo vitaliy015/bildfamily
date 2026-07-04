@@ -9,7 +9,7 @@ const EASE = [0.25, 0.46, 0.45, 0.94] as const
 const PHONE = "+1 (403) 000-0000"
 const PHONE_TEL = `tel:${PHONE.replace(/\D/g, "")}`
 const EMAIL = "insidethehouseca@gmail.com"
-const INSTAGRAM_URL = "https://instagram.com/insidethehouse_renovations"
+const INSTAGRAM_URL = "https://www.instagram.com/insidethehouse_renovations"
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace(/\D/g, "")}`
 
 const ArrowIcon = () => (

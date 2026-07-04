@@ -60,50 +60,27 @@ export function Hero() {
 
           {/* Tag */}
           <div className="flex items-center gap-3">
-            <span className="text-[#8a8a5c] text-[11px] font-bold tracking-[0.3em] uppercase" style={{ fontFamily: "var(--font-heading)" }}>
-              [&nbsp;
-            </span>
-            <span className="w-6 h-px bg-[#8a8a5c]/50" />
+            <span className="w-8 h-px bg-[#8a8a5c]/50" />
             <span className="text-[#8a8a5c] text-[11px] font-bold uppercase tracking-[0.25em]" style={{ fontFamily: "var(--font-heading)" }}>
               Family-Owned · Calgary, Alberta
             </span>
-            <span className="w-6 h-px bg-[#8a8a5c]/50" />
-            <span className="text-[#8a8a5c] text-[11px] font-bold tracking-[0.3em] uppercase" style={{ fontFamily: "var(--font-heading)" }}>
-              &nbsp;]
-            </span>
           </div>
 
-          {/* Heading with giant faded 01 */}
-          <div className="relative">
-            <span
-              className="absolute -top-10 -left-2 text-[160px] font-black text-[#1c1a18]/[0.04] leading-none select-none pointer-events-none"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              01
-            </span>
-            <h1
-              className="relative text-[72px] md:text-[100px] font-black uppercase leading-[0.88] text-[#1c1a18]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Your<br />
-              Home.<br />
-              <span className="text-[#8a8a5c] relative">
-                Trans&shy;formed.
-                <span className="absolute -bottom-2 left-0 w-3/4 h-[3px] bg-gradient-to-r from-[#b8b8b0] to-transparent" />
-              </span>
-            </h1>
-          </div>
+          {/* Heading */}
+          <h1
+            className="text-[72px] md:text-[100px] font-black uppercase leading-[0.88] text-[#1c1a18]"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Your<br />
+            Home.<br />
+            <span className="text-[#8a8a5c]">Trans&shy;formed.</span>
+          </h1>
 
           {/* Body text */}
-          <div className="flex gap-4 items-start mt-2">
-            <div className="w-[3px] h-16 shrink-0 mt-1" style={{
-              background: "linear-gradient(to bottom, #b8b8b0, #d4d4cc, #b8b8b0)"
-            }} />
-            <p className="text-base text-[#6a6460] leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
-              Bathrooms, kitchens, basements and more — renovated with
-              honest pricing, reliable timelines, and craftsmanship you can trust.
-            </p>
-          </div>
+          <p className="text-base text-[#6a6460] leading-relaxed max-w-xl mt-2" style={{ fontFamily: "var(--font-body)" }}>
+            Bathrooms, kitchens, basements and more — renovated with
+            honest pricing, reliable timelines, and craftsmanship you can trust.
+          </p>
 
           {/* CTA buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-1">
@@ -123,7 +100,7 @@ export function Hero() {
 
             {/* Silver CTA */}
             <a
-              href="/portfolio"
+              href="/works"
               className="flex items-center gap-2 text-[#6a6460] hover:text-[#1c1a18] text-xs font-black uppercase tracking-[0.25em] transition-colors border border-[#b8b8b0] px-5 py-3.5 hover:border-[#8a8a5c]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
@@ -131,19 +108,15 @@ export function Hero() {
             </a>
           </div>
 
-          {/* Stats — silver grid boxes */}
-          <div className="flex flex-wrap gap-0 mt-4 border border-[#c4c0b8]">
+          {/* Stats — nav-style pill */}
+          <div className="inline-flex flex-wrap items-center gap-x-12 gap-y-4 mt-6 w-fit rounded-2xl bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-10 py-5">
             {[
               { value: "10+",  label: "Years" },
               { value: "200+", label: "Projects" },
               { value: "100%", label: "On Time" },
             ].map((stat) => (
-              <div
-                key={stat.label}
-                className="flex flex-col gap-1 px-7 py-4 border-r border-[#c4c0b8] last:border-r-0"
-                style={{ background: "linear-gradient(135deg, #ede9e2, #e0dcd4)" }}
-              >
-                <span className="text-2xl font-black text-[#8a8a5c]" style={{ fontFamily: "var(--font-heading)" }}>
+              <div key={stat.label} className="flex flex-col gap-1">
+                <span className="text-3xl font-black text-[#8a8a5c]" style={{ fontFamily: "var(--font-heading)" }}>
                   {stat.value}
                 </span>
                 <span className="text-[10px] text-[#9a9690] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-heading)" }}>
