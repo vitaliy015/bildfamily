@@ -54,7 +54,7 @@ export function WorksHero() {
             className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8a8a5c]"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Real Calgary Projects · Before &amp; After
+            Calgary Bathroom Specialists · Before &amp; After
           </span>
         </motion.div>
 
@@ -90,9 +90,9 @@ export function WorksHero() {
             className="text-lg md:text-xl leading-relaxed text-[#4a4840]"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Real Calgary homes we&apos;ve transformed — no stock photos, no staged
-            showrooms. Drag the sliders to see the before &amp; after, then watch
-            the walkthroughs of the finished spaces.
+            Bathrooms are our specialty — dated ensuites, basement baths and tired
+            showers rebuilt into spaces you look forward to. Drag the sliders for the
+            before &amp; after, then watch the walkthroughs of the finished rooms.
           </p>
         </motion.div>
       </div>

@@ -11,27 +11,27 @@ const SLIDES = [
   {
     id: "slide-1",
     title: "Bathroom Remodeling",
-    imageUrl: "https://insidethehouseca.com/wp-content/uploads/2025/09/IMG_6731.jpg",
+    imageUrl: "/uploads/2025/09/IMG_6731.jpg",
   },
   {
     id: "slide-2",
     title: "Basement Finishing",
-    imageUrl: "https://insidethehouseca.com/wp-content/uploads/2025/09/IMG_3488.jpg",
+    imageUrl: "/uploads/2025/09/IMG_3488.jpg",
   },
   {
     id: "slide-3",
     title: "Kitchen Updates",
-    imageUrl: "https://insidethehouseca.com/wp-content/uploads/2025/09/IMG_4360.jpg",
+    imageUrl: "/uploads/2025/09/IMG_4360.jpg",
   },
   {
     id: "slide-4",
     title: "Flooring Installation",
-    imageUrl: "https://insidethehouseca.com/wp-content/uploads/2025/09/IMG_5605.jpg",
+    imageUrl: "/uploads/2025/09/IMG_5605.jpg",
   },
   {
     id: "slide-5",
     title: "Drywall & Painting",
-    imageUrl: "https://insidethehouseca.com/wp-content/uploads/2025/09/IMG_5674.jpg",
+    imageUrl: "/uploads/2025/09/IMG_5674.jpg",
   },
 ]
 

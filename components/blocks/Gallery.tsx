@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 import Image from "next/image"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
-const UPLOADS = "https://insidethehouseca.com/wp-content/uploads"
+const UPLOADS = "/uploads"
 
 type Project = {
   src: string

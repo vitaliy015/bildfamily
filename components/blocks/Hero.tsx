@@ -25,7 +25,7 @@ export function Hero() {
       {/* Right side — couple photo */}
       <div className="absolute right-0 top-0 h-full w-[46%] hidden md:block">
         <Image
-          src="https://insidethehouseca.com/wp-content/uploads/2025/09/photo_2025-09-16_17-18-30.jpg"
+          src="/uploads/2025/09/photo_2025-09-16_17-18-30.jpg"
           alt="Anatolii and Nataliia — Inside The House Calgary"
           fill
           className="object-cover object-top"

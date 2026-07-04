@@ -15,6 +15,7 @@ const CLIPS: Clip[] = [
   { src: "/work/walkthrough-1.mp4", label: "Deck Restoration", caption: "Freshly sanded & re-stained" },
   { src: "/work/walkthrough-2.mp4", label: "Ensuite Reveal", caption: "Marble, brass & glass" },
   { src: "/work/walkthrough-3.mp4", label: "Finished Space", caption: "Walkthrough tour" },
+  { src: "/work/walkthrough-4.mp4", label: "Room Tour", caption: "Bathroom walkthrough" },
 ]
 
 function VideoCard({ clip, index }: { clip: Clip; index: number }) {
@@ -111,7 +112,7 @@ export function WorkVideos() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {CLIPS.map((clip, i) => (
             <VideoCard key={clip.src} clip={clip} index={i} />
           ))}

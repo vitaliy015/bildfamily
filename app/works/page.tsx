@@ -7,9 +7,9 @@ import { WorkVideos } from "@/components/blocks/WorkVideos"
 import { WorkGallery } from "@/components/blocks/WorkGallery"
 
 export const metadata: Metadata = {
-  title: "Our Work | Inside The House — Calgary Renovations",
+  title: "Bathroom Renovations & Our Work | Inside The House — Calgary",
   description:
-    "Before & after sliders and video walkthroughs of real bathroom, basement, and exterior projects by Inside The House — a family-owned renovation company in Calgary, AB.",
+    "Before & after sliders, a bathroom gallery, and video walkthroughs of real ensuite, basement bath and shower renovations by Inside The House — a family-owned renovation company in Calgary, AB.",
 }
 
 export default function WorksPage() {
@@ -27,7 +27,7 @@ export default function WorksPage() {
                 className="text-xs font-bold uppercase tracking-[0.35em] mb-5 text-[#8a8a5c]"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                Before &amp; After
+                Bathrooms · Before &amp; After
               </p>
               <h2
                 className="text-[38px] md:text-5xl font-black uppercase leading-[0.95] mb-5 text-[#1c1a18]"
@@ -36,7 +36,8 @@ export default function WorksPage() {
                 Drag to reveal the transformation
               </h2>
               <p className="text-base md:text-lg leading-relaxed text-[#4a4840]" style={{ fontFamily: "var(--font-body)" }}>
-                Same room, same angle — before we started and the day we handed it back.
+                Bathrooms are what we do best — from dated ensuites to spa-like retreats.
+                Same room, same angle: before we started and the day we handed it back.
               </p>
             </div>
 
@@ -51,14 +52,53 @@ export default function WorksPage() {
                 description="A dated corner-tub ensuite reworked into a bright spa bath — navy vanity, freestanding soaker, and full marble tile."
               />
               <BeforeAfter
-                beforeSrc="/work/deck-before.jpg"
-                afterSrc="/work/deck-after.jpg"
-                beforeAlt="Weathered grey backyard deck covered in leaves before restoration, Calgary"
-                afterAlt="Backyard cedar deck freshly sanded and re-stained a warm tone, Calgary"
-                title="Cedar Deck Restoration"
-                type="Exterior Refresh"
-                description="Years of grey weathering sanded away and sealed with a warm stain — the same boards, brought back to life."
+                beforeSrc="/work/basement-before.jpg"
+                afterSrc="/work/basement-after.jpg"
+                beforeAlt="Dark basement bathroom with brown walls and dated tile before renovation, Calgary"
+                afterAlt="Bright basement bathroom with white walls, black glass shower and vinyl plank floor, Calgary"
+                title="Basement Bathroom"
+                type="Basement Finishing"
+                description="A dim, brown basement bath opened up with white walls, a frameless black shower and warm vinyl plank."
               />
+              <BeforeAfter
+                beforeSrc="/work/steam-before.jpg"
+                afterSrc="/work/steam-after.jpg"
+                beforeAlt="Dated beige tiled corner shower with bench before renovation, Calgary"
+                afterAlt="Modern stone steam shower with brushed-gold fixtures and hexagon floor, Calgary"
+                title="Steam Shower Suite"
+                type="Tile & Shower"
+                description="The same corner-bench footprint rebuilt as a stone steam room — seamless slabs, brushed gold, and a heated bench."
+              />
+              <BeforeAfter
+                beforeSrc="/work/tub-before.jpg"
+                afterSrc="/work/tub-after.jpg"
+                beforeAlt="Dated bathroom with beige tile-surround tub and busy border before renovation, Calgary"
+                afterAlt="Refreshed bathroom with clean tile surround, brushed-gold fixtures and dark vanity, Calgary"
+                title="Guest Bath Refresh"
+                type="Bathroom Update"
+                description="Busy tile and dated fittings swapped for calm large-format tile, warm brushed-gold taps and a dark vanity."
+              />
+            </div>
+
+            {/* Beyond bathrooms — one exterior example */}
+            <div className="mt-14 md:mt-16">
+              <p
+                className="text-xs font-bold uppercase tracking-[0.35em] mb-8 text-[#8a8a5c]"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Beyond the bathroom
+              </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+                <BeforeAfter
+                  beforeSrc="/work/deck-before.jpg"
+                  afterSrc="/work/deck-after.jpg"
+                  beforeAlt="Weathered grey backyard deck covered in leaves before restoration, Calgary"
+                  afterAlt="Backyard cedar deck freshly sanded and re-stained a warm tone, Calgary"
+                  title="Cedar Deck Restoration"
+                  type="Exterior Refresh"
+                  description="Years of grey weathering sanded away and sealed with a warm stain — the same boards, brought back to life."
+                />
+              </div>
             </div>
           </div>
         </section>

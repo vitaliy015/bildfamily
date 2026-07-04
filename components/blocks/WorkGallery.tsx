@@ -11,13 +11,29 @@ type Shot = {
   type: string
 }
 
+// Bathroom-forward showcase — real completed work from both the phone library
+// and the studio photo set. Exterior work sits at the end.
 const SHOTS: Shot[] = [
-  { src: "/work/showcase-1.jpg", title: "Warm-Oak Ensuite",      type: "Bathroom Remodel" },
-  { src: "/work/showcase-2.jpg", title: "Moody Powder Room",     type: "Bathroom Remodel" },
-  { src: "/work/showcase-3.jpg", title: "Bright Basement Bath",  type: "Basement Finishing" },
-  { src: "/work/showcase-4.jpg", title: "Freestanding Soaker",   type: "Bathroom Remodel" },
-  { src: "/work/showcase-5.jpg", title: "White-Tile Shower",     type: "Tile & Shower" },
-  { src: "/work/showcase-6.jpg", title: "Restored Cedar Deck",   type: "Exterior Refresh" },
+  // ── Bathrooms ──
+  { src: "/work/showcase-1.jpg",                 title: "Warm-Oak Ensuite",         type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3481.jpg",        title: "Arched-Mirror Vanity",     type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3483.jpg",        title: "Fireside Soaker Tub",      type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_4359.jpg",        title: "Frameless Glass Shower",   type: "Tile & Shower" },
+  { src: "/work/showcase-4.jpg",                 title: "Freestanding Soaker",      type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_6731.jpg",        title: "Navy & Brass Vanity",      type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_5674.jpg",        title: "Emerald & Gold Shower",    type: "Tile & Shower" },
+  { src: "/work/showcase-2.jpg",                 title: "Moody Powder Room",        type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_6733.jpg",        title: "Marble Soaker Nook",       type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3488.jpg",        title: "Orchid & Oak Vanity",      type: "Bathroom Remodel" },
+  { src: "/work/showcase-5.jpg",                 title: "White-Tile Shower",        type: "Tile & Shower" },
+  { src: "/uploads/2025/09/IMG_6752.jpg",        title: "Black Vanity & Cage Lights", type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_5678.jpg",        title: "Gold Vessel-Sink Vanity",  type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3491.jpg",        title: "Marble Water Closet",      type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3494.jpg",        title: "Fireside Tub Suite",       type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3484.jpg",        title: "Marble Shower Niche",      type: "Tile & Shower" },
+  // ── Exterior ──
+  { src: "/work/showcase-7.jpg",                 title: "Sunlit Cedar Deck",        type: "Exterior Refresh" },
+  { src: "/work/showcase-6.jpg",                 title: "Restored Cedar Deck",      type: "Exterior Refresh" },
 ]
 
 function ShotCard({ shot, index }: { shot: Shot; index: number }) {
@@ -62,14 +78,18 @@ export function WorkGallery() {
             className="text-xs font-bold uppercase tracking-[0.35em] mb-5 text-[#8a8a5c]"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            The Finished Result
+            Bathroom Gallery
           </p>
           <h2
-            className="text-[38px] md:text-5xl font-black uppercase leading-[0.95] text-[#1c1a18]"
+            className="text-[38px] md:text-5xl font-black uppercase leading-[0.95] mb-5 text-[#1c1a18]"
             style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
           >
             A closer look
           </h2>
+          <p className="text-base md:text-lg leading-relaxed text-[#4a4840]" style={{ fontFamily: "var(--font-body)" }}>
+            Vanities, showers, soaker tubs and finishing details — a cross-section of the
+            bathrooms we&apos;ve built across Calgary.
+          </p>
         </div>
 
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-5">

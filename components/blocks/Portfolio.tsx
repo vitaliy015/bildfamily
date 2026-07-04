@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
-const UPLOADS = "https://insidethehouseca.com/wp-content/uploads/2025/09"
+const UPLOADS = "/uploads/2025/09"
 
 type Category = "Bathroom" | "Kitchen" | "Flooring" | "Fixtures"
 

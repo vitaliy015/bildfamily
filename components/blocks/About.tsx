@@ -8,7 +8,7 @@ import Image from "next/image"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
-const UPLOADS = "https://insidethehouseca.com/wp-content/uploads"
+const UPLOADS = "/uploads"
 
 /** Couple portrait — Anatolii & Nataliia */
 const COUPLE_PHOTO = `${UPLOADS}/2025/09/photo_2025-09-16_17-18-30.jpg`
