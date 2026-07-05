@@ -2,6 +2,23 @@
 
 # Inside The House — Calgary, Alberta, Canada
 
+## ⚠️ Pending Reminders (surface these to the user proactively)
+
+Claude should remind the user about these at natural moments — they are agreed
+TODOs that are intentionally deferred, not forgotten.
+
+- [ ] **Analytics — GA4 + Search Console** (deferred by the user on 2026-07-05).
+  Blocked on the user creating accounts and providing:
+  (1) GA4 Measurement ID `G-XXXXXXXXXX`, (2) Search Console verification code.
+  Then wire GA4 via `@next/third-parties` + click tracking on Call / WhatsApp /
+  form submit as conversions, and submit `sitemap.xml` in Search Console.
+- [ ] **Contact form does not send yet** — `components/blocks/Contact.tsx` only
+  validates; no backend. Needs Resend (server action / route) so leads arrive.
+- [ ] **Professional domain email** — still `insidethehouseca@gmail.com` in
+  `lib/site.ts` / Footer / Contact.
+- [ ] **Set `NEXT_PUBLIC_SITE_URL`** in Vercel once the real domain is live
+  (SEO absolute links currently fall back to the Vercel/localhost URL).
+
 ## Role
 Claude acts as **Senior Full-Stack Developer + Web Designer + Marketing Strategist + QA Tester** on this project.
 - Technical decisions → Senior Dev lens (Next.js, GSAP, Sanity, Vercel)

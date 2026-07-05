@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "motion/react"
+import { useEffect, useRef, useState } from "react"
+import { motion, useInView } from "motion/react"
 import Image from "next/image"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
@@ -36,9 +37,31 @@ const SHOTS: Shot[] = [
   { src: "/work/showcase-6.jpg",                 title: "Restored Cedar Deck",      type: "Exterior Refresh" },
 ]
 
+// Detect touch / no-hover devices once — there hover can't fire, so we reveal
+// captions on scroll instead.
+function useNoHover() {
+  const [noHover, setNoHover] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: none)")
+    const update = () => setNoHover(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
+  }, [])
+  return noHover
+}
+
 function ShotCard({ shot, index }: { shot: Shot; index: number }) {
+  const ref = useRef<HTMLElement>(null)
+  const noHover = useNoHover()
+  // On touch devices, treat the card as "active" while it sits near the middle
+  // of the screen — as you scroll, each card reveals its caption in turn.
+  const centered = useInView(ref, { margin: "-42% 0px -42% 0px" })
+  const revealed = noHover && centered
+
   return (
     <motion.figure
+      ref={ref}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -51,11 +74,15 @@ function ShotCard({ shot, index }: { shot: Shot; index: number }) {
           alt={`${shot.title} — ${shot.type} by Inside The House Calgary`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className={`object-cover transition-transform duration-700 group-hover:scale-105 ${revealed ? "scale-105" : "scale-100"}`}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <figcaption className="absolute inset-x-0 bottom-0 p-6 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+        <div
+          className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-100 ${revealed ? "opacity-100" : "opacity-0"}`}
+        />
+        <figcaption
+          className={`absolute inset-x-0 bottom-0 p-6 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 ${revealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
+        >
           <span className="block text-[10px] font-bold uppercase tracking-[0.3em] mb-1.5 text-[#c4a962]" style={{ fontFamily: "var(--font-heading)" }}>
             {shot.type}
           </span>
@@ -63,7 +90,9 @@ function ShotCard({ shot, index }: { shot: Shot; index: number }) {
             {shot.title}
           </span>
         </figcaption>
-        <div className="absolute top-0 left-0 h-10 w-[3px] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 bg-[#c4a962]" />
+        <div
+          className={`absolute top-0 left-0 h-10 w-[3px] origin-top transition-transform duration-500 group-hover:scale-y-100 bg-[#c4a962] ${revealed ? "scale-y-100" : "scale-y-0"}`}
+        />
       </div>
     </motion.figure>
   )
