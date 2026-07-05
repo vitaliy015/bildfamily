@@ -167,3 +167,9 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-33.333%); }
 }
+
+/* Auto "breathing" glow for spotlight cards on touch devices */
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.06); }
+}
