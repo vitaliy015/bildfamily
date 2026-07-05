@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Oswald, Source_Serif_4 } from "next/font/google";
+import { siteUrl, business } from "@/lib/site";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -14,23 +15,14 @@ const sourceSerif = Source_Serif_4({
   weight: ["400", "600"],
 });
 
-// Production URL for absolute OG/canonical links. Set NEXT_PUBLIC_SITE_URL once
-// the domain is live; on Vercel it falls back to the deployment URL, else localhost.
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000")
-
-const SITE_NAME = "Inside The House"
-const SITE_DESCRIPTION =
-  "Family-owned renovation company in Calgary, AB. Bathrooms, kitchens, basements, flooring. Honest pricing, reliable timelines. Free quote."
+const SITE_TITLE = "Inside The House | Home Renovations Calgary"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Inside The House | Home Renovations Calgary",
-  description: SITE_DESCRIPTION,
-  applicationName: SITE_NAME,
+  title: SITE_TITLE,
+  description: business.description,
+  applicationName: business.name,
+  alternates: { canonical: "/" },
   keywords: [
     "Calgary renovations",
     "bathroom renovation Calgary",
@@ -42,17 +34,53 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_CA",
     url: siteUrl,
-    siteName: SITE_NAME,
-    title: "Inside The House | Home Renovations Calgary",
-    description: SITE_DESCRIPTION,
+    siteName: business.name,
+    title: SITE_TITLE,
+    description: business.description,
     // og:image is auto-populated from app/opengraph-image.png
   },
   twitter: {
     card: "summary_large_image",
-    title: "Inside The House | Home Renovations Calgary",
-    description: SITE_DESCRIPTION,
+    title: SITE_TITLE,
+    description: business.description,
     // twitter:image is auto-populated from app/twitter-image.png
   },
+};
+
+// JSON-LD LocalBusiness schema — lets Google show a rich business card
+// (map pack, knowledge panel) and improves local + Google Ads relevance.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "@id": `${siteUrl}/#business`,
+  name: business.name,
+  description: business.description,
+  url: siteUrl,
+  telephone: business.phone,
+  email: business.email,
+  image: `${siteUrl}/opengraph-image.png`,
+  logo: `${siteUrl}/icon.png`,
+  priceRange: business.priceRange,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: business.city,
+    addressRegion: business.region,
+    addressCountry: business.country,
+  },
+  areaServed: business.areaServed.map((name) => ({ "@type": "City", name })),
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: business.hours.days,
+      opens: business.hours.opens,
+      closes: business.hours.closes,
+    },
+  ],
+  sameAs: [business.instagram],
+  makesOffer: business.services.map((name) => ({
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name },
+  })),
 };
 
 export default function RootLayout({
@@ -65,7 +93,13 @@ export default function RootLayout({
       lang="en"
       className={`${oswald.variable} ${sourceSerif.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

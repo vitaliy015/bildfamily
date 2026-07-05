@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const INSTAGRAM_URL = "https://www.instagram.com/insidethehouse_renovations"
-const PHONE = "+1 (403) 000-0000"
+const PHONE = "+1 (403) 667-6148"
 const PHONE_TEL = `tel:${PHONE.replace(/\D/g, "")}`
 const EMAIL = "insidethehouseca@gmail.com"
 

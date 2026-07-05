@@ -16,7 +16,7 @@ const NAV_LINKS = [
 
 const EASE = [0.4, 0, 0.2, 1] as const
 
-const PHONE = "+1 (403) 000-0000"
+const PHONE = "+1 (403) 667-6148"
 const PHONE_TEL = `tel:${PHONE.replace(/\D/g, "")}`
 
 const LOGO_SRC = "/uploads/2025/10/black-logo-1.png"

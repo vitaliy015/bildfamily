@@ -5,8 +5,8 @@ import { motion } from "motion/react"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
-// ─── Contact details (placeholders — swap for real data later) ───────────────
-const PHONE = "+1 (403) 000-0000"
+// ─── Contact details (email still a placeholder — swap for domain email) ─────
+const PHONE = "+1 (403) 667-6148"
 const PHONE_TEL = `tel:${PHONE.replace(/\D/g, "")}`
 const EMAIL = "insidethehouseca@gmail.com"
 const INSTAGRAM_URL = "https://www.instagram.com/insidethehouse_renovations"
