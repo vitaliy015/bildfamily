@@ -2,6 +2,8 @@
 // competitors hide prices). Numbers are approximate placeholders for planning;
 // swap for exact figures once the client confirms.
 
+import { GlowCard } from "@/components/ui/spotlight-card"
+
 type Tier = {
   id: string
   title: string
@@ -93,21 +95,14 @@ export function Pricing() {
         />
       </div>
 
-      {/* Price cards */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#c4c0b8]">
+      {/* Price cards — brand spotlight glow follows the cursor */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {TIERS.map((t) => (
-          <div
-            key={t.id}
-            className={`group relative flex flex-col gap-5 p-8 transition-colors duration-300 ${
-              t.featured
-                ? "bg-[#1c1a17] hover:bg-[#232019]"
-                : "bg-[#faf9f5] hover:bg-white"
-            }`}
-          >
+          <GlowCard key={t.id} featured={t.featured} className="flex flex-col gap-5 p-8 min-h-[320px] h-full">
             {/* Top row — number + featured flag */}
             <div className="flex items-start justify-between">
               <span
-                className={`text-5xl font-black leading-none ${t.featured ? "text-white/10" : "text-[#1c1a18]/10"}`}
+                className="text-5xl font-black leading-none text-white/10"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 {t.id}
@@ -124,9 +119,7 @@ export function Pricing() {
 
             {/* Title */}
             <h3
-              className={`text-2xl md:text-[26px] font-black uppercase leading-tight whitespace-pre-line ${
-                t.featured ? "text-[#f0ede8]" : "text-[#1c1a18]"
-              }`}
+              className="text-2xl md:text-[26px] font-black uppercase leading-tight whitespace-pre-line text-[#f0ede8]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               {t.title}
@@ -134,34 +127,29 @@ export function Pricing() {
 
             {/* Price */}
             <div className="mt-auto">
-              <div
-                className={`w-8 h-px mb-4 transition-all duration-300 group-hover:w-14 ${t.featured ? "bg-[#c4a962]" : "bg-[#8a8a5c]"}`}
-              />
+              <div className={`w-8 h-px mb-4 ${t.featured ? "bg-[#c4a962]" : "bg-[#8a8a5c]"}`} />
               <p
-                className={`text-2xl md:text-[28px] font-black leading-none ${t.featured ? "text-[#c4a962]" : "text-[#8a8a5c]"}`}
+                className={`text-2xl md:text-[28px] font-black leading-none ${t.featured ? "text-[#c4a962]" : "text-[#b6b676]"}`}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 {t.range}
               </p>
               <p
-                className={`mt-1.5 text-[10px] font-bold uppercase tracking-[0.2em] ${t.featured ? "text-[#9a9a8a]" : "text-[#9a9690]"}`}
+                className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#9a9a8a]"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 {t.unit}
               </p>
-              <p
-                className={`mt-4 text-sm leading-relaxed ${t.featured ? "text-[#c9c6bf]" : "text-[#6a6460]"}`}
-                style={{ fontFamily: "var(--font-body)" }}
-              >
+              <p className="mt-4 text-sm leading-relaxed text-[#c9c6bf]" style={{ fontFamily: "var(--font-body)" }}>
                 {t.scope}
               </p>
             </div>
-          </div>
+          </GlowCard>
         ))}
       </div>
 
-      {/* Secondary services + disclaimer */}
-      <div className="max-w-7xl mx-auto mt-6">
+      {/* Secondary services */}
+      <div className="max-w-7xl mx-auto mt-8">
         <p
           className="text-sm text-[#9a9690] uppercase tracking-widest"
           style={{ fontFamily: "var(--font-heading)" }}

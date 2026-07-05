@@ -5,6 +5,7 @@ import { WorksHero } from "@/components/blocks/WorksHero"
 import { BeforeAfter } from "@/components/blocks/BeforeAfter"
 import { WorkVideos } from "@/components/blocks/WorkVideos"
 import { WorkGallery } from "@/components/blocks/WorkGallery"
+import { HowWeWork } from "@/components/blocks/HowWeWork"
 
 const title = "Bathroom Renovations & Our Work | Inside The House — Calgary"
 const description =
@@ -111,6 +112,7 @@ export default function WorksPage() {
 
         <WorkVideos />
         <WorkGallery />
+        <HowWeWork />
 
         {/* ── CTA ── */}
         <section className="relative py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-[#eae6df]">
