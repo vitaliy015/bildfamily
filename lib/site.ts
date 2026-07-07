@@ -22,6 +22,10 @@ export const business = {
   region: "AB",
   country: "CA",
   areaServed: ["Calgary", "Airdrie", "Cochrane", "Okotoks", "Chestermere"],
+  // Map location (no fixed street address yet) — used by MapCard + JSON-LD
+  geo: { lat: 50.9236644, lng: -114.0778437 },
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=50.9236644,-114.0778437",
   // Mon–Sat 08:00–18:00
   hours: {
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

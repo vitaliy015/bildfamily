@@ -15,10 +15,10 @@ const NAV_LINKS = [
 ]
 
 const SERVICE_LINKS = [
-  { label: "Bathroom Remodeling", href: "/services/bathroom" },
-  { label: "Kitchen Updates",     href: "/services/kitchen" },
-  { label: "Basement Finishing",  href: "/services/basement" },
-  { label: "Flooring Installation", href: "/services/flooring" },
+  { label: "Bathroom Remodeling", href: "/works" },
+  { label: "Kitchen Updates",     href: "/#services" },
+  { label: "Basement Finishing",  href: "/#services" },
+  { label: "Flooring Installation", href: "/#services" },
 ]
 
 const InstagramIcon = () => (

@@ -18,6 +18,9 @@ TODOs that are intentionally deferred, not forgotten.
   `lib/site.ts` / Footer / Contact.
 - [ ] **Set `NEXT_PUBLIC_SITE_URL`** in Vercel once the real domain is live
   (SEO absolute links currently fall back to the Vercel/localhost URL).
+- [ ] **Provide/set `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`** (Google Cloud → Maps Embed
+  API, restricted by HTTP referrer) in `.env.local` + Vercel. Until then the Contact
+  map shows the branded fallback (which still links to Google Maps).
 
 ## Role
 Claude acts as **Senior Full-Stack Developer + Web Designer + Marketing Strategist + QA Tester** on this project.

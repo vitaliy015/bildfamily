@@ -387,7 +387,7 @@ function HorizontalPanels() {
 
             {/* Photo — left */}
             <div className="absolute left-0 top-0 h-full w-[38%] sm:w-[44%]">
-              <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill className="object-cover object-center" />
+              <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-l from-[#eae6df] via-[#eae6df]/40 to-transparent" />
             </div>
 
@@ -424,7 +424,7 @@ function HorizontalPanels() {
 
             {/* Photo — right */}
             <div className="absolute right-0 top-0 h-full w-[38%] sm:w-[44%]">
-              <Image src={COUPLE_PHOTO} alt="Nataliia and Anatolii — Inside The House Calgary" fill className="object-cover object-top" />
+              <Image src={COUPLE_PHOTO} alt="Nataliia and Anatolii — Inside The House Calgary" fill sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover object-top" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1c1a17] via-[#1c1a17]/40 to-transparent" />
             </div>
 
@@ -625,7 +625,7 @@ function MobileHorizontalPanels() {
 
           {/* ── 2: Anatolii — full-bleed photo ── */}
           <div className="relative flex-shrink-0 w-screen h-full overflow-hidden">
-            <Image src={ANATOLII_AT_WORK} alt="Anatolii — Owner and Lead Renovator, Inside The House Calgary" fill className="object-cover object-center" />
+            <Image src={ANATOLII_AT_WORK} alt="Anatolii — Owner and Lead Renovator, Inside The House Calgary" fill sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
             <div className="absolute bottom-20 left-6 z-10">
               <p
@@ -674,7 +674,7 @@ function MobileHorizontalPanels() {
 
           {/* ── 4: Nataliia — full-bleed photo ── */}
           <div className="relative flex-shrink-0 w-screen h-full overflow-hidden">
-            <Image src={COUPLE_PHOTO} alt="Nataliia and Anatolii — Inside The House Calgary" fill className="object-cover object-top" />
+            <Image src={COUPLE_PHOTO} alt="Nataliia and Anatolii — Inside The House Calgary" fill sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover object-top" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
             <div className="absolute bottom-20 left-6 z-10">
               <p

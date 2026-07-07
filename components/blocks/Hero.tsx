@@ -28,6 +28,7 @@ export function Hero() {
           src="/uploads/2025/09/photo_2025-09-16_17-18-30.jpg"
           alt="Anatolii and Nataliia — Inside The House Calgary"
           fill
+          sizes="(min-width: 768px) 46vw, 100vw"
           className="object-cover object-top"
           priority
         />

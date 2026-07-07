@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Nav } from "@/components/blocks/Nav"
 import { Contact } from "@/components/blocks/Contact"
+import { MapCard } from "@/components/blocks/MapCard"
 import { Footer } from "@/components/blocks/Footer"
 
 const title = "Contact | Inside The House — Calgary Renovations"
@@ -21,6 +22,7 @@ export default function ContactPage() {
       <Nav />
       <main>
         <Contact />
+        <MapCard />
       </main>
       <Footer />
     </>

@@ -68,6 +68,12 @@ const jsonLd = {
     addressCountry: business.country,
   },
   areaServed: business.areaServed.map((name) => ({ "@type": "City", name })),
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: business.geo.lat,
+    longitude: business.geo.lng,
+  },
+  hasMap: business.mapsUrl,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
