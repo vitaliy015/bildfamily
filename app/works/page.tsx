@@ -3,7 +3,7 @@ import { Nav } from "@/components/blocks/Nav"
 import { Footer } from "@/components/blocks/Footer"
 import { WorksHero } from "@/components/blocks/WorksHero"
 import { BeforeAfter } from "@/components/blocks/BeforeAfter"
-import { WorkVideos } from "@/components/blocks/WorkVideos"
+import { VideoFeature } from "@/components/blocks/VideoFeature"
 import { WorkGallery } from "@/components/blocks/WorkGallery"
 import { HowWeWork } from "@/components/blocks/HowWeWork"
 
@@ -110,7 +110,7 @@ export default function WorksPage() {
           </div>
         </section>
 
-        <WorkVideos />
+        <VideoFeature />
         <WorkGallery />
         <HowWeWork />
 
