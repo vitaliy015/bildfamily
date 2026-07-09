@@ -12,10 +12,9 @@ type Shot = {
   type: string
 }
 
-// Bathroom-forward showcase — real completed work from both the phone library
-// and the studio photo set. Exterior work sits at the end.
+// Bathroom showcase — real completed work from both the phone library
+// and the studio photo set.
 const SHOTS: Shot[] = [
-  // ── Bathrooms ──
   { src: "/work/showcase-1.jpg",                 title: "Warm-Oak Ensuite",         type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3481.jpg",        title: "Arched-Mirror Vanity",     type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3483.jpg",        title: "Fireside Soaker Tub",      type: "Bathroom Remodel" },
@@ -32,9 +31,6 @@ const SHOTS: Shot[] = [
   { src: "/uploads/2025/09/IMG_3491.jpg",        title: "Marble Water Closet",      type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3494.jpg",        title: "Fireside Tub Suite",       type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3484.jpg",        title: "Marble Shower Niche",      type: "Tile & Shower" },
-  // ── Exterior ──
-  { src: "/work/showcase-7.jpg",                 title: "Sunlit Cedar Deck",        type: "Exterior Refresh" },
-  { src: "/work/showcase-6.jpg",                 title: "Restored Cedar Deck",      type: "Exterior Refresh" },
 ]
 
 // Detect touch / no-hover devices once — there hover can't fire, so we reveal

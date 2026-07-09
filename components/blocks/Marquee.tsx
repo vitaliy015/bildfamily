@@ -1,12 +1,12 @@
 "use client"
 
 const ITEMS = [
-  "Bathroom Remodeling",
-  "Kitchen Updates",
-  "Basement Finishing",
-  "Flooring Installation",
-  "Drywall & Painting",
-  "Small Repairs",
+  "Full Bathroom Remodels",
+  "Ensuite Renovations",
+  "Custom Tile & Showers",
+  "Vanities & Lighting",
+  "Freestanding Tubs",
+  "Powder Rooms",
   "Free Estimates",
   "Calgary, AB",
 ]

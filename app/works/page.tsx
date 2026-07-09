@@ -9,7 +9,7 @@ import { HowWeWork } from "@/components/blocks/HowWeWork"
 
 const title = "Bathroom Renovations & Our Work | Inside The House — Calgary"
 const description =
-  "Before & after sliders, a bathroom gallery, and video walkthroughs of real ensuite, basement bath and shower renovations by Inside The House — a family-owned renovation company in Calgary, AB."
+  "Before & after sliders, a full bathroom gallery, and video walkthroughs of real ensuite, basement bath and shower renovations by Inside The House — a family-owned bathroom renovation company in Calgary, AB."
 
 export const metadata: Metadata = {
   title,
@@ -64,7 +64,7 @@ export default function WorksPage() {
                 beforeAlt="Dark basement bathroom with brown walls and dated tile before renovation, Calgary"
                 afterAlt="Bright basement bathroom with white walls, black glass shower and vinyl plank floor, Calgary"
                 title="Basement Bathroom"
-                type="Basement Finishing"
+                type="Bathroom Remodel"
                 description="A dim, brown basement bath opened up with white walls, a frameless black shower and warm vinyl plank."
               />
               <BeforeAfter
@@ -85,27 +85,6 @@ export default function WorksPage() {
                 type="Bathroom Update"
                 description="Busy tile and dated fittings swapped for calm large-format tile, warm brushed-gold taps and a dark vanity."
               />
-            </div>
-
-            {/* Beyond bathrooms — one exterior example */}
-            <div className="mt-14 md:mt-16">
-              <p
-                className="text-xs font-bold uppercase tracking-[0.35em] mb-8 text-[#8a8a5c]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Beyond the bathroom
-              </p>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-                <BeforeAfter
-                  beforeSrc="/work/deck-before.jpg"
-                  afterSrc="/work/deck-after.jpg"
-                  beforeAlt="Weathered grey backyard deck covered in leaves before restoration, Calgary"
-                  afterAlt="Backyard cedar deck freshly sanded and re-stained a warm tone, Calgary"
-                  title="Cedar Deck Restoration"
-                  type="Exterior Refresh"
-                  description="Years of grey weathering sanded away and sealed with a warm stain — the same boards, brought back to life."
-                />
-              </div>
             </div>
           </div>
         </section>

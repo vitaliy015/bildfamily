@@ -103,20 +103,6 @@ export function Services() {
         {/* Bathroom slider (GSAP) */}
         <BathroomSlider />
       </div>
-
-      {/* Secondary services line */}
-      <div className="max-w-7xl mx-auto mt-14 pt-8 border-t border-[#c4c0b8]">
-        <p
-          className="text-sm text-[#6a6460] leading-relaxed"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          <span className="text-[#8a8a5c] font-bold uppercase tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
-            Beyond bathrooms:
-          </span>{" "}
-          we also renovate kitchens, finish basements, install flooring, and handle drywall,
-          painting and small repairs — one trusted team for your whole home.
-        </p>
-      </div>
     </section>
   )
 }

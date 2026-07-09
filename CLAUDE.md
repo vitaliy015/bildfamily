@@ -64,19 +64,21 @@ Personal, family-owned feel. Not corporate. Stress-free process.
 
 ## Services
 
-| Service | Description |
-|---------|-------------|
-| **Bathroom Remodeling** | Modern tiles, custom vanities, lighting |
-| **Basement Finishing** | Family room, home office, gym, guest suite — permits included |
-| **Kitchen Updates** | Cabinets, countertops, backsplash, full kitchen refresh |
-| **Flooring Installation** | Hardwood, laminate, tile, vinyl |
-| **Drywall & Painting** | New walls, repairs, finishing |
-| **Small Repairs** | Leaks, squeaks, everyday maintenance |
-| **Furniture Assembly** | Leveling, quality checks |
-| **Appliance / Electrical / Plumbing** | Minor installs, code-compliant |
+**⚠️ Пивот 2026-07-09: сайт сфокусирован ТОЛЬКО на реновации ванных комнат.**
+Кухни, подвалы, полы, drywall, handyman — убраны с сайта полностью (решение клиента).
+Компания эти работы физически делать умеет, но на сайте и в SEO они не упоминаются.
 
-Primary focus for new site: **Bathroom · Basement · Kitchen · Flooring**
-Secondary: Drywall/Painting, Small Repairs, Handyman services
+| Service (bathroom-only) | Description |
+|---------|-------------|
+| **Full Bathroom Remodels** | Down-to-studs rebuild: custom shower, waterproofing, vanity, glass |
+| **Ensuite Renovations** | Master ensuites, spa bathrooms, steam showers |
+| **Custom Tile & Showers** | Tile work, wet rooms, frameless glass |
+| **Vanities & Lighting** | Custom vanities, countertops, fixtures |
+| **Freestanding Tubs & Fixtures** | Soaker tubs, brushed-gold/matte-black fittings |
+| **Powder Rooms & Basement Bathrooms** | Small baths, basement baths |
+
+Pricing tiers на сайте (плейсхолдеры, синхронизированы Pricing ↔ FAQ):
+Bathroom Refresh $8k–15k · Full Remodel $15k–28k (featured) · Custom Ensuite/Spa от $28k
 
 ---
 
@@ -165,11 +167,12 @@ xl:  1280px  (wide desktop)
 
 ## Market Positioning
 
-**Niche:** Home Refresh / Interior Update ($10,000 – $40,000)
-All major Calgary competitors (Reborn, Ultimate, Pinnacle) work $50,000+.
-Inside The House owns the underserved mid-range segment.
+**Niche (после пивота 2026-07-09):** Bathroom Renovation Specialists, Calgary ($8,000 – $28,000+)
+All major Calgary competitors (Reborn, Ultimate, Pinnacle) work $50,000+ as general renovators.
+Inside The House owns the underserved mid-range segment as a narrow bathroom specialist —
+«специалист» бьёт «универсала» и в конверсии, и в SEO (bathroom renovation Calgary).
 
-**Target audience:** Calgary homeowners 30–55 who want a refreshed home without a full gut renovation.
+**Target audience:** Calgary homeowners 30–55 who want their bathroom transformed without a whole-home renovation.
 
 ### Family Business as Competitive Advantage
 Being family-owned is a core sales argument. Anatolii and Nataliia personally on every job.

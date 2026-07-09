@@ -7,7 +7,7 @@ import Image from "next/image"
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 const UPLOADS = "/uploads/2025/09"
 
-type Category = "Bathroom" | "Kitchen" | "Flooring" | "Fixtures"
+type Category = "Remodels" | "Tile & Shower" | "Vanities & Fixtures"
 
 type Project = {
   src: string
@@ -16,38 +16,31 @@ type Project = {
   category: Category
 }
 
-// Real completed projects from the client's photo library, sorted by area.
+// Real completed bathroom projects from the client's photo library.
 const PROJECTS: Project[] = [
-  // ── Bathrooms ──
-  { src: `${UPLOADS}/IMG_3480.jpg`, title: "Freestanding Tub Suite",      type: "Bathroom Remodel", category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_3483.jpg`, title: "Fireside Soaker Tub",         type: "Bathroom Remodel", category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_3481.jpg`, title: "Arched-Mirror Double Vanity", type: "Bathroom Remodel", category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_3488.jpg`, title: "Orchid & Oak Vanity",         type: "Bathroom Remodel", category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_3491.jpg`, title: "Marble Water Closet",         type: "Bathroom Remodel", category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_4359.jpg`, title: "Frameless Glass Shower",      type: "Tile & Shower",    category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_5674.jpg`, title: "Emerald & Gold Shower",       type: "Tile & Shower",    category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_3484.jpg`, title: "Marble Shower Niche",         type: "Tile & Shower",    category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_6731.jpg`, title: "Navy & Brass Powder Room",    type: "Bathroom Update",  category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_6733.jpg`, title: "Marble Soaker Nook",          type: "Bathroom Remodel", category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_6752.jpg`, title: "Black Vanity & Cage Lights",  type: "Bathroom Update",  category: "Bathroom" },
-  { src: `${UPLOADS}/IMG_5678.jpg`, title: "Vessel-Sink Vanity",          type: "Bathroom Remodel", category: "Bathroom" },
-  // ── Kitchens ──
-  { src: `${UPLOADS}/IMG_3516.jpg`, title: "Warm Oak Kitchen Island",     type: "Kitchen Renovation", category: "Kitchen" },
-  { src: `${UPLOADS}/IMG_3510.jpg`, title: "Subway-Tile Backsplash",      type: "Kitchen Update",     category: "Kitchen" },
-  { src: `${UPLOADS}/IMG_3513.jpg`, title: "Wet Bar & Quartz Counter",    type: "Kitchen Update",     category: "Kitchen" },
-  // ── Flooring ──
-  { src: `${UPLOADS}/IMG_5605.jpg`, title: "White Oak Staircase",         type: "Flooring", category: "Flooring" },
-  { src: `${UPLOADS}/IMG_6740.jpg`, title: "Oak Stairs & Vinyl Floor",    type: "Flooring", category: "Flooring" },
-  { src: `${UPLOADS}/IMG_6745.jpg`, title: "Luxury Vinyl Plank",          type: "Flooring", category: "Flooring" },
-  // ── Fixtures & Finishing ──
-  { src: `${UPLOADS}/IMG_5495.jpg`, title: "Brushed-Gold Vessel Sink",    type: "Fixtures & Finishing", category: "Fixtures" },
-  { src: `${UPLOADS}/IMG_6727.jpg`, title: "Waterfall Tub Filler",        type: "Fixtures & Finishing", category: "Fixtures" },
-  { src: `${UPLOADS}/IMG_4363.jpg`, title: "Matte-Black Faucet",          type: "Fixtures & Finishing", category: "Fixtures" },
-  { src: `${UPLOADS}/IMG_6749.jpg`, title: "Brushed-Gold Details",        type: "Fixtures & Finishing", category: "Fixtures" },
-  { src: `${UPLOADS}/IMG_3485.jpg`, title: "Matte-Black Tub Filler",      type: "Fixtures & Finishing", category: "Fixtures" },
+  // ── Full remodels ──
+  { src: `${UPLOADS}/IMG_3480.jpg`, title: "Freestanding Tub Suite",      type: "Bathroom Remodel", category: "Remodels" },
+  { src: `${UPLOADS}/IMG_3483.jpg`, title: "Fireside Soaker Tub",         type: "Bathroom Remodel", category: "Remodels" },
+  { src: `${UPLOADS}/IMG_3481.jpg`, title: "Arched-Mirror Double Vanity", type: "Bathroom Remodel", category: "Remodels" },
+  { src: `${UPLOADS}/IMG_3488.jpg`, title: "Orchid & Oak Vanity",         type: "Bathroom Remodel", category: "Remodels" },
+  { src: `${UPLOADS}/IMG_3491.jpg`, title: "Marble Water Closet",         type: "Bathroom Remodel", category: "Remodels" },
+  { src: `${UPLOADS}/IMG_6731.jpg`, title: "Navy & Brass Powder Room",    type: "Powder Room",      category: "Remodels" },
+  { src: `${UPLOADS}/IMG_6733.jpg`, title: "Marble Soaker Nook",          type: "Bathroom Remodel", category: "Remodels" },
+  // ── Tile & shower ──
+  { src: `${UPLOADS}/IMG_4359.jpg`, title: "Frameless Glass Shower",      type: "Tile & Shower", category: "Tile & Shower" },
+  { src: `${UPLOADS}/IMG_5674.jpg`, title: "Emerald & Gold Shower",       type: "Tile & Shower", category: "Tile & Shower" },
+  { src: `${UPLOADS}/IMG_3484.jpg`, title: "Marble Shower Niche",         type: "Tile & Shower", category: "Tile & Shower" },
+  // ── Vanities & fixtures ──
+  { src: `${UPLOADS}/IMG_6752.jpg`, title: "Black Vanity & Cage Lights",  type: "Vanities & Lighting",  category: "Vanities & Fixtures" },
+  { src: `${UPLOADS}/IMG_5678.jpg`, title: "Vessel-Sink Vanity",          type: "Vanities & Lighting",  category: "Vanities & Fixtures" },
+  { src: `${UPLOADS}/IMG_5495.jpg`, title: "Brushed-Gold Vessel Sink",    type: "Vanities & Fixtures",  category: "Vanities & Fixtures" },
+  { src: `${UPLOADS}/IMG_6727.jpg`, title: "Waterfall Tub Filler",        type: "Vanities & Fixtures",  category: "Vanities & Fixtures" },
+  { src: `${UPLOADS}/IMG_4363.jpg`, title: "Matte-Black Faucet",          type: "Vanities & Fixtures",  category: "Vanities & Fixtures" },
+  { src: `${UPLOADS}/IMG_6749.jpg`, title: "Brushed-Gold Details",        type: "Vanities & Fixtures",  category: "Vanities & Fixtures" },
+  { src: `${UPLOADS}/IMG_3485.jpg`, title: "Matte-Black Tub Filler",      type: "Vanities & Fixtures",  category: "Vanities & Fixtures" },
 ]
 
-const FILTERS = ["All", "Bathroom", "Kitchen", "Flooring", "Fixtures"] as const
+const FILTERS = ["All", "Remodels", "Tile & Shower", "Vanities & Fixtures"] as const
 type Filter = (typeof FILTERS)[number]
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -117,7 +110,7 @@ export function Portfolio() {
             className="text-[44px] md:text-6xl font-black uppercase leading-[0.92] mb-6"
             style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
           >
-            Real Projects.
+            Real Bathrooms.
             <br />
             <span style={{ color: "var(--brand-accent-olive)" }}>Real Calgary Homes.</span>
           </motion.h1>
@@ -129,7 +122,7 @@ export function Portfolio() {
             className="text-base md:text-lg leading-relaxed"
             style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
           >
-            Every photo is a real home we transformed — no stock images, no staged showrooms.
+            Every photo is a real bathroom we transformed — no stock images, no staged showrooms.
             Browse by type or explore the full collection.
           </motion.p>
         </div>

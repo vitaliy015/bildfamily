@@ -73,14 +73,15 @@ export function Hero() {
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Your<br />
-            Home.<br />
+            Bath&shy;room.<br />
             <span className="text-[#8a8a5c]">Trans&shy;formed.</span>
           </h1>
 
           {/* Body text */}
           <p className="text-base text-[#6a6460] leading-relaxed max-w-xl mt-2" style={{ fontFamily: "var(--font-body)" }}>
-            Bathrooms, kitchens, basements and more — renovated with
-            honest pricing, reliable timelines, and craftsmanship you can trust.
+            Calgary&rsquo;s family-owned bathroom renovation specialists — full remodels,
+            custom showers and ensuites with honest pricing, reliable timelines, and
+            craftsmanship you can trust.
           </p>
 
           {/* CTA buttons */}
@@ -113,7 +114,7 @@ export function Hero() {
           <div className="inline-flex flex-wrap items-center gap-x-12 gap-y-4 mt-6 w-fit rounded-2xl bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-10 py-5">
             {[
               { value: "10+",  label: "Years" },
-              { value: "200+", label: "Projects" },
+              { value: "200+", label: "Bathrooms" },
               { value: "100%", label: "On Time" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1">

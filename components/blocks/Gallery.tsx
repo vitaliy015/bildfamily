@@ -18,11 +18,9 @@ const PROJECTS: Project[] = [
   { src: `${UPLOADS}/2025/09/IMG_5674.jpg`, title: "Emerald & Gold Shower",       type: "Tile & Shower"    },
   { src: `${UPLOADS}/2025/09/IMG_3481.jpg`, title: "Arched-Mirror Double Vanity", type: "Bathroom Remodel" },
   { src: `${UPLOADS}/2025/09/IMG_6731.jpg`, title: "Navy & Brass Powder Room",    type: "Bathroom Update"  },
-  { src: `${UPLOADS}/2025/09/IMG_5605.jpg`, title: "White Oak Staircase",         type: "Flooring"         },
   { src: `${UPLOADS}/2025/09/IMG_3488.jpg`, title: "Orchid & Oak Vanity",         type: "Bathroom Remodel" },
-  { src: `${UPLOADS}/2025/09/IMG_5495.jpg`, title: "Brushed-Gold Vessel Sink",    type: "Fixtures & Finishing" },
+  { src: `${UPLOADS}/2025/09/IMG_5495.jpg`, title: "Brushed-Gold Vessel Sink",    type: "Vanities & Fixtures" },
   { src: `${UPLOADS}/2025/09/IMG_6733.jpg`, title: "Marble Soaker Nook",          type: "Bathroom Remodel" },
-  { src: `${UPLOADS}/2025/09/IMG_6744.jpg`, title: "Luxury Vinyl Plank Floor",    type: "Flooring"         },
 ]
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -120,7 +118,7 @@ export function Gallery() {
             className="text-4xl md:text-6xl font-black uppercase leading-[0.92] mb-6"
             style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
           >
-            Real Projects.
+            Real Bathrooms.
             <br />
             <span style={{ color: "var(--brand-accent-olive)" }}>Real Calgary Homes.</span>
           </motion.h2>
@@ -133,7 +131,7 @@ export function Gallery() {
             className="text-base md:text-lg leading-relaxed"
             style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
           >
-            Every photo below is a real home we transformed — no stock images, no staged showrooms. Hover any project to see what we did.
+            Every photo below is a real bathroom we transformed — no stock images, no staged showrooms. Hover any project to see what we did.
           </motion.p>
         </div>
 

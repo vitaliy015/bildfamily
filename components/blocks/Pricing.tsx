@@ -16,32 +16,25 @@ type Tier = {
 const TIERS: Tier[] = [
   {
     id: "01",
-    title: "Bathroom\nRemodel",
-    range: "$8,000 – $20,000",
+    title: "Bathroom\nRefresh",
+    range: "$8,000 – $15,000",
     unit: "typical project",
-    scope: "Tile, custom vanity, lighting, fixtures & glass.",
-    featured: true,
+    scope: "New tile, vanity, lighting & fixtures — same layout.",
   },
   {
     id: "02",
-    title: "Kitchen\nRefresh",
-    range: "$12,000 – $30,000",
+    title: "Full Bathroom\nRemodel",
+    range: "$15,000 – $28,000",
     unit: "typical project",
-    scope: "Cabinets, countertops, backsplash & hardware.",
+    scope: "Down-to-studs rebuild: custom shower, waterproofing, vanity, lighting & glass.",
+    featured: true,
   },
   {
     id: "03",
-    title: "Basement\nFinishing",
-    range: "$25,000 – $50,000",
-    unit: "permits included",
-    scope: "Framing to finish — living space, office or suite.",
-  },
-  {
-    id: "04",
-    title: "Flooring\nInstall",
-    range: "from $3.50",
-    unit: "per sq ft, installed",
-    scope: "Hardwood, laminate, tile & luxury vinyl plank.",
+    title: "Custom Ensuite\n& Spa",
+    range: "from $28,000",
+    unit: "fully custom",
+    scope: "Steam showers, freestanding tubs, heated floors & full custom tile.",
   },
 ]
 
@@ -96,7 +89,7 @@ export function Pricing() {
       </div>
 
       {/* Price cards — brand spotlight glow follows the cursor */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {TIERS.map((t) => (
           <GlowCard key={t.id} featured={t.featured} className="flex flex-col gap-5 p-8 min-h-[320px] h-full">
             {/* Top row — number + featured flag */}
@@ -154,7 +147,7 @@ export function Pricing() {
           className="text-sm text-[#9a9690] uppercase tracking-widest"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          + Drywall · Painting · Small Repairs · Handyman — priced per job
+          + Powder rooms & small bathroom updates — priced per job
         </p>
       </div>
 

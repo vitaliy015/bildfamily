@@ -15,7 +15,7 @@ const sourceSerif = Source_Serif_4({
   weight: ["400", "600"],
 });
 
-const SITE_TITLE = "Inside The House | Home Renovations Calgary"
+const SITE_TITLE = "Inside The House | Bathroom Renovations Calgary"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,11 +24,12 @@ export const metadata: Metadata = {
   applicationName: business.name,
   alternates: { canonical: "/" },
   keywords: [
-    "Calgary renovations",
     "bathroom renovation Calgary",
-    "basement finishing Calgary",
-    "kitchen renovation",
-    "home renovation Alberta",
+    "bathroom remodel Calgary",
+    "ensuite renovation Calgary",
+    "custom shower Calgary",
+    "bathroom renovation cost Calgary",
+    "family-owned renovations Alberta",
   ],
   openGraph: {
     type: "website",

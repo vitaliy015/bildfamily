@@ -18,10 +18,10 @@ const ANATOLII_AT_WORK = `${UPLOADS}/2025/10/image-1111.jpg`
 const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
 
 const SKILLS = [
-  { label: "Bathroom Remodeling", percent: 95 },
-  { label: "Flooring Installation", percent: 90 },
-  { label: "Kitchen Updates",      percent: 88 },
-  { label: "Basement Finishing",   percent: 85 },
+  { label: "Tile & Waterproofing",          percent: 95 },
+  { label: "Custom Showers & Wet Rooms",    percent: 92 },
+  { label: "Vanities & Cabinetry",          percent: 90 },
+  { label: "Plumbing Fixtures & Lighting",  percent: 88 },
 ]
 
 const STATS = [
@@ -358,9 +358,9 @@ function HorizontalPanels() {
                     className="relative text-5xl md:text-7xl font-black uppercase leading-[0.88] mb-8"
                     style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
                   >
-                    Renovation
+                    Bathrooms
                     <br />
-                    <span style={{ color: "var(--brand-accent-olive)" }}>Is Our Art.</span>
+                    <span style={{ color: "var(--brand-accent-olive)" }}>Are Our Art.</span>
                     <br />
                     Your Home
                     <br />
@@ -605,9 +605,9 @@ function MobileHorizontalPanels() {
                   className="relative text-[40px] sm:text-5xl md:text-6xl font-black uppercase leading-[0.88] mb-6"
                   style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
                 >
-                  Renovation
+                  Bathrooms
                   <br />
-                  <span style={{ color: "var(--brand-accent-olive)" }}>Is Our Art.</span>
+                  <span style={{ color: "var(--brand-accent-olive)" }}>Are Our Art.</span>
                   <br />
                   Your Home
                   <br />

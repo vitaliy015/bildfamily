@@ -12,7 +12,7 @@ export const siteUrl =
 export const business = {
   name: "Inside The House",
   description:
-    "Family-owned renovation company in Calgary, AB. Bathrooms, kitchens, basements, flooring. Honest pricing, reliable timelines. Free quote.",
+    "Family-owned bathroom renovation company in Calgary, AB. Full remodels, ensuites, custom tile & showers, vanities. Honest pricing, reliable timelines. Free quote.",
   phone: "+1 (403) 667-6148",
   email: "insidethehouseca@gmail.com", // TODO: swap for professional domain email
   instagram: "https://www.instagram.com/insidethehouse_renovations",
@@ -33,11 +33,11 @@ export const business = {
     closes: "18:00",
   },
   services: [
-    "Bathroom Remodeling",
-    "Basement Finishing",
-    "Kitchen Updates",
-    "Flooring Installation",
-    "Drywall & Painting",
-    "Handyman Services",
+    "Full Bathroom Remodels",
+    "Ensuite Renovations",
+    "Custom Tile & Showers",
+    "Vanities & Lighting",
+    "Freestanding Tubs & Fixtures",
+    "Powder Rooms & Basement Bathrooms",
   ],
 } as const

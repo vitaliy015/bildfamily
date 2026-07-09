@@ -33,9 +33,9 @@ const FAQ_DATA: FAQEntry[] = [
   {
     id: 1,
     category: "pricing",
-    question: "How much does a bathroom or kitchen renovation cost in Calgary?",
+    question: "How much does a bathroom renovation cost in Calgary?",
     answer:
-      "Our projects typically range from $10,000 to $40,000 depending on scope and materials. A bathroom refresh — new tile, vanity, lighting — usually runs $8,000–$20,000. A kitchen cabinet and countertop update is $5,000–$15,000. Full interior refresh projects fall between $20,000–$40,000. Every project starts with a free, no-obligation estimate — you'll have the exact number before we lift a single tool.",
+      "A bathroom refresh — new tile, vanity, lighting and fixtures in the same layout — usually runs $8,000–$15,000. A full down-to-studs remodel with a custom shower and waterproofing is $15,000–$28,000. Custom ensuites and spa bathrooms — steam showers, freestanding tubs, heated floors — start around $28,000. Every project starts with a free, no-obligation estimate — you'll have the exact number before we lift a single tool.",
   },
   {
     id: 2,
@@ -63,9 +63,9 @@ const FAQ_DATA: FAQEntry[] = [
   {
     id: 5,
     category: "process",
-    question: "How long will my project take?",
+    question: "How long will my bathroom renovation take?",
     answer:
-      "A bathroom refresh typically takes 5–10 working days. A kitchen update runs 3–7 days. Full interior renovation projects covering multiple rooms take 3–5 weeks. We provide a written timeline before work begins and commit to it — if we run over through any fault of ours, we cover the extra days at our cost.",
+      "A bathroom refresh typically takes 5–10 working days. A full remodel — down to the studs, with a custom shower and new waterproofing — runs 2–3 weeks. Custom ensuite and spa projects take 3–4 weeks. We provide a written timeline before work begins and commit to it — if we run over through any fault of ours, we cover the extra days at our cost.",
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ const FAQ_DATA: FAQEntry[] = [
     category: "permits",
     question: "Who handles building permits — us or you?",
     answer:
-      "We handle the entire permit process on your behalf. Permits are required whenever the scope includes plumbing changes, electrical work, structural modifications, or basement development. We know Calgary's building code inside-out and manage all paperwork, inspections, and sign-offs so you don't have to think about it.",
+      "We handle the entire permit process on your behalf. In a bathroom renovation, permits come into play whenever we move plumbing, add or relocate electrical, or change the layout. We know Calgary's building code inside-out and manage all paperwork, inspections, and sign-offs so you don't have to think about it.",
   },
 
   // ── Living During Renovation ──────────────────────────────────────────
@@ -104,7 +104,7 @@ const FAQ_DATA: FAQEntry[] = [
     category: "living",
     question: "Can we stay in our home during the renovation?",
     answer:
-      "In most cases, yes. For bathroom and kitchen updates, we isolate the work zone so the rest of your home stays fully livable. For larger multi-room projects, we'll be honest with you upfront about whether staying is practical — and help you plan around it. We work efficiently so the disruption window is as short as possible.",
+      "Yes — a bathroom renovation almost never means moving out. We fully isolate the work zone, contain the dust, and plan the schedule around your household so you always have a working bathroom for the duration of the project. We work efficiently so the disruption window is as short as possible.",
   },
   {
     id: 11,
@@ -132,9 +132,9 @@ const FAQ_DATA: FAQEntry[] = [
   {
     id: 14,
     category: "guarantees",
-    question: "Will a renovation increase the value of my home?",
+    question: "Will a bathroom renovation increase the value of my home?",
     answer:
-      "Bathroom and kitchen renovations consistently rank as the top ROI improvements in Canadian real estate — typically returning 70–80% of the renovation cost in added home value, and often much more in Calgary's market. A $15,000 bathroom refresh can add $35,000–$50,000 to your listing price. During your free consultation, we'll walk you through which specific updates give you the best return for your situation.",
+      "Bathroom renovations consistently rank among the top ROI improvements in Canadian real estate — typically returning 70–80% of the renovation cost in added home value, and often much more in Calgary's market. A $15,000 bathroom refresh can add $35,000–$50,000 to your listing price. During your free consultation, we'll walk you through which specific updates give you the best return for your situation.",
   },
 ]
 

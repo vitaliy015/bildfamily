@@ -1,3 +1,4 @@
+import { Intro } from "@/components/blocks/Intro"
 import { Nav } from "@/components/blocks/Nav"
 import { Hero } from "@/components/blocks/Hero"
 import { Marquee } from "@/components/blocks/Marquee"
@@ -11,6 +12,7 @@ import { Footer } from "@/components/blocks/Footer"
 export default function Home() {
   return (
     <>
+      <Intro />
       <main>
         <Nav />
         <Hero />
