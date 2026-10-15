@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "motion/react"
+import { sendLead } from "@/app/actions"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -62,6 +63,10 @@ export function Contact() {
   const [form, setForm] = useState<FormFields>({ name: "", phone: "", message: "" })
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitted, setSubmitted] = useState(false)
+  const [pending, setPending] = useState(false)
+  const [sendError, setSendError] = useState<string | null>(null)
+  // Honeypot — hidden from real users; bots fill it and get dropped server-side.
+  const [company, setCompany] = useState("")
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -80,13 +85,22 @@ export function Contact() {
     setErrors((prev) => ({ ...prev, [field]: fieldError }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const nextErrors = validate(form)
     setErrors(nextErrors)
     if (Object.values(nextErrors).some(Boolean)) return
-    // TODO: подключить Resend, когда будут данные почты
-    setSubmitted(true)
+
+    setPending(true)
+    setSendError(null)
+    const result = await sendLead({ ...form, company })
+    setPending(false)
+
+    if (result.ok) {
+      setSubmitted(true)
+    } else {
+      setSendError(result.error)
+    }
   }
 
   const inputBase =
@@ -246,13 +260,36 @@ export function Contact() {
                 />
               </div>
 
+              {/* Honeypot — pushed off-screen, hidden from keyboard and AT */}
+              <input
+                type="text"
+                name="company"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden
+                className="absolute left-[-9999px] w-px h-px opacity-0"
+              />
+
+              {sendError && (
+                <p
+                  role="alert"
+                  className="text-sm text-[#b4402f]"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {sendError}
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="flex items-center justify-center gap-3 bg-[#8a8a5c] text-[#f5f2ee] px-7 py-4 mt-1 group hover:bg-[#7a7a4e] transition-colors duration-300 rounded-md"
+                disabled={pending}
+                className="flex items-center justify-center gap-3 bg-[#8a8a5c] text-[#f5f2ee] px-7 py-4 mt-1 group hover:bg-[#7a7a4e] transition-colors duration-300 rounded-md disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <span className="text-sm font-black uppercase tracking-[0.15em]">
-                  Send Request
+                  {pending ? "Sending\u2026" : "Send Request"}
                 </span>
                 <span className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
                   <ArrowIcon />
