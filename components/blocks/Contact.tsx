@@ -33,11 +33,13 @@ const WhatsAppIcon = () => (
   </svg>
 )
 
-type FormFields = { name: string; phone: string; message: string }
+type FormFields = { name: string; phone: string; email: string; message: string }
 type FormErrors = Partial<Record<keyof FormFields, string>>
 
 // Требуем как минимум 7 цифр в номере (без учёта +, скобок, пробелов, дефисов)
 const PHONE_RE = /^[+]?[\d\s()-]{7,}$/
+// Сознательно мягкая проверка — строгий RFC-регэкс отсекает валидные адреса
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 function validate(form: FormFields): FormErrors {
   const errors: FormErrors = {}
@@ -56,11 +58,18 @@ function validate(form: FormFields): FormErrors {
     errors.phone = "Please enter a valid phone number."
   }
 
+  const email = form.email.trim()
+  if (!email) {
+    errors.email = "Please enter your email."
+  } else if (!EMAIL_RE.test(email)) {
+    errors.email = "Please enter a valid email address."
+  }
+
   return errors
 }
 
 export function Contact() {
-  const [form, setForm] = useState<FormFields>({ name: "", phone: "", message: "" })
+  const [form, setForm] = useState<FormFields>({ name: "", phone: "", email: "", message: "" })
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitted, setSubmitted] = useState(false)
   const [pending, setPending] = useState(false)
@@ -236,6 +245,40 @@ export function Contact() {
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     {errors.phone}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="email"
+                  className="text-xs font-bold uppercase tracking-[0.15em] text-[#6a6460]"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="you@example.com"
+                  autoComplete="email"
+                  inputMode="email"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  className={`${inputBase} ${inputStateClasses("email")}`}
+                  style={{ fontFamily: "var(--font-body)" }}
+                />
+                {errors.email && (
+                  <p
+                    id="email-error"
+                    className="text-sm text-[#b4402f]"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    {errors.email}
                   </p>
                 )}
               </div>

@@ -13,11 +13,16 @@ const FROM_EMAIL =
   process.env.LEAD_FROM_EMAIL || "Inside The House <onboarding@resend.dev>"
 
 // Caps keep a malicious payload from turning into a multi-megabyte email.
-const MAX = { name: 100, phone: 40, message: 2000 } as const
+const MAX = { name: 100, phone: 40, email: 200, message: 2000 } as const
+
+// Deliberately loose: a strict RFC regex rejects valid addresses, and the real
+// proof an address works is the reply landing. We only block obvious typos.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 export type LeadInput = {
   name: string
   phone: string
+  email: string
   message: string
   // Honeypot — hidden from real users, bots fill it in.
   company?: string
@@ -43,6 +48,8 @@ export async function sendLead(input: LeadInput): Promise<LeadResult> {
 
   const name = (input.name ?? "").trim().slice(0, MAX.name)
   const phone = (input.phone ?? "").trim().slice(0, MAX.phone)
+  // Lowercased so the reply-to header is clean regardless of how it was typed.
+  const email = (input.email ?? "").trim().toLowerCase().slice(0, MAX.email)
   const message = (input.message ?? "").trim().slice(0, MAX.message)
 
   // The client-side checks are for UX only — validate again here.
@@ -52,11 +59,14 @@ export async function sendLead(input: LeadInput): Promise<LeadResult> {
   if (phone.replace(/\D/g, "").length < 7) {
     return { ok: false, error: "Please enter a valid phone number." }
   }
+  if (!EMAIL_RE.test(email)) {
+    return { ok: false, error: "Please enter a valid email address." }
+  }
 
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
     // Log the lead so it is recoverable from Vercel logs instead of lost.
-    console.error("[sendLead] RESEND_API_KEY missing — lead not delivered:", { name, phone })
+    console.error("[sendLead] RESEND_API_KEY missing — lead not delivered:", { name, phone, email })
     return { ok: false, error: GENERIC_ERROR }
   }
 
@@ -76,12 +86,15 @@ export async function sendLead(input: LeadInput): Promise<LeadResult> {
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
+      // Hitting Reply in the inbox answers the customer, not Resend.
+      replyTo: email,
       subject: `New quote request — ${name}`,
       text: [
         `New quote request from ${business.name} website`,
         ``,
         `Name:    ${name}`,
         `Phone:   ${phone}`,
+        `Email:   ${email}`,
         `Message: ${message || "(none)"}`,
         ``,
         `Received: ${receivedAt} (Calgary time)`,
@@ -104,6 +117,12 @@ export async function sendLead(input: LeadInput): Promise<LeadResult> {
               </td>
             </tr>
             <tr>
+              <td style="padding:8px 0;color:#6a6460">Email</td>
+              <td style="padding:8px 0">
+                <a href="mailto:${escapeHtml(email)}" style="color:#8a8a5c"><strong>${escapeHtml(email)}</strong></a>
+              </td>
+            </tr>
+            <tr>
               <td style="padding:8px 0;color:#6a6460;vertical-align:top">Message</td>
               <td style="padding:8px 0">${messageHtml}</td>
             </tr>
@@ -113,13 +132,13 @@ export async function sendLead(input: LeadInput): Promise<LeadResult> {
     })
 
     if (error) {
-      console.error("[sendLead] Resend rejected the email:", error, { name, phone })
+      console.error("[sendLead] Resend rejected the email:", error, { name, phone, email })
       return { ok: false, error: GENERIC_ERROR }
     }
 
     return { ok: true }
   } catch (err) {
-    console.error("[sendLead] Unexpected failure:", err, { name, phone })
+    console.error("[sendLead] Unexpected failure:", err, { name, phone, email })
     return { ok: false, error: GENERIC_ERROR }
   }
 }
