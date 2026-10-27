@@ -89,10 +89,10 @@ export function Hero() {
             {/* Primary — olive pill, matching the nav above */}
             <a
               href="/contact"
-              className="group inline-flex items-center gap-2.5 rounded-full bg-[#8a8a5c] text-[#f5f2ee] px-6 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap hover:bg-[#7a7a4e] transition-colors duration-300"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-[#8a8a5c] text-[#f5f2ee] px-4 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap hover:bg-[#7a7a4e] transition-colors duration-300"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              <span className="text-[14px] sm:text-[15px] font-medium tracking-[0.01em]">
+              <span className="text-[15px] sm:text-[18px] font-medium tracking-[0.01em]">
                 Get a free quote
               </span>
               <svg
@@ -107,13 +107,14 @@ export function Hero() {
               </svg>
             </a>
 
-            {/* Secondary — text link. Padding keeps the tap target at ~49px. */}
+            {/* Secondary — same pill, black. No arrow: two of them read as
+                competing primaries and the pair would not fit at 375px. */}
             <a
               href="/works"
-              className="group inline-flex items-center py-3.5 sm:py-4 text-[#4a4840] hover:text-[#1c1a18] whitespace-nowrap transition-colors duration-300"
+              className="inline-flex items-center justify-center rounded-full bg-[#1c1a18] text-[#f5f2ee] px-4 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap hover:bg-[#2a2720] transition-colors duration-300"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              <span className="text-[14px] sm:text-[15px] font-medium tracking-[0.01em] pb-0.5 border-b border-[#b8b8b0] group-hover:border-[#8a8a5c] transition-colors duration-300">
+              <span className="text-[15px] sm:text-[18px] font-medium tracking-[0.01em]">
                 View our work
               </span>
             </a>
