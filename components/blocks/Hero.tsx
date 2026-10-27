@@ -69,7 +69,7 @@ export function Hero() {
 
           {/* Heading */}
           <h1
-            className="text-[72px] md:text-[100px] font-black uppercase leading-[0.88] text-[#1c1a18]"
+            className="text-[15vw] min-[430px]:text-[72px] md:text-[100px] font-black uppercase leading-[0.88] text-[#1c1a18]"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Your<br />
@@ -84,29 +84,38 @@ export function Hero() {
             craftsmanship you can trust.
           </p>
 
-          {/* CTA buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-1">
-            {/* Olive CTA */}
+          {/* CTA buttons — kept in one row at every width, never stacked */}
+          <div className="flex flex-row items-center gap-4 sm:gap-6 pt-1">
+            {/* Primary — olive pill, matching the nav above */}
             <a
               href="/contact"
-              className="flex items-center gap-3 bg-[#8a8a5c] text-[#f5f2ee] pl-7 pr-3 py-3.5 group hover:bg-[#7a7a4e] transition-colors duration-300"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-[#8a8a5c] text-[#f5f2ee] px-6 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap hover:bg-[#7a7a4e] transition-colors duration-300"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              <span className="text-sm font-black uppercase tracking-[0.15em]">Get a Free Quote</span>
-              <span className="w-9 h-9 bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10M7.5 2.5L12 7l-4.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <span className="text-[14px] sm:text-[15px] font-medium tracking-[0.01em]">
+                Get a free quote
               </span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
+                <path d="M2 7h10M7.5 2.5L12 7l-4.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </a>
 
-            {/* Silver CTA */}
+            {/* Secondary — text link. Padding keeps the tap target at ~49px. */}
             <a
               href="/works"
-              className="flex items-center gap-2 text-[#6a6460] hover:text-[#1c1a18] text-xs font-black uppercase tracking-[0.25em] transition-colors border border-[#b8b8b0] px-5 py-3.5 hover:border-[#8a8a5c]"
+              className="group inline-flex items-center py-3.5 sm:py-4 text-[#4a4840] hover:text-[#1c1a18] whitespace-nowrap transition-colors duration-300"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              View Our Work →
+              <span className="text-[14px] sm:text-[15px] font-medium tracking-[0.01em] pb-0.5 border-b border-[#b8b8b0] group-hover:border-[#8a8a5c] transition-colors duration-300">
+                View our work
+              </span>
             </a>
           </div>
 
