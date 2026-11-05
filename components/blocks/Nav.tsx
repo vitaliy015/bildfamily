@@ -74,11 +74,6 @@ export function Nav() {
   const reduce = useReducedMotion()
   // Slow olive "breathing" pulse to flag the Works page as the key destination.
   const worksPulse = reduce ? undefined : { color: ["#1c1a18", "#8a8a5c", "#1c1a18"] }
-  // On the olive bar a colour pulse would wash out, so breathe the pill behind
-  // the label instead — the text stays dark and legible throughout.
-  const worksPulseOnOlive = reduce
-    ? undefined
-    : { backgroundColor: ["rgba(250,249,245,0)", "rgba(250,249,245,0.9)", "rgba(250,249,245,0)"] }
   const worksPulseTransition = { duration: 3.6, repeat: Infinity, ease: "easeInOut" as const }
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
@@ -125,7 +120,7 @@ export function Nav() {
           className="overflow-hidden shrink-0"
           style={{ pointerEvents: showLinks ? "auto" : "none" }}
         >
-          <div className="flex items-center rounded-full bg-[#1c1a18]/10 border border-[#f5f2ee]/20 px-2 py-2">
+          <div className="flex items-center rounded-full bg-[#d8d4cc]/50 border border-[#c4c0b8]/50 px-2 py-2">
             {NAV_LINKS.map((link) =>
               link.label === "Works" ? (
                 <Link
@@ -135,9 +130,9 @@ export function Nav() {
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   <motion.span
-                    className="inline-block font-semibold px-3 py-0.5 rounded-full bg-[#faf9f5]/40"
-                    style={{ color: "#1c1a18" }}
-                    animate={worksPulseOnOlive}
+                    className="inline-block font-semibold"
+                    style={{ color: "#8a8a5c" }}
+                    animate={worksPulse}
                     transition={reduce ? undefined : worksPulseTransition}
                   >
                     {link.label}
@@ -148,7 +143,7 @@ export function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={link.href === "/" ? scrollToTop : undefined}
-                  className="flex-1 text-center py-1.5 rounded-full text-base text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200 whitespace-nowrap"
+                  className="flex-1 text-center py-1.5 rounded-full text-base text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200 whitespace-nowrap"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {link.label}
@@ -161,7 +156,7 @@ export function Nav() {
               type="button"
               onClick={(e) => { e.stopPropagation(); setPhoneOpen((v) => !v) }}
               aria-label="Show phone number"
-              className="flex items-center shrink-0 py-1.5 pl-2.5 pr-2.5 rounded-full text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200"
+              className="flex items-center shrink-0 py-1.5 pl-2.5 pr-2.5 rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
             >
               <Phone size={17} strokeWidth={1.8} className="shrink-0" aria-hidden />
               <AnimatePresence initial={false}>
