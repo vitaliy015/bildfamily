@@ -27,7 +27,7 @@ const PROJECTS: Project[] = [
   { src: `${UPLOADS}/IMG_6731.jpg`, title: "Navy & Brass Powder Room",    type: "Powder Room",      category: "Remodels" },
   { src: `${UPLOADS}/IMG_6733.jpg`, title: "Marble Soaker Nook",          type: "Bathroom Remodel", category: "Remodels" },
   // ── Tile & shower ──
-  { src: `${UPLOADS}/IMG_4359.jpg`, title: "Frameless Glass Shower",      type: "Tile & Shower", category: "Tile & Shower" },
+  { src: `${UPLOADS}/IMG_4359.jpg`, title: "Large Format Tiles",          type: "Tile & Shower", category: "Tile & Shower" },
   { src: `${UPLOADS}/IMG_5674.jpg`, title: "Emerald & Gold Shower",       type: "Tile & Shower", category: "Tile & Shower" },
   { src: `${UPLOADS}/IMG_3484.jpg`, title: "Marble Shower Niche",         type: "Tile & Shower", category: "Tile & Shower" },
   // ── Vanities & fixtures ──

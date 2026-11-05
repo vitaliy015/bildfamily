@@ -9,8 +9,8 @@ type Slide = { src: string; type: string; title: string }
 const SLIDES: Slide[] = [
   { src: "/uploads/2025/09/IMG_3483.jpg", type: "Bathroom Remodel", title: "Fireside Soaker Tub" },
   { src: "/work/ensuite-after.jpg",       type: "Master Ensuite",   title: "Navy & Marble Ensuite" },
-  { src: "/uploads/2025/09/IMG_4359.jpg", type: "Tile & Shower",    title: "Frameless Glass Shower" },
-  { src: "/work/showcase-2.jpg",          type: "Powder Room",      title: "Moody Powder Room" },
+  { src: "/uploads/2025/09/IMG_4359.jpg", type: "Tile & Shower",    title: "Large Format Tiles" },
+  { src: "/work/showcase-2.jpg",          type: "Ensuite",          title: "Bright Ensuite" },
   { src: "/uploads/2025/09/IMG_6731.jpg", type: "Vanity & Fixtures", title: "Navy & Brass Vanity" },
   { src: "/work/showcase-4.jpg",          type: "Bathroom Remodel", title: "Freestanding Soaker" },
 ]
