@@ -74,6 +74,11 @@ export function Nav() {
   const reduce = useReducedMotion()
   // Slow olive "breathing" pulse to flag the Works page as the key destination.
   const worksPulse = reduce ? undefined : { color: ["#1c1a18", "#8a8a5c", "#1c1a18"] }
+  // On the olive bar a colour pulse would wash out, so breathe the pill behind
+  // the label instead — the text stays dark and legible throughout.
+  const worksPulseOnOlive = reduce
+    ? undefined
+    : { backgroundColor: ["rgba(250,249,245,0)", "rgba(250,249,245,0.9)", "rgba(250,249,245,0)"] }
   const worksPulseTransition = { duration: 3.6, repeat: Infinity, ease: "easeInOut" as const }
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
@@ -88,7 +93,7 @@ export function Nav() {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: EASE }}
-        className="hidden lg:flex items-center gap-3 rounded-full bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-4 py-3 pointer-events-auto"
+        className="hidden lg:flex items-center gap-3 rounded-full bg-[#8a8a5c]/92 backdrop-blur-xl border border-[#1c1a18]/15 shadow-[0_4px_24px_rgba(0,0,0,0.12)] px-4 py-3 pointer-events-auto"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -120,7 +125,7 @@ export function Nav() {
           className="overflow-hidden shrink-0"
           style={{ pointerEvents: showLinks ? "auto" : "none" }}
         >
-          <div className="flex items-center rounded-full bg-[#d8d4cc]/50 border border-[#c4c0b8]/50 px-2 py-2">
+          <div className="flex items-center rounded-full bg-[#1c1a18]/10 border border-[#f5f2ee]/20 px-2 py-2">
             {NAV_LINKS.map((link) =>
               link.label === "Works" ? (
                 <Link
@@ -130,9 +135,9 @@ export function Nav() {
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   <motion.span
-                    className="inline-block font-semibold"
-                    style={{ color: "#8a8a5c" }}
-                    animate={worksPulse}
+                    className="inline-block font-semibold px-3 py-0.5 rounded-full bg-[#faf9f5]/40"
+                    style={{ color: "#1c1a18" }}
+                    animate={worksPulseOnOlive}
                     transition={reduce ? undefined : worksPulseTransition}
                   >
                     {link.label}
@@ -143,7 +148,7 @@ export function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={link.href === "/" ? scrollToTop : undefined}
-                  className="flex-1 text-center py-1.5 rounded-full text-base text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200 whitespace-nowrap"
+                  className="flex-1 text-center py-1.5 rounded-full text-base text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200 whitespace-nowrap"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {link.label}
@@ -156,7 +161,7 @@ export function Nav() {
               type="button"
               onClick={(e) => { e.stopPropagation(); setPhoneOpen((v) => !v) }}
               aria-label="Show phone number"
-              className="flex items-center shrink-0 py-1.5 pl-2.5 pr-2.5 rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
+              className="flex items-center shrink-0 py-1.5 pl-2.5 pr-2.5 rounded-full text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200"
             >
               <Phone size={17} strokeWidth={1.8} className="shrink-0" aria-hidden />
               <AnimatePresence initial={false}>
@@ -183,7 +188,7 @@ export function Nav() {
         <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }}>
           <Link
             href="/contact"
-            className="flex items-center gap-3 rounded-full bg-[#8a8a5c] text-[#f5f2ee] pl-6 pr-2.5 py-2.5 shrink-0 group hover:bg-[#7a7a4e] transition-colors duration-300"
+            className="flex items-center gap-3 rounded-full bg-[#1c1a18] text-[#f5f2ee] pl-6 pr-2.5 py-2.5 shrink-0 group hover:bg-[#2a2720] transition-colors duration-300"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             <span className="text-base font-bold uppercase tracking-wide whitespace-nowrap">Get a Free Quote</span>
@@ -198,7 +203,7 @@ export function Nav() {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: EASE }}
-        className={`flex lg:hidden items-center gap-2 rounded-full bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] pl-4 pr-2 py-2 pointer-events-auto ${isScrolled ? "w-auto" : "w-full max-w-md justify-between"}`}
+        className={`flex lg:hidden items-center gap-2 rounded-full bg-[#8a8a5c]/92 backdrop-blur-xl border border-[#1c1a18]/15 shadow-[0_4px_24px_rgba(0,0,0,0.12)] pl-4 pr-2 py-2 pointer-events-auto ${isScrolled ? "w-auto" : "w-full max-w-md justify-between"}`}
       >
         <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }}>
           <Link href="/" onClick={scrollToTop} className="flex items-center shrink-0" aria-label="Inside The House — home">
@@ -218,7 +223,7 @@ export function Nav() {
             type="button"
             onClick={(e) => { e.stopPropagation(); setPhoneOpen((v) => !v) }}
             aria-label="Show phone number"
-            className="flex items-center h-11 px-3 rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
+            className="flex items-center h-11 px-3 rounded-full text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200"
           >
             <Phone size={20} strokeWidth={1.8} className="shrink-0" aria-hidden />
             <AnimatePresence initial={false}>
@@ -241,7 +246,7 @@ export function Nav() {
           <Link
             href="/contact"
             aria-label="Email us — opens the contact form"
-            className="w-11 h-11 flex items-center justify-center rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
+            className="w-11 h-11 flex items-center justify-center rounded-full text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200"
           >
             <Mail size={20} strokeWidth={1.8} aria-hidden />
           </Link>
@@ -250,7 +255,7 @@ export function Nav() {
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={menuOpen}
-            className="w-11 h-11 flex items-center justify-center rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
+            className="w-11 h-11 flex items-center justify-center rounded-full text-[#1c1a18] hover:bg-[#f5f2ee]/35 transition-colors duration-200"
           >
             <Menu size={22} strokeWidth={1.8} aria-hidden />
           </button>
