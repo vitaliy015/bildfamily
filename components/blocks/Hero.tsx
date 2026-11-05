@@ -89,7 +89,7 @@ export function Hero() {
             {/* Primary — olive pill, matching the nav above */}
             <a
               href="/contact"
-              className="group inline-flex items-center gap-2.5 rounded-full bg-[#8a8a5c] text-[#f5f2ee] px-4 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap hover:bg-[#7a7a4e] transition-colors duration-300"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-[#8a8a5c] text-[#f5f2ee] px-4 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap shadow-[0_2px_0_rgba(28,26,24,0)] transition duration-300 ease-out hover:bg-[#7a7a4e] hover:shadow-[0_8px_18px_rgba(28,26,24,0.18)] motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 active:shadow-[0_2px_6px_rgba(28,26,24,0.14)]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <span className="text-[15px] sm:text-[18px] font-medium tracking-[0.01em]">
@@ -111,7 +111,7 @@ export function Hero() {
                 competing primaries and the pair would not fit at 375px. */}
             <a
               href="/works"
-              className="inline-flex items-center justify-center rounded-full bg-[#1c1a18] text-[#f5f2ee] px-4 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap hover:bg-[#2a2720] transition-colors duration-300"
+              className="inline-flex items-center justify-center rounded-full bg-[#1c1a18] text-[#f5f2ee] px-4 sm:px-8 py-3.5 sm:py-4 whitespace-nowrap shadow-[0_2px_0_rgba(28,26,24,0)] transition duration-300 ease-out hover:bg-[#2a2720] hover:shadow-[0_8px_18px_rgba(28,26,24,0.26)] motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 active:shadow-[0_2px_6px_rgba(28,26,24,0.2)]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <span className="text-[15px] sm:text-[18px] font-medium tracking-[0.01em]">
