@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
-import { Phone, Menu, X } from "lucide-react"
+import { Phone, Mail, Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -238,6 +238,13 @@ export function Nav() {
               )}
             </AnimatePresence>
           </button>
+          <Link
+            href="/contact"
+            aria-label="Email us — opens the contact form"
+            className="w-11 h-11 flex items-center justify-center rounded-full text-[#4a4840] hover:text-[#1c1a18] hover:bg-white/60 transition-colors duration-200"
+          >
+            <Mail size={20} strokeWidth={1.8} aria-hidden />
+          </Link>
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
