@@ -88,7 +88,7 @@ export function Nav() {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: EASE }}
-        className="hidden lg:flex items-center gap-3 rounded-full bg-[#8a8a5c]/92 backdrop-blur-xl border border-[#1c1a18]/15 shadow-[0_4px_24px_rgba(0,0,0,0.12)] px-4 py-3 pointer-events-auto"
+        className="hidden lg:flex items-center gap-3 rounded-full bg-[#a8a877]/92 backdrop-blur-xl border border-[#1c1a18]/15 shadow-[0_4px_24px_rgba(0,0,0,0.12)] px-4 py-3 pointer-events-auto"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -198,7 +198,7 @@ export function Nav() {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: EASE }}
-        className={`flex lg:hidden items-center gap-2 rounded-full bg-[#8a8a5c]/92 backdrop-blur-xl border border-[#1c1a18]/15 shadow-[0_4px_24px_rgba(0,0,0,0.12)] pl-4 pr-2 py-2 pointer-events-auto ${isScrolled ? "w-auto" : "w-full max-w-md justify-between"}`}
+        className={`flex lg:hidden items-center gap-2 rounded-full bg-[#a8a877]/92 backdrop-blur-xl border border-[#1c1a18]/15 shadow-[0_4px_24px_rgba(0,0,0,0.12)] pl-4 pr-2 py-2 pointer-events-auto ${isScrolled ? "w-auto" : "w-full max-w-md justify-between"}`}
       >
         <motion.div layout="position" transition={{ duration: 0.5, ease: EASE }}>
           <Link href="/" onClick={scrollToTop} className="flex items-center shrink-0" aria-label="Inside The House — home">
