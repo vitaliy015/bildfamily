@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { HeroHeadline } from "@/components/blocks/HeroHeadline"
 
 const PLASTER_SVG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
 
@@ -67,15 +68,8 @@ export function Hero() {
             </span>
           </div>
 
-          {/* Heading */}
-          <h1
-            className="text-[15vw] min-[430px]:text-[72px] md:text-[100px] font-black uppercase leading-[0.88] text-[#1c1a18]"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Your<br />
-            Bath&shy;room.<br />
-            <span className="text-[#8a8a5c]">Trans&shy;formed.</span>
-          </h1>
+          {/* Heading — hinged "falling beam" entrance, matching WorksHero */}
+          <HeroHeadline />
 
           {/* Body text */}
           <p className="text-base text-[#6a6460] leading-relaxed max-w-xl mt-2" style={{ fontFamily: "var(--font-body)" }}>
