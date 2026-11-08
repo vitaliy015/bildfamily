@@ -25,7 +25,7 @@ export function WorksHero() {
       }
 
   return (
-    <section className="relative overflow-hidden bg-[#eae6df] pt-40 pb-20 md:pt-48 md:pb-28">
+    <section className="relative overflow-hidden bg-[#efece7] pt-40 pb-20 md:pt-48 md:pb-28">
       {/* Plaster / concrete noise texture */}
       <div
         className="absolute inset-0 pointer-events-none opacity-60"

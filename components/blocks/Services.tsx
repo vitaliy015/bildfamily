@@ -12,7 +12,7 @@ const BATH_SCOPE = [
 
 export function Services() {
   return (
-    <section id="services" className="bg-[#eae6df] py-24 px-8 md:px-16 overflow-hidden scroll-mt-28">
+    <section id="services" className="bg-[#efece7] py-24 px-8 md:px-16 overflow-hidden scroll-mt-28">
       {/* Section header */}
       <div className="max-w-7xl mx-auto mb-14">
         <div className="relative flex items-end justify-between flex-wrap gap-6">

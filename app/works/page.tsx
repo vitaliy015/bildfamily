@@ -27,7 +27,7 @@ export default function WorksPage() {
         <WorksHero />
 
         {/* ── Before / After ── */}
-        <section className="relative py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-[#eae6df]">
+        <section className="relative py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-[#efece7]">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-12 md:mb-16">
               <p
@@ -94,7 +94,7 @@ export default function WorksPage() {
         <HowWeWork />
 
         {/* ── CTA ── */}
-        <section className="relative py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-[#eae6df]">
+        <section className="relative py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-[#efece7]">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <p
               className="text-2xl md:text-3xl font-bold max-w-md text-[#1c1a18]"

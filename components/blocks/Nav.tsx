@@ -265,7 +265,7 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="lg:hidden fixed inset-0 z-[60] flex flex-col bg-[#eae6df]/95 backdrop-blur-xl pointer-events-auto"
+            className="lg:hidden fixed inset-0 z-[60] flex flex-col bg-[#efece7]/95 backdrop-blur-xl pointer-events-auto"
           >
             {/* Top row — logo + close */}
             <div className="flex items-center justify-between px-6 pt-7">

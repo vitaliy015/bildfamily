@@ -120,7 +120,7 @@ export function Contact() {
       : "border-[#c4c0b8] focus:ring-[#8a8a5c]"
 
   return (
-    <section className="relative min-h-screen bg-[#eae6df] pt-32 pb-24 md:pt-40 md:pb-32">
+    <section className="relative min-h-screen bg-[#efece7] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="max-w-2xl mx-auto px-6 md:px-12">
 
         {/* Header */}

@@ -4,7 +4,7 @@ const PLASTER_SVG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/200
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-[#eae6df] overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-[#efece7] overflow-hidden">
 
       {/* Plaster / concrete noise texture */}
       <div
@@ -33,8 +33,8 @@ export function Hero() {
           priority
         />
         {/* Fade to bg colour */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#eae6df] via-[#eae6df]/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#eae6df]/20 via-transparent to-[#eae6df]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#efece7] via-[#efece7]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#efece7]/20 via-transparent to-[#efece7]/40" />
         {/* Silver shimmer stripe on edge */}
         <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[#b8b8b0]/60 to-transparent" />
       </div>
@@ -121,7 +121,7 @@ export function Hero() {
           </div>
 
           {/* Stats — nav-style pill */}
-          <div className="inline-flex flex-wrap items-center gap-x-12 gap-y-4 mt-6 w-fit rounded-2xl bg-[#eae6df]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-10 py-5">
+          <div className="inline-flex flex-wrap items-center gap-x-12 gap-y-4 mt-6 w-fit rounded-2xl bg-[#efece7]/85 backdrop-blur-xl border border-[#c4c0b8]/60 shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-10 py-5">
             {[
               { value: "10+",  label: "Years" },
               { value: "200+", label: "Bathrooms" },

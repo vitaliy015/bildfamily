@@ -381,7 +381,7 @@ function HorizontalPanels() {
             {/* Photo — left */}
             <div className="absolute left-0 top-0 h-full w-[38%] sm:w-[44%]">
               <Image src={ANATOLII_AT_WORK} alt="Anatolii installing a mirror on site — Owner and Lead Renovator" fill sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover object-center" />
-              <div className="absolute inset-0 bg-gradient-to-l from-[#eae6df] via-[#eae6df]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#efece7] via-[#efece7]/40 to-transparent" />
             </div>
 
             {/* Content — right */}

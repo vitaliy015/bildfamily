@@ -125,7 +125,7 @@
 ──────────────────────────────────────────────────────────────────────────── */
 :root {
   /* Фоны */
-  --brand-bg-light:          #eae6df; /* тёплый бежевый — Hero, Services     */
+  --brand-bg-light:          #efece7; /* тёплый бежевый — Hero, Services     */
   --brand-bg-dark:           #1c1a17; /* тёплый near-black — FAQ, тёмные секции */
   --brand-bg-subtle:         #faf9f5; /* почти белый — slideshow, карточки   */
 

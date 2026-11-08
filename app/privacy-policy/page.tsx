@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Nav />
-      <main className="bg-[#eae6df] pt-32 pb-24 md:pt-40 md:pb-32">
+      <main className="bg-[#efece7] pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="max-w-3xl mx-auto px-6 md:px-12 flex flex-col gap-10">
 
           <header className="flex flex-col gap-4">

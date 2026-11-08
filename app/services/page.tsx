@@ -105,7 +105,7 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Nav />
-      <main className="bg-[#eae6df]">
+      <main className="bg-[#efece7]">
 
         {/* Hero — the price answer sits in the first paragraph on purpose */}
         <section className="pt-32 pb-14 md:pt-40 md:pb-16">
