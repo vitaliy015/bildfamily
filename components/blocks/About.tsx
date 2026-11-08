@@ -19,8 +19,7 @@ const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 
 const STATS = [
   { value: "10+", label: "Years of Experience"   },
-  { value: "100+", label: "Bathrooms Completed"  },
-  { value: "2 Years", label: "Workmanship Warranty" },
+  { value: "1 Year", label: "Workmanship Warranty" },
   { value: "$0",  label: "Hidden Fees. Ever."    },
 ]
 
@@ -746,7 +745,7 @@ function StatsAndSkills() {
           By The Numbers
         </motion.p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
             {STATS.map((stat, i) => (
               <motion.div
                 key={stat.label}

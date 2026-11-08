@@ -127,7 +127,7 @@ const FAQ_DATA: FAQEntry[] = [
     category: "guarantees",
     question: "Do you offer a warranty on your work?",
     answer:
-      "All our workmanship is warranted for 2 years. If something we built or installed has a defect within that period, we come back and fix it at no charge. We also pass through all applicable manufacturer warranties on materials and fixtures. The goal is simple: if you're not genuinely happy with the result, we're not finished.",
+      "All our workmanship is warranted for 1 year. If something we built or installed has a defect within that period, we come back and fix it at no charge. We also pass through all applicable manufacturer warranties on materials and fixtures. The goal is simple: if you're not genuinely happy with the result, we're not finished.",
   },
   {
     id: 14,
