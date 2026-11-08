@@ -145,10 +145,9 @@ export default function PrivacyPolicyPage() {
 
           <Section heading="Cookies and tracking">
             <p>
-              This website does not use advertising or analytics cookies. The only thing it
-              stores in your browser is a note that you have already seen the opening
-              animation, so it does not replay on every page. That note stays on your
-              device, is cleared when you close the tab, and tells us nothing about you.
+              This website uses no cookies at all. There are no advertising cookies, no
+              analytics cookies, and nothing is written to your browser&rsquo;s storage.
+              Nothing here tracks you between visits or follows you to other websites.
             </p>
             <p>
               If we add website analytics later, we will update this page before turning
