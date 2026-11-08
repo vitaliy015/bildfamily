@@ -16,13 +16,6 @@ export function Services() {
       {/* Section header */}
       <div className="max-w-7xl mx-auto mb-14">
         <div className="relative flex items-end justify-between flex-wrap gap-6">
-          <span
-            className="absolute -top-10 -left-4 text-[140px] font-black text-[#1c1a18]/[0.04] leading-none select-none pointer-events-none"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            02
-          </span>
-
           <div className="relative flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <span className="w-8 h-px bg-[#8a8a5c]" />

@@ -347,13 +347,6 @@ function HorizontalPanels() {
                 </p>
 
                 <div className="relative">
-                  <span
-                    aria-hidden
-                    className="absolute -top-10 -left-2 text-[160px] font-black leading-none select-none pointer-events-none"
-                    style={{ color: "rgba(28,26,24,0.04)", fontFamily: "var(--font-heading)" }}
-                  >
-                    02
-                  </span>
                   <h2
                     className="relative text-5xl md:text-7xl font-black uppercase leading-[0.88] mb-8"
                     style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
@@ -594,13 +587,6 @@ function MobileHorizontalPanels() {
                 About Inside The House
               </p>
               <div className="relative">
-                <span
-                  aria-hidden
-                  className="absolute -top-6 -left-1 text-[100px] sm:text-[130px] font-black leading-none select-none pointer-events-none"
-                  style={{ color: "rgba(28,26,24,0.04)", fontFamily: "var(--font-heading)" }}
-                >
-                  02
-                </span>
                 <h2
                   className="relative text-[40px] sm:text-5xl md:text-6xl font-black uppercase leading-[0.88] mb-6"
                   style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
