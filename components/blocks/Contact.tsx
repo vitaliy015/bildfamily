@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "motion/react"
 import { sendLead } from "@/app/actions"
 
@@ -78,6 +78,19 @@ export function Contact() {
   const [sendError, setSendError] = useState<string | null>(null)
   // Honeypot — hidden from real users; bots fill it and get dropped server-side.
   const [company, setCompany] = useState("")
+  const confirmationRef = useRef<HTMLDivElement>(null)
+
+  // The confirmation takes the place of a form four times its height, and the
+  // scroll position does not move, so it lands where the form's top edge was —
+  // measured 76px above the viewport on desktop and 120px on a phone. Left
+  // alone, someone who just pressed Send sees the page twitch and no thank-you.
+  useEffect(() => {
+    const node = confirmationRef.current
+    if (!submitted || !node) return
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    node.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" })
+    node.focus({ preventScroll: true })
+  }, [submitted])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -182,7 +195,9 @@ export function Contact() {
         >
           {submitted ? (
             <div
-              className="rounded-md border border-[#8a8a5c]/40 bg-[#faf9f5] px-6 py-8 text-center"
+              ref={confirmationRef}
+              tabIndex={-1}
+              className="rounded-md border border-[#8a8a5c]/40 bg-[#faf9f5] px-6 py-8 text-center outline-none"
               role="status"
             >
               <p
