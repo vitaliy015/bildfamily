@@ -20,7 +20,7 @@ const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 const STATS = [
   { value: "10+", label: "Years of Experience"   },
   { value: "100+", label: "Bathrooms Completed"  },
-  { value: "2 yr", label: "Workmanship Warranty" },
+  { value: "2 Years", label: "Workmanship Warranty" },
   { value: "$0",  label: "Hidden Fees. Ever."    },
 ]
 
@@ -756,7 +756,7 @@ function StatsAndSkills() {
                 transition={{ delay: i * 0.1, duration: 0.55, ease: EASE }}
               >
                 <div
-                  className="text-5xl md:text-6xl font-black leading-none mb-2"
+                  className="text-4xl sm:text-5xl md:text-6xl font-black leading-none mb-2 whitespace-nowrap"
                   style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)" }}
                 >
                   {stat.value}
