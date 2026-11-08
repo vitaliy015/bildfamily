@@ -295,3 +295,122 @@ export const services: Service[] = [
 export function getService(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug)
 }
+
+// ─── Pricing, shown as a block on /services ──────────────────────────────────
+// Must stay in sync with components/blocks/Pricing.tsx on the homepage.
+
+export type PriceBand = {
+  name: string
+  range: string
+  timeline: string
+  who: string
+  scope: string
+  anchor: string
+  featured?: boolean
+}
+
+export const priceBands: PriceBand[] = [
+  {
+    name: "Bathroom Refresh",
+    range: "$8,000 – $15,000",
+    timeline: "1–3 weeks",
+    who: "Your layout works and the bones are sound. You want it to stop looking like 2004.",
+    scope: "New tile, vanity, lighting and fixtures in the existing layout. Nothing moves.",
+    anchor: "tile-and-shower",
+  },
+  {
+    name: "Full Bathroom Remodel",
+    range: "$15,000 – $28,000",
+    timeline: "3–5 weeks",
+    who: "The layout fights you, or something behind the tile has failed.",
+    scope: "Down to the studs: new waterproofing, plumbing moved where needed, custom shower, vanity, lighting and glass.",
+    anchor: "full-bathroom-remodel",
+    featured: true,
+  },
+  {
+    name: "Custom Ensuite & Spa",
+    range: "from $28,000",
+    timeline: "4–7 weeks",
+    who: "The one room you use every day, built around you rather than resale.",
+    scope: "Freestanding tubs, curbless or steam showers, in-floor heating, double vanities, full custom tile.",
+    anchor: "ensuite-renovation",
+  },
+]
+
+export const costDrivers: { factor: string; effect: string; detail: string }[] = [
+  {
+    factor: "Room size",
+    effect: "Biggest single lever",
+    detail:
+      "A 5×8 main bathroom and a 12×14 ensuite are different jobs, not the same job at different scales. Tile area, waterproofing and labour all scale with the floor plan.",
+  },
+  {
+    factor: "Does plumbing move?",
+    effect: "+$1,500 – $4,000",
+    detail:
+      "Keeping the toilet, sink and drain where they are keeps the price down. Moving a drain means opening the floor and, in most Calgary homes, working around the joists.",
+  },
+  {
+    factor: "Tile choice and layout",
+    effect: "+$1,000 – $6,000",
+    detail:
+      "Large-format tile, herringbone, full-height walls and mosaic niches all take longer to set. The tile itself is rarely the expensive part — the hours are.",
+  },
+  {
+    factor: "Shower type",
+    effect: "+$2,000 – $7,000",
+    detail:
+      "A tub-shower in the existing alcove is the cheapest. A curbless walk-in with a linear drain and frameless glass is the most expensive, because the floor structure has to be reworked.",
+  },
+  {
+    factor: "Fixtures and vanity",
+    effect: "+$800 – $5,000",
+    detail:
+      "A stock vanity and a builder faucet versus custom cabinetry, stone top and brushed-gold fittings. This is the line you control most directly.",
+  },
+  {
+    factor: "In-floor heating",
+    effect: "+$1,500 – $3,000",
+    detail:
+      "Only worth doing while the floor is already open. In Calgary winters most clients who install it say they would not go back.",
+  },
+  {
+    factor: "What we find behind the wall",
+    effect: "Varies",
+    detail:
+      "Rot, mould or failed framing is the usual reason a price changes mid-job. We stop, photograph it, and get your approval before spending anything.",
+  },
+]
+
+export const costFaqs: ServiceFaq[] = [
+  {
+    question: "How much does a bathroom renovation cost in Calgary?",
+    answer:
+      "Between $8,000 and $28,000 for most homes. A refresh that keeps the layout runs $8,000–$15,000. A full down-to-studs remodel runs $15,000–$28,000. A custom ensuite with a freestanding tub, curbless shower or heated floors starts at $28,000.",
+  },
+  {
+    question: "Why are other Calgary renovation companies quoting $50,000 or more?",
+    answer:
+      "Most established Calgary renovators are general contractors who take whole-home projects and treat a single bathroom as a small job with a large overhead attached. We only do bathrooms, Anatolii is on site himself, and there is no layer of project managers to pay for.",
+  },
+  {
+    question: "Is the quote fixed or does it change?",
+    answer:
+      "Fixed. You get one written number covering everything we can see at the walkthrough. It only changes if we open a wall and find damage nobody could have known about — and then you see photos and approve the cost before we continue.",
+  },
+  {
+    question: "What is not included in the price?",
+    answer:
+      "Permits are quoted separately when the work needs them. Anything you ask us to add after the quote is signed is priced before we do it. Everything else — demolition, disposal, materials, labour, cleanup — is in the number.",
+  },
+  {
+    question: "Do you ask for money up front?",
+    answer:
+      "A deposit covers materials, and the rest is tied to stages of the work. You never pay for work that has not happened yet.",
+  },
+  {
+    question: "How long does a bathroom renovation take in Calgary?",
+    answer:
+      "One to three weeks for a refresh, three to five for a full remodel, four to seven for a custom ensuite. You get a start date and a finish date in writing, and we work evenings and weekends when that shortens the disruption.",
+  },
+]

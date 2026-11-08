@@ -15,10 +15,10 @@ const NAV_LINKS = [
 ]
 
 const SERVICE_LINKS = [
-  { label: "Full Bathroom Remodels",  href: "/services/full-bathroom-remodel" },
-  { label: "Ensuite Renovations",     href: "/services/ensuite-renovation" },
-  { label: "Custom Tile & Showers",   href: "/services/tile-and-shower" },
-  { label: "Renovation Costs",        href: "/bathroom-renovation-cost-calgary" },
+  { label: "Full Bathroom Remodels",  href: "/services#full-bathroom-remodel" },
+  { label: "Ensuite Renovations",     href: "/services#ensuite-renovation" },
+  { label: "Custom Tile & Showers",   href: "/services#tile-and-shower" },
+  { label: "Renovation Costs",        href: "/services#prices" },
 ]
 
 const InstagramIcon = () => (
