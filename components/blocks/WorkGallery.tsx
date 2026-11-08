@@ -13,23 +13,31 @@ type Shot = {
 }
 
 // Bathroom showcase — real completed work from both the phone library
-// and the studio photo set.
+// and the studio photo set. The fixture close-ups came across from the old
+// /portfolio page when it folded into this one; they sit between the wider
+// shots so the masonry stays varied as you scroll.
 const SHOTS: Shot[] = [
   { src: "/work/showcase-1.jpg",                 title: "Warm-Oak Ensuite",         type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3481.jpg",        title: "Arched-Mirror Vanity",     type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3483.jpg",        title: "Fireside Soaker Tub",      type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_4359.jpg",        title: "Large Format Tiles",       type: "Tile & Shower" },
+  { src: "/uploads/2025/09/IMG_6727.jpg",        title: "Waterfall Tub Filler",     type: "Vanities & Fixtures" },
   { src: "/work/showcase-4.jpg",                 title: "Freestanding Soaker",      type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_6731.jpg",        title: "Navy & Brass Vanity",      type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_5674.jpg",        title: "Emerald & Gold Shower",    type: "Tile & Shower" },
+  { src: "/uploads/2025/09/IMG_4363.jpg",        title: "Matte-Black Faucet",       type: "Vanities & Fixtures" },
   { src: "/work/showcase-2.jpg",                 title: "Bright Ensuite",           type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_6733.jpg",        title: "Marble Soaker Nook",       type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3480.jpg",        title: "Freestanding Tub Suite",   type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3488.jpg",        title: "Orchid & Oak Vanity",      type: "Bathroom Remodel" },
   { src: "/work/showcase-5.jpg",                 title: "White-Tile Shower",        type: "Tile & Shower" },
+  { src: "/uploads/2025/09/IMG_5495.jpg",        title: "Brushed-Gold Vessel Sink", type: "Vanities & Fixtures" },
   { src: "/uploads/2025/09/IMG_6752.jpg",        title: "Black Vanity & Cage Lights", type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_5678.jpg",        title: "Gold Vessel-Sink Vanity",  type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_6749.jpg",        title: "Brushed-Gold Details",     type: "Vanities & Fixtures" },
   { src: "/uploads/2025/09/IMG_3491.jpg",        title: "Marble Water Closet",      type: "Bathroom Remodel" },
   { src: "/uploads/2025/09/IMG_3494.jpg",        title: "Fireside Tub Suite",       type: "Bathroom Remodel" },
+  { src: "/uploads/2025/09/IMG_3485.jpg",        title: "Matte-Black Tub Filler",   type: "Vanities & Fixtures" },
   { src: "/uploads/2025/09/IMG_3484.jpg",        title: "Marble Shower Niche",      type: "Tile & Shower" },
 ]
 
