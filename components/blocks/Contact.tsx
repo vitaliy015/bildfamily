@@ -36,8 +36,10 @@ const WhatsAppIcon = () => (
 type FormFields = { name: string; phone: string; email: string; message: string }
 type FormErrors = Partial<Record<keyof FormFields, string>>
 
-// Требуем как минимум 7 цифр в номере (без учёта +, скобок, пробелов, дефисов)
-const PHONE_RE = /^[+]?[\d\s()-]{7,}$/
+// Count digits and nothing else, exactly as the server action does. A format
+// regex here was stricter than the server and rejected numbers it would have
+// accepted — "403.667.6148" and anything with an extension. Whatever they type,
+// we only need enough digits to call back.
 // Сознательно мягкая проверка — строгий RFC-регэкс отсекает валидные адреса
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
@@ -54,7 +56,7 @@ function validate(form: FormFields): FormErrors {
   const digits = phone.replace(/\D/g, "")
   if (!phone) {
     errors.phone = "Please enter your phone number."
-  } else if (!PHONE_RE.test(phone) || digits.length < 7) {
+  } else if (digits.length < 7) {
     errors.phone = "Please enter a valid phone number."
   }
 
