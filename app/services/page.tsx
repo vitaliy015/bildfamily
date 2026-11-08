@@ -132,7 +132,7 @@ export default function ServicesPage() {
               className="text-base text-[#4a4840] leading-relaxed max-w-3xl"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Nobody else in Calgary publishes this, which is exactly why we do. We
+              Hardly anyone in Calgary publishes numbers like these, which is exactly why we do. We
               renovate bathrooms and nothing else, and Anatolii is on site himself on every
               job. Everything below is on this one page — the bands, what moves them, what
               each job includes, and the questions people actually ask.

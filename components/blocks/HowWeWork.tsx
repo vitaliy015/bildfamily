@@ -112,9 +112,10 @@ export function HowWeWork() {
           style={{ fontFamily: "var(--font-body)" }}
         >
           <span className="text-[#c4a962] font-bold" style={{ fontFamily: "var(--font-heading)" }}>
-            Typical bathroom:
+            Time on site:
           </span>{" "}
-          1–3 weeks on site. Anatolii and Nataliia are personally involved on every job.
+          one to three weeks for a refresh, three to five for a full remodel, four to seven
+          for a custom ensuite. Anatolii and Nataliia are personally involved on every job.
         </p>
       </div>
     </section>

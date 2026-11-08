@@ -17,17 +17,10 @@ const ANATOLII_AT_WORK = `${UPLOADS}/2025/10/image-1111.jpg`
 
 const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
 
-const SKILLS = [
-  { label: "Tile & Waterproofing",          percent: 95 },
-  { label: "Custom Showers & Wet Rooms",    percent: 92 },
-  { label: "Vanities & Cabinetry",          percent: 90 },
-  { label: "Plumbing Fixtures & Lighting",  percent: 88 },
-]
-
 const STATS = [
   { value: "10+", label: "Years of Experience"   },
-  { value: "100+",label: "Projects Completed"    },
-  { value: "5★",  label: "Average Client Rating" },
+  { value: "100+", label: "Bathrooms Completed"  },
+  { value: "2 yr", label: "Workmanship Warranty" },
   { value: "$0",  label: "Hidden Fees. Ever."    },
 ]
 
@@ -49,42 +42,6 @@ const NATALIIA_BULLETS = [
   "Material sourcing & procurement",
   "Project coordination, start to finish",
 ]
-
-// ── ProgressBar ────────────────────────────────────────────────────────────
-
-function ProgressBar({ label, percent, index }: { label: string; percent: number; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.5, ease: EASE }}
-      className="flex flex-col gap-3"
-    >
-      <div className="flex items-center justify-between">
-        <span
-          className="text-sm font-semibold uppercase tracking-widest"
-          style={{ color: "var(--brand-text-dark)", fontFamily: "var(--font-heading)" }}
-        >
-          {label}
-        </span>
-        <span className="text-sm font-bold tabular-nums" style={{ color: "var(--brand-accent-olive)" }}>
-          {percent}%
-        </span>
-      </div>
-      <div className="h-[2px] rounded-full overflow-hidden" style={{ backgroundColor: "var(--brand-border-light)" }}>
-        <motion.div
-          initial={{ width: "0%" }}
-          whileInView={{ width: `${percent}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: index * 0.15 + 0.2, ease: EASE }}
-          className="h-full rounded-full"
-          style={{ backgroundColor: "var(--brand-bg-dark)" }}
-        />
-      </div>
-    </motion.div>
-  )
-}
 
 // ── Bullet list reused across panels ──────────────────────────────────────
 
@@ -789,10 +746,7 @@ function StatsAndSkills() {
           By The Numbers
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
-
-          {/* Stats grid */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
             {STATS.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -817,24 +771,6 @@ function StatsAndSkills() {
             ))}
           </div>
 
-          {/* Progress bars */}
-          <div className="flex flex-col gap-8 justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-xs font-bold uppercase tracking-[0.35em] mb-2"
-              style={{ color: "var(--brand-text-muted-light)", fontFamily: "var(--font-heading)" }}
-            >
-              Our Expertise
-            </motion.p>
-            {SKILLS.map((skill, i) => (
-              <ProgressBar key={skill.label} label={skill.label} percent={skill.percent} index={i} />
-            ))}
-          </div>
-
-        </div>
 
         {/* Pull quote */}
         <motion.blockquote

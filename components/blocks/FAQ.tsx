@@ -65,7 +65,7 @@ const FAQ_DATA: FAQEntry[] = [
     category: "process",
     question: "How long will my bathroom renovation take?",
     answer:
-      "A bathroom refresh typically takes 5–10 working days. A full remodel — down to the studs, with a custom shower and new waterproofing — runs 2–3 weeks. Custom ensuite and spa projects take 3–4 weeks. We provide a written timeline before work begins and commit to it — if we run over through any fault of ours, we cover the extra days at our cost.",
+      "A bathroom refresh takes one to three weeks on site. A full remodel — down to the studs, with a custom shower and new waterproofing — runs three to five weeks. Custom ensuite and spa projects take four to seven weeks. You get a start date and a finish date in writing before we begin, and we work evenings and weekends when that shortens the disruption for you.",
   },
   {
     id: 6,
@@ -79,7 +79,7 @@ const FAQ_DATA: FAQEntry[] = [
     category: "process",
     question: "Do you work evenings and weekends?",
     answer:
-      "Yes — and this is one of the things our clients appreciate most. We can schedule work around your life, not the other way around. Many of our bathroom projects are completed over a single weekend, so your family barely notices the disruption. Because we're family-owned, we have the flexibility that large renovation companies simply don't.",
+      "Yes — and it is one of the things clients tell us they value most. We schedule around your life rather than the other way around, which often means starting after work or pushing the noisy stages into a weekend. Because we are two people rather than a crew with a dispatcher, we can offer that flexibility where larger companies cannot.",
   },
 
   // ── Licenses & Permits ────────────────────────────────────────────────
@@ -104,14 +104,14 @@ const FAQ_DATA: FAQEntry[] = [
     category: "living",
     question: "Can we stay in our home during the renovation?",
     answer:
-      "Yes — a bathroom renovation almost never means moving out. We fully isolate the work zone, contain the dust, and plan the schedule around your household so you always have a working bathroom for the duration of the project. We work efficiently so the disruption window is as short as possible.",
+      "Yes — a bathroom renovation almost never means moving out. We isolate the work zone, contain the dust, and plan the schedule around your household. The room being renovated is a construction site from demolition onward, so if it is your only bathroom we will say so at the quote and plan the stages around that.",
   },
   {
     id: 11,
     category: "living",
     question: "How do you keep the job site clean?",
     answer:
-      "Cleanliness is something we're genuinely known for — read our reviews. Every evening before we leave, we sweep, bag all debris, and fully contain dust to the work zone. We use protective coverings on floors and furniture in adjacent rooms. Anatolii was raised to believe a clean site is a sign of respect for the homeowner — we treat your home exactly the way we'd treat our own.",
+      "Cleanliness is the thing clients mention to us most often. Every evening before we leave, we sweep, bag all debris, and fully contain dust to the work zone. We use protective coverings on floors and furniture in adjacent rooms. Anatolii was raised to believe a clean site is a sign of respect for the homeowner — we treat your home exactly the way we'd treat our own.",
   },
   {
     id: 12,
@@ -134,7 +134,7 @@ const FAQ_DATA: FAQEntry[] = [
     category: "guarantees",
     question: "Will a bathroom renovation increase the value of my home?",
     answer:
-      "Bathroom renovations consistently rank among the top ROI improvements in Canadian real estate — typically returning 70–80% of the renovation cost in added home value, and often much more in Calgary's market. A $15,000 bathroom refresh can add $35,000–$50,000 to your listing price. During your free consultation, we'll walk you through which specific updates give you the best return for your situation.",
+      "Bathrooms and kitchens are consistently the two rooms that return the most of what you put into them — industry surveys in Canada usually put a bathroom renovation somewhere around 60–70% of its cost recovered at resale. Treat any figure as a guide rather than a promise: the return depends on your home, your street and the market on the day you sell. What we can say plainly is that a dated or leaking bathroom puts buyers off more than almost anything else, and that is the problem we fix.",
   },
 ]
 
