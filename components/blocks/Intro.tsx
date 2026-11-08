@@ -105,7 +105,7 @@ export function Intro() {
         Transform your
       </p>
 
-      <h1
+      <div
         className="relative flex items-center leading-none font-black uppercase text-[#f0ede8] text-[24vw] select-none"
         style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.03em" }}
       >
@@ -116,7 +116,7 @@ export function Intro() {
           style={{ width: "0.72em", height: "0.72em", borderWidth: "0.08em", margin: "0 0.02em" }}
         />
         <span>ME</span>
-      </h1>
+      </div>
 
       <div
         ref={hintRef}

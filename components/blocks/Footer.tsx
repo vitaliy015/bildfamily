@@ -15,10 +15,10 @@ const NAV_LINKS = [
 ]
 
 const SERVICE_LINKS = [
-  { label: "Full Bathroom Remodels",   href: "/works" },
-  { label: "Custom Tile & Showers",    href: "/#services" },
-  { label: "Ensuites & Powder Rooms",  href: "/#services" },
-  { label: "Vanities & Fixtures",      href: "/#services" },
+  { label: "Full Bathroom Remodels",  href: "/services/full-bathroom-remodel" },
+  { label: "Ensuite Renovations",     href: "/services/ensuite-renovation" },
+  { label: "Custom Tile & Showers",   href: "/services/tile-and-shower" },
+  { label: "Renovation Costs",        href: "/bathroom-renovation-cost-calgary" },
 ]
 
 const InstagramIcon = () => (
@@ -109,9 +109,18 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
-            © {year} Inside The House. All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <p className="text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
+              © {year} Inside The House. All rights reserved.
+            </p>
+            <Link
+              href="/privacy-policy"
+              className="text-xs tracking-wide hover:text-[#c4a962] transition-colors duration-200"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Privacy Policy
+            </Link>
+          </div>
           <p className="text-[11px] uppercase tracking-[0.25em] text-[#c4a962]/70" style={{ fontFamily: "var(--font-heading)" }}>
             Family-Owned · Est. 2015 · Calgary AB
           </p>

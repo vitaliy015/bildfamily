@@ -9,7 +9,7 @@ import { HowWeWork } from "@/components/blocks/HowWeWork"
 
 const title = "Bathroom Renovations & Our Work | Inside The House — Calgary"
 const description =
-  "Before & after sliders, a full bathroom gallery, and video walkthroughs of real ensuite, basement bath and shower renovations by Inside The House — a family-owned bathroom renovation company in Calgary, AB."
+  "Before & after sliders, photo gallery and video walkthroughs of real bathroom renovations in Calgary by Inside The House — a family-owned company."
 
 export const metadata: Metadata = {
   title,
