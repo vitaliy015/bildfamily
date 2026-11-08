@@ -112,6 +112,21 @@ export function Contact() {
     }
   }
 
+  // Pre-addressed email carrying the form's current contents, offered only when
+  // the server action could not deliver the lead itself.
+  const mailtoFallback =
+    `mailto:${EMAIL}` +
+    `?subject=${encodeURIComponent(`Quote request \u2014 ${form.name || "website"}`)}` +
+    `&body=${encodeURIComponent(
+      [
+        `Name:  ${form.name}`,
+        `Phone: ${form.phone}`,
+        `Email: ${form.email}`,
+        ``,
+        form.message || "",
+      ].join("\n"),
+    )}`
+
   const inputBase =
     "w-full bg-[#faf9f5] border rounded-md px-4 py-3.5 text-[#1c1a18] placeholder-[#9a9690] focus:outline-none focus:ring-2 focus:border-transparent transition-shadow"
   const inputStateClasses = (field: keyof FormFields) =>
@@ -316,13 +331,33 @@ export function Contact() {
               />
 
               {sendError && (
-                <p
+                <div
                   role="alert"
-                  className="text-sm text-[#b4402f]"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="flex flex-col gap-3 rounded-md border border-[#b4402f]/40 bg-[#b4402f]/[0.04] px-4 py-4"
                 >
-                  {sendError}
-                </p>
+                  <p className="text-sm text-[#b4402f]" style={{ fontFamily: "var(--font-body)" }}>
+                    {sendError}
+                  </p>
+                  {/* A failed send must not end the conversation. Both links carry
+                      what they already typed, so the enquiry still reaches us
+                      without them retyping anything. */}
+                  <div className="flex flex-wrap gap-2">
+                    <a
+                      href={PHONE_TEL}
+                      className="inline-flex items-center rounded-full bg-[#1c1a18] text-[#f5f2ee] px-5 py-2.5 text-sm font-medium hover:bg-[#2a2720] transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      Call {PHONE}
+                    </a>
+                    <a
+                      href={mailtoFallback}
+                      className="inline-flex items-center rounded-full border border-[#1c1a18]/25 text-[#1c1a18] px-5 py-2.5 text-sm font-medium hover:bg-[#1c1a18]/5 transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      Send as email instead
+                    </a>
+                  </div>
+                </div>
               )}
 
               <button
