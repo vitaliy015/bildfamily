@@ -16,6 +16,10 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
+  // Unfinished: the room drawings read inside out and the copy is being
+  // rewritten. Nothing on the site links here meanwhile, and this keeps
+  // search engines from indexing a draft that is about to change.
+  robots: { index: false, follow: false },
   alternates: { canonical: "/additional-services" },
   openGraph: { title, description, url: "/additional-services" },
   twitter: { title, description },

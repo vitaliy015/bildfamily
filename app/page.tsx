@@ -5,7 +5,6 @@ import { Services } from "@/components/blocks/Services"
 import { Pricing } from "@/components/blocks/Pricing"
 import { About } from "@/components/blocks/About"
 import { Gallery } from "@/components/blocks/Gallery"
-import { ExtraWork } from "@/components/blocks/ExtraWork"
 import { FAQ } from "@/components/blocks/FAQ"
 import { Footer } from "@/components/blocks/Footer"
 
@@ -20,7 +19,6 @@ export default function Home() {
         <About />
         <Pricing />
         <Gallery />
-        <ExtraWork />
         <FAQ />
       </main>
       <Footer />

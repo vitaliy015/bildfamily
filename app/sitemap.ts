@@ -10,9 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/works", priority: 0.9 },
     { path: "/services", priority: 0.9 },
     { path: "/contact", priority: 0.8 },
-    // Below /services on purpose: this is add-on work for people already
-    // talking to us, not a page meant to compete for its own searches.
-    { path: "/additional-services", priority: 0.5 },
     { path: "/privacy-policy", priority: 0.2 },
   ]
 
