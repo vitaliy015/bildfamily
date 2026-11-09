@@ -6,12 +6,16 @@ import { Phone, Mail, Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
+// Works leads: the photographs do more convincing than any label. Extra Work
+// then sits where Works used to, which also keeps the two similar words at
+// opposite ends of the bar instead of side by side.
 const NAV_LINKS = [
-  { label: "Pricing",  href: "/#pricing" },
-  { label: "About Us", href: "/#about" },
-  { label: "Services", href: "/services" },
-  { label: "Works",    href: "/works" },
-  { label: "Contact",  href: "/contact" },
+  { label: "Works",      href: "/works" },
+  { label: "Pricing",    href: "/#pricing" },
+  { label: "About Us",   href: "/#about" },
+  { label: "Services",   href: "/services" },
+  { label: "Extra Work", href: "/additional-services" },
+  { label: "Contact",    href: "/contact" },
 ]
 
 const EASE = [0.4, 0, 0.2, 1] as const

@@ -5,13 +5,16 @@ const PHONE = "+1 (403) 667-6148"
 const PHONE_TEL = `tel:${PHONE.replace(/\D/g, "")}`
 const EMAIL = "insidethehouseca@gmail.com"
 
+// Same order as the header, with Home kept in front: up there the logo does
+// that job, down here nothing else does.
 const NAV_LINKS = [
-  { label: "Home",     href: "/" },
-  { label: "Pricing",  href: "/#pricing" },
-  { label: "About Us", href: "/#about" },
-  { label: "Services", href: "/services" },
-  { label: "Works",    href: "/works" },
-  { label: "Contact",  href: "/contact" },
+  { label: "Home",       href: "/" },
+  { label: "Works",      href: "/works" },
+  { label: "Pricing",    href: "/#pricing" },
+  { label: "About Us",   href: "/#about" },
+  { label: "Services",   href: "/services" },
+  { label: "Extra Work", href: "/additional-services" },
+  { label: "Contact",    href: "/contact" },
 ]
 
 const SERVICE_LINKS = [
