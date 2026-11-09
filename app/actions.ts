@@ -2,6 +2,11 @@
 
 import { Resend } from "resend"
 import { business } from "@/lib/site"
+import {
+  isEnquiryService,
+  type EnquiryInput,
+  type EnquiryResult,
+} from "@/lib/enquiry"
 
 // Where leads land. Defaults to the public business inbox; override with
 // LEAD_TO_EMAIL once a dedicated domain mailbox exists.
@@ -139,6 +144,123 @@ export async function sendLead(input: LeadInput): Promise<LeadResult> {
     return { ok: true }
   } catch (err) {
     console.error("[sendLead] Unexpected failure:", err, { name, phone, email })
+    return { ok: false, error: GENERIC_ERROR }
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   The Additional Services page has its own form and its own mail, on purpose.
+
+   It asks a different set of questions (which trade, and what needs doing — no
+   name field), and it must land in the inbox looking different, or add-on
+   enquiries and bathroom quote requests pile into one undifferentiated heap.
+   It is a separate function rather than a flag on sendLead so that the path
+   that carries the main quote requests is not touched.
+   ──────────────────────────────────────────────────────────────────────── */
+
+const ENQUIRY_MAX = { service: 60, question: 2000, email: 200, phone: 40 } as const
+
+export async function sendServiceEnquiry(
+  input: EnquiryInput,
+): Promise<EnquiryResult> {
+  if (input.company?.trim()) return { ok: true }
+
+  const service = (input.service ?? "").trim().slice(0, ENQUIRY_MAX.service)
+  const question = (input.question ?? "").trim().slice(0, ENQUIRY_MAX.question)
+  const email = (input.email ?? "").trim().toLowerCase().slice(0, ENQUIRY_MAX.email)
+  const phone = (input.phone ?? "").trim().slice(0, ENQUIRY_MAX.phone)
+
+  // Only ever mail one of the options we actually offer, so a tampered
+  // payload cannot write arbitrary text into the subject line.
+  if (!isEnquiryService(service)) {
+    return { ok: false, error: "Please choose what you would like done." }
+  }
+  if (phone.replace(/\D/g, "").length < 7) {
+    return { ok: false, error: "Please enter a valid phone number." }
+  }
+  if (!EMAIL_RE.test(email)) {
+    return { ok: false, error: "Please enter a valid email address." }
+  }
+
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error("[sendServiceEnquiry] RESEND_API_KEY missing — enquiry not delivered:", {
+      service,
+      phone,
+      email,
+    })
+    return { ok: false, error: GENERIC_ERROR }
+  }
+
+  const receivedAt = new Date().toLocaleString("en-CA", {
+    timeZone: "America/Edmonton",
+    dateStyle: "medium",
+    timeStyle: "short",
+  })
+
+  const tel = phone.replace(/[^\d+]/g, "")
+  const questionHtml = question
+    ? escapeHtml(question).replace(/\n/g, "<br>")
+    : "<em>No details given</em>"
+
+  try {
+    const resend = new Resend(apiKey)
+    const { error } = await resend.emails.send({
+      from: FROM_EMAIL,
+      to: TO_EMAIL,
+      replyTo: email,
+      subject: `Additional work — ${service}`,
+      text: [
+        `Additional work enquiry from the ${business.name} website`,
+        `(sent from the Additional Services page, not the main quote form)`,
+        ``,
+        `Wants:    ${service}`,
+        `Phone:    ${phone}`,
+        `Email:    ${email}`,
+        `Details:  ${question || "(none)"}`,
+        ``,
+        `Received: ${receivedAt} (Calgary time)`,
+      ].join("\n"),
+      html: `
+        <div style="font-family:system-ui,-apple-system,sans-serif;max-width:560px">
+          <h2 style="margin:0 0 4px">Additional work &mdash; ${escapeHtml(service)}</h2>
+          <p style="margin:0 0 20px;color:#6a6460;font-size:14px">
+            From the Additional Services page &middot; ${escapeHtml(receivedAt)} Calgary time
+          </p>
+          <table style="border-collapse:collapse;width:100%;font-size:15px">
+            <tr>
+              <td style="padding:8px 0;color:#6a6460;width:90px">Wants</td>
+              <td style="padding:8px 0"><strong>${escapeHtml(service)}</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:8px 0;color:#6a6460">Phone</td>
+              <td style="padding:8px 0">
+                <a href="tel:${escapeHtml(tel)}" style="color:#8a8a5c"><strong>${escapeHtml(phone)}</strong></a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 0;color:#6a6460">Email</td>
+              <td style="padding:8px 0">
+                <a href="mailto:${escapeHtml(email)}" style="color:#8a8a5c"><strong>${escapeHtml(email)}</strong></a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 0;color:#6a6460;vertical-align:top">Details</td>
+              <td style="padding:8px 0">${questionHtml}</td>
+            </tr>
+          </table>
+        </div>
+      `,
+    })
+
+    if (error) {
+      console.error("[sendServiceEnquiry] Resend rejected the email:", error, { service, phone, email })
+      return { ok: false, error: GENERIC_ERROR }
+    }
+
+    return { ok: true }
+  } catch (err) {
+    console.error("[sendServiceEnquiry] Unexpected failure:", err, { service, phone, email })
     return { ok: false, error: GENERIC_ERROR }
   }
 }
