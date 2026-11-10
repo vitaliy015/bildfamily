@@ -24,12 +24,24 @@ export const metadata: Metadata = {
   twitter: { title, description },
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+// Gold is the accent the rest of the site reserves for its dark bands: it
+// reads at 7.6:1 on #1c1a17 and at 2.05:1 on cream, so it only ever earns
+// its place on the dark tone.
+function Eyebrow({
+  children,
+  tone = "light",
+}: {
+  children: React.ReactNode
+  tone?: "light" | "dark"
+}) {
+  const dark = tone === "dark"
   return (
     <div className="flex items-center gap-3">
-      <span className="h-px w-8 bg-[#8a8a5c]" />
+      <span className={`h-px w-8 ${dark ? "bg-[#c4a962]" : "bg-[#8a8a5c]"}`} />
       <span
-        className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#6a6460]"
+        className={`text-[11px] font-bold uppercase tracking-[0.25em] ${
+          dark ? "text-[#c4a962]" : "text-[#6a6460]"
+        }`}
         style={{ fontFamily: "var(--font-heading)" }}
       >
         {children}
@@ -73,20 +85,33 @@ export default function AdditionalServicesPage() {
         </section>
 
         {/* ── Two ways to book ────────────────────────────────────────── */}
-        <section className="border-t border-[#c4c0b8]/60 bg-[#faf9f5] py-16 md:py-20">
+        {/* Dark on purpose. Every other page carries one dark band and this
+            one carried none, so it ran cream from the header to the form with
+            nothing to break the fall. It is also the only tone on the page
+            that gold can be read against. */}
+        <section className="bg-[#1c1a17] py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-6 md:px-12">
-            <Eyebrow>Two ways to book</Eyebrow>
+            <Eyebrow tone="dark">Two ways to book</Eyebrow>
 
-            <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
+            {/* the same hairline that opens the steps in How We Work */}
+            <div
+              className="mt-8 h-px w-full bg-gradient-to-r from-[#c4a962]/50 via-[#8a8a5c]/30 to-transparent"
+              aria-hidden
+            />
+
+            <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-14">
               <div>
+                {/* gold marks the better of the two, exactly as it marks the
+                    featured tier in Pricing — no extra words needed */}
+                <div className="mb-4 h-px w-8 bg-[#c4a962]" aria-hidden />
                 <h2
-                  className="mb-3 text-2xl font-black uppercase leading-tight text-[#1c1a18] md:text-3xl"
+                  className="mb-3 text-2xl font-black uppercase leading-tight text-[#f0ede8] md:text-3xl"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   With your bathroom
                 </h2>
                 <p
-                  className="text-lg leading-relaxed text-[#4a4840]"
+                  className="text-lg leading-relaxed text-[#9a9a8a]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   One crew, one set of dates, one quote. Cheaper, because we are
@@ -95,14 +120,15 @@ export default function AdditionalServicesPage() {
               </div>
 
               <div>
+                <div className="mb-4 h-px w-8 bg-[#8a8a5c]" aria-hidden />
                 <h2
-                  className="mb-3 text-2xl font-black uppercase leading-tight text-[#1c1a18] md:text-3xl"
+                  className="mb-3 text-2xl font-black uppercase leading-tight text-[#f0ede8] md:text-3xl"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   On its own
                 </h2>
                 <p
-                  className="text-lg leading-relaxed text-[#4a4840]"
+                  className="text-lg leading-relaxed text-[#9a9a8a]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   We come, we price it, we do it.
