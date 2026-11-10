@@ -50,9 +50,9 @@ export default function AdditionalServicesPage() {
               className="text-[12vw] font-black uppercase leading-[0.92] text-[#1c1a18] min-[430px]:text-[58px] md:text-[76px]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Not just
+              Additional
               <br />
-              <span className="text-[#8a8a5c]">bathrooms</span>
+              <span className="text-[#8a8a5c]">services</span>
             </h1>
 
             <p
