@@ -133,12 +133,13 @@ export function FlooringArt({ className }: ArtProps) {
   const laid = 0.56
   return (
     <Frame className={className}>
-      <Shell />
-      {/* the part already boarded */}
+      <Shell leftTint={0.16} />
+      {/* The boarded strip runs right up to the left wall, so it has to sit
+          clearly below that wall in value or it reads as climbing it. */}
       <path
         d={poly(floor(0, 0), floor(1, 0), floor(1, laid), floor(0, laid))}
         fill={OLIVE}
-        fillOpacity="0.3"
+        fillOpacity="0.46"
         stroke={INK}
         strokeWidth="1.5"
         strokeLinejoin="round"
@@ -173,7 +174,7 @@ export function DrywallArt({ className }: ArtProps) {
   const leaning = box([0.06, 0.62], [0.4, 0.86], 6)
   return (
     <Frame className={className}>
-      <Shell rightTint={0.04} />
+      <Shell rightTint={0.1} />
       {/* studs, still showing */}
       <g stroke={HAIR} strokeWidth="2.4">
         {[0.12, 0.28, 0.44, 0.6, 0.76, 0.92].map((t) => (

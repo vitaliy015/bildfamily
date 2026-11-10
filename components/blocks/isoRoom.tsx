@@ -72,13 +72,17 @@ const floorUp = (a: number, b: number, h: number) =>
 export { floorUp }
 
 /** The empty room: floor and the two walls behind it. */
-export function Shell({ leftTint = 0.26, rightTint = 0.14, tiles = false }) {
+// Three distinct values, floor lightest. When the floor and a wall sit within
+// a hair of each other the drawing becomes a Necker cube — the eye flips it
+// between a corner seen from above and a box seen from outside. Separation is
+// what fixes that, not more detail.
+export function Shell({ leftTint = 0.26, rightTint = 0.2, tiles = false }) {
   return (
     <>
       <path
         d={poly(floor(0, 1), floor(1, 1), floor(1, 0), floor(0, 0))}
         fill={OLIVE}
-        fillOpacity="0.12"
+        fillOpacity="0.06"
         stroke={INK}
         strokeWidth="1.8"
         strokeLinejoin="round"

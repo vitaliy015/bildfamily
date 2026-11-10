@@ -71,19 +71,17 @@ export function ExtraWork() {
             className="mt-6 text-4xl font-black uppercase leading-[0.95] text-[#1c1a18] md:text-6xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            The rest
+            Additional
             <br />
-            of the <span className="text-[#8a8a5c]">house</span>
+            <span className="text-[#8a8a5c]">services</span>
           </h2>
 
           <p
             className="mt-6 text-lg leading-relaxed text-[#4a4840]"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Your bathroom is the reason we come. But by then the crew, the tools
-            and the dust sheets are already inside &mdash; so the hallway you
-            walk past every day can be done in the same visit, by the same
-            people, on the same quote.
+            Add them to your bathroom renovation &mdash; or book them on their
+            own.
           </p>
         </motion.div>
 
@@ -113,23 +111,15 @@ export function ExtraWork() {
 
         <motion.div
           {...rise(reduce ? 0 : 0.3)}
-          className="mt-12 flex flex-col items-start gap-5 md:mt-14 md:flex-row md:items-center md:justify-between"
+          className="mt-12 flex md:mt-14"
         >
-          <p
-            className="max-w-xl leading-relaxed text-[#6a6460]"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Still a bathroom company &mdash; this is work we add on while we are
-            there, not a second trade we are pitching.
-          </p>
-
           <Link
             href="/additional-services"
             className="group inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full bg-[#8a8a5c] px-7 py-3.5 text-[#f5f2ee] transition duration-300 ease-out hover:bg-[#7a7a4e] motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 sm:px-8 sm:py-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             <span className="text-[15px] font-bold tracking-[0.01em] sm:text-base">
-              See the whole walk
+              See what else we do
             </span>
             <Arrow />
           </Link>
