@@ -3,15 +3,14 @@ import { Nav } from "@/components/blocks/Nav"
 import { Footer } from "@/components/blocks/Footer"
 import { HouseMap } from "@/components/blocks/HouseMap"
 import { ServiceEnquiry } from "@/components/blocks/ServiceEnquiry"
-import { business } from "@/lib/site"
 
 // Deliberately not written for "painting Calgary" and the like. This page
 // exists for people who are already talking to us about a bathroom; chasing
 // general-contractor keywords here is what would blur the specialist
 // positioning the rest of the site is built on.
-const title = "While We're Already in Your Home | Inside The House"
+const title = "Painting, Flooring, Drywall & Kitchens | Inside The House"
 const description =
-  "Painting, flooring, drywall and kitchens — handled by the same crew during your bathroom renovation, so you are not booking a second contractor for a second mess."
+  "Painting, flooring, drywall and kitchens in Calgary. Add them to your bathroom renovation, or book them on their own. Free quote, same-day reply."
 
 export const metadata: Metadata = {
   title,
@@ -45,42 +44,24 @@ export default function AdditionalServicesPage() {
       <Nav />
       <main className="bg-[#f5f2ee]">
         {/* ── Opening ─────────────────────────────────────────────────── */}
-        <section className="pt-32 pb-14 md:pt-40 md:pb-16">
+        <section className="pt-32 pb-12 md:pt-40 md:pb-16">
           <div className="mx-auto max-w-5xl px-6 md:px-12">
-            <Eyebrow>
-              For our bathroom clients &middot; {business.city}, {business.region}
-            </Eyebrow>
-
             <h1
-              className="mt-6 text-[11vw] font-black uppercase leading-[0.94] text-[#1c1a18] min-[430px]:text-[52px] md:text-[68px]"
+              className="text-[12vw] font-black uppercase leading-[0.92] text-[#1c1a18] min-[430px]:text-[58px] md:text-[76px]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              While we&rsquo;re
+              Not just
               <br />
-              already in
-              <br />
-              <span className="text-[#8a8a5c]">your home</span>
+              <span className="text-[#8a8a5c]">bathrooms</span>
             </h1>
 
-            <div className="mt-8 max-w-2xl space-y-5">
-              <p
-                className="text-lg leading-relaxed text-[#4a4840]"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Bathrooms are what we do, and that is not changing. But by the time
-                your bathroom is underway, the crew, the tools and the dust sheets
-                are already inside your house &mdash; and the hallway you walk past
-                every day is still the hallway you walk past every day.
-              </p>
-              <p
-                className="leading-relaxed text-[#6a6460]"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                So this page is the rest of the walk. One crew, one set of dates, one
-                clean-up at the end &mdash; instead of booking a second contractor and
-                living through the whole thing twice.
-              </p>
-            </div>
+            <p
+              className="mt-7 max-w-xl text-lg leading-relaxed text-[#4a4840] md:text-xl"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Painting, flooring, drywall, kitchens. Add them to your bathroom
+              renovation &mdash; or book them on their own.
+            </p>
           </div>
         </section>
 
@@ -91,10 +72,10 @@ export default function AdditionalServicesPage() {
           </div>
         </section>
 
-        {/* ── The honest part ─────────────────────────────────────────── */}
+        {/* ── Two ways to book ────────────────────────────────────────── */}
         <section className="border-t border-[#c4c0b8]/60 bg-[#faf9f5] py-16 md:py-20">
           <div className="mx-auto max-w-5xl px-6 md:px-12">
-            <Eyebrow>Two things worth saying plainly</Eyebrow>
+            <Eyebrow>Two ways to book</Eyebrow>
 
             <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
               <div>
@@ -102,15 +83,14 @@ export default function AdditionalServicesPage() {
                   className="mb-3 text-2xl font-black uppercase leading-tight text-[#1c1a18] md:text-3xl"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  We are still a bathroom company
+                  With your bathroom
                 </h2>
                 <p
-                  className="leading-relaxed text-[#4a4840]"
+                  className="text-lg leading-relaxed text-[#4a4840]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  This is add-on work, done alongside a bathroom renovation. We are
-                  not pitching to gut your whole house, and we will say so if what
-                  you are describing is really a job for a general contractor.
+                  One crew, one set of dates, one quote. Cheaper, because we are
+                  already there.
                 </p>
               </div>
 
@@ -119,15 +99,13 @@ export default function AdditionalServicesPage() {
                   className="mb-3 text-2xl font-black uppercase leading-tight text-[#1c1a18] md:text-3xl"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  Ask at the quote, not after
+                  On its own
                 </h2>
                 <p
-                  className="leading-relaxed text-[#4a4840]"
+                  className="text-lg leading-relaxed text-[#4a4840]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Extra work is cheapest and least disruptive when it is planned into
-                  the schedule from the start. Mention it during the walkthrough and
-                  it goes on the same written quote, with the same dates.
+                  We come, we price it, we do it.
                 </p>
               </div>
             </div>

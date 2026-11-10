@@ -156,7 +156,7 @@ export function ServiceEnquiry() {
               className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#1c1a18]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              The last stop
+              Free quote
             </span>
           </div>
 
@@ -164,18 +164,16 @@ export function ServiceEnquiry() {
             className="mt-6 text-3xl font-black uppercase leading-[0.95] text-[#1c1a18] md:text-5xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            What else
+            What do
             <br />
-            is on the list?
+            you need?
           </h2>
 
           <p
             className="mt-6 max-w-md leading-relaxed text-[#1c1a18]"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Tell us which one and we will price it together with the bathroom —
-            one written quote, one set of dates. It costs nothing to ask, and
-            there is no obligation to go ahead.
+            Free to ask, same-day reply.
           </p>
 
           <div className="mt-10 border-t border-[#6f6f47] pt-8">
@@ -183,7 +181,7 @@ export function ServiceEnquiry() {
               className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1c1a18]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Rather just talk?
+              Or just call
             </p>
             <a
               href={PHONE_TEL}
@@ -204,7 +202,7 @@ export function ServiceEnquiry() {
               className="mt-3 text-sm text-[#1c1a18]"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Evenings and weekends are fine — that is when most people are home.
+              Evenings and weekends are fine.
             </p>
           </div>
         </motion.div>
@@ -233,9 +231,8 @@ export function ServiceEnquiry() {
                 className="leading-relaxed text-[#4a4840]"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                We&rsquo;ll come back to you shortly with a price for the
-                {form.service ? ` ${form.service.toLowerCase()}` : " work"} alongside
-                your bathroom.
+                We&rsquo;ll be in touch shortly with a price for the
+                {form.service ? ` ${form.service.toLowerCase()}` : " work"}.
               </p>
             </div>
           ) : (
@@ -243,7 +240,7 @@ export function ServiceEnquiry() {
               {/* which trade */}
               <div>
                 <label htmlFor="service" className={labelClass} style={{ fontFamily: "var(--font-heading)" }}>
-                  What would you like done?
+                  What you need
                 </label>
                 {/* A native <select> draws its list with the operating
                     system, which no CSS can reach. This is Base UI's select:
@@ -324,7 +321,7 @@ export function ServiceEnquiry() {
               {/* the question */}
               <div>
                 <label htmlFor="question" className={labelClass} style={{ fontFamily: "var(--font-heading)" }}>
-                  Anything you want to ask?{" "}
+                  Details{" "}
                   <span className="font-normal normal-case tracking-normal text-[#1c1a18]">
                     optional
                   </span>
@@ -335,7 +332,7 @@ export function ServiceEnquiry() {
                   rows={4}
                   value={form.question}
                   onChange={(e) => change("question", e.target.value)}
-                  placeholder="Rough size, condition, anything you already know you want…"
+                  placeholder="Rough size, condition, what you already know you want…"
                   className={`${fieldClass} resize-y border-[#6f6f47]`}
                   style={{ fontFamily: "var(--font-body)" }}
                 />
@@ -444,13 +441,13 @@ export function ServiceEnquiry() {
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <span className="text-[15px] font-bold uppercase tracking-[0.08em] sm:text-base">
-                  {pending ? "Sending…" : "Ask about this"}
+                  {pending ? "Sending…" : "Get a price"}
                 </span>
                 {!pending && <Arrow />}
               </button>
 
               <p className="text-xs text-[#1c1a18]" style={{ fontFamily: "var(--font-body)" }}>
-                We use your details to answer this enquiry and nothing else.
+                Your details are used to answer this enquiry and nothing else.
               </p>
             </form>
           )}

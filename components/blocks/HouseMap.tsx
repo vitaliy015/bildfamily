@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 import {
   type ArtProps,
-  BathroomArt,
   PaintingArt,
   FlooringArt,
   DrywallArt,
@@ -27,57 +26,34 @@ const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
 type Stop = {
   id: string
-  room: string
   service: string
   body: string
-  aside: string
   Art: (props: ArtProps) => React.ReactElement
 }
 
 const STOPS: Stop[] = [
   {
-    id: "bathroom",
-    room: "Where we start",
-    service: "Your bathroom",
-    body:
-      "This is the job you called us about, and it stays the job. Down to the studs, waterproofed properly, tiled, finished, cleaned up behind us.",
-    aside: "You are here",
-    Art: BathroomArt,
-  },
-  {
     id: "painting",
-    room: "Step out the door",
     service: "Painting",
-    body:
-      "The hallway takes the beating on the way in and out — and our dust sheets are already down. Walls, ceilings and trim, cut in by hand, in the same visit.",
-    aside: "Same crew, same week",
+    body: "Walls, ceilings, trim.",
     Art: PaintingArt,
   },
   {
     id: "flooring",
-    room: "Carry on down the hall",
     service: "Flooring",
-    body:
-      "Vinyl plank, laminate or engineered hardwood. Floors are the cheapest thing to add while the house is already a worksite, and the first thing anyone notices afterwards.",
-    aside: "Transitions matched to the new bathroom",
+    body: "Vinyl plank, laminate, engineered hardwood.",
     Art: FlooringArt,
   },
   {
     id: "drywall",
-    room: "The walls you stopped seeing",
-    service: "Drywall & repairs",
-    body:
-      "Cracks above the doors, the dent behind the handle, somebody else's patch job. Boarded, taped, sanded and finished so it does not show up under a side light.",
-    aside: "Ready to paint, not just filled",
+    service: "Drywall",
+    body: "Cracks, patches, ready for paint.",
     Art: DrywallArt,
   },
   {
     id: "kitchens",
-    room: "The far end of the house",
     service: "Kitchens",
-    body:
-      "The bigger one, and we treat it that way. Cabinets, counters, backsplash and the plumbing behind them. Ask while we are on site and you get a real quote instead of a guess.",
-    aside: "Quoted properly, in person",
+    body: "Cabinets, counters, backsplash, plumbing.",
     Art: KitchenArt,
   },
 ]
@@ -151,12 +127,6 @@ export function HouseMap() {
                       : "lg:order-1 lg:pr-20 lg:text-right"
                   }
                 >
-                  <p
-                    className="mb-3 text-[11px] font-bold uppercase tracking-[0.25em] text-[#8a8a5c]"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    {stop.room}
-                  </p>
                   <h3
                     className="mb-4 text-[34px] font-black uppercase leading-[0.95] text-[#1c1a18] md:text-[46px]"
                     style={{ fontFamily: "var(--font-heading)" }}
@@ -164,19 +134,10 @@ export function HouseMap() {
                     {stop.service}
                   </h3>
                   <p
-                    className="max-w-[46ch] leading-relaxed text-[#4a4840] lg:inline-block"
+                    className="max-w-[34ch] text-lg leading-relaxed text-[#4a4840] lg:inline-block"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     {stop.body}
-                  </p>
-                  <p
-                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#c4c0b8] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#6a6460]"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    {i === 0 && (
-                      <span className="h-[6px] w-[6px] rounded-full bg-[#8a8a5c]" />
-                    )}
-                    {stop.aside}
                   </p>
                 </motion.div>
 
