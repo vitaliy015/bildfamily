@@ -1,25 +1,13 @@
 import { business } from "@/lib/site"
 
-// Google Maps Embed API key (client-visible; restrict by HTTP referrer + limit
-// to the Maps Embed API in Google Cloud). Until it's set, we show a branded
-// fallback that still links to Google Maps.
-const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+// Keyless Google Maps embed — the same URL Google's own "Share → Embed a map"
+// button hands out. No API key, no Google Cloud project, no billing account,
+// and nothing secret sitting in the page source. `pb` is Google's packed
+// parameter format: `1s` carries the point, `6i` the zoom level. The map always
+// follows the viewer's own browser language — neither `hl` nor a language block
+// inside `pb` overrides it, both were tested — so a Calgary visitor sees English.
 const { lat, lng } = business.geo
-const embedSrc = MAPS_KEY
-  ? `https://www.google.com/maps/embed/v1/place?key=${MAPS_KEY}&q=${lat},${lng}&zoom=13`
-  : null
-
-const PinIcon = ({ className = "" }: { className?: string }) => (
-  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-    <path
-      d="M12 2c-3.87 0-7 3.13-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-    <circle cx="12" cy="9" r="2.4" stroke="currentColor" strokeWidth="1.6" />
-  </svg>
-)
+const embedSrc = `https://www.google.com/maps/embed?pb=!1m3!2m1!1s${lat},${lng}!6i13`
 
 const ArrowIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -53,63 +41,27 @@ export function MapCard() {
 
         {/* Map card */}
         <div className="relative overflow-hidden rounded-2xl border border-[#8a8a5c]/40 aspect-[16/11] sm:aspect-[16/8] lg:aspect-[16/6]">
-          {embedSrc ? (
-            <iframe
-              src={embedSrc}
-              title="Inside The House — Calgary service area map"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
-              style={{ border: 0, filter: "saturate(0.92) sepia(0.06) brightness(0.98)" }}
-            />
-          ) : (
-            /* Fallback — whole card links to Google Maps */
-            <a
-              href={business.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open our Calgary location in Google Maps"
-              className="group absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#232019] transition-colors duration-300 hover:bg-[#2a2720]"
-            >
-              {/* Blueprint grid for a subtle map feel */}
-              <div
-                className="absolute inset-0 opacity-[0.05] pointer-events-none"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(196,169,98,1) 1px, transparent 1px), linear-gradient(90deg, rgba(196,169,98,1) 1px, transparent 1px)",
-                  backgroundSize: "48px 48px",
-                }}
-              />
-              <PinIcon className="relative text-[#c4a962]" />
-              <span
-                className="relative text-xl font-bold uppercase tracking-wide text-[#f0ede8]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Calgary, AB
-              </span>
-              <span
-                className="relative inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#c4a962]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Open in Google Maps <ArrowIcon />
-              </span>
-            </a>
-          )}
+          <iframe
+            src={embedSrc}
+            title="Inside The House — Calgary service area map"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+            style={{ border: 0, filter: "saturate(0.92) sepia(0.06) brightness(0.98)" }}
+          />
 
-          {/* Overlay CTA (with the live map) */}
-          {embedSrc && (
-            <a
-              href={business.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open our Calgary location in Google Maps"
-              className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 bg-[#8a8a5c] text-[#f5f2ee] px-5 py-3 rounded-md shadow-lg hover:bg-[#7a7a4e] transition-colors duration-300 text-xs font-black uppercase tracking-[0.15em]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Open in Google Maps <ArrowIcon />
-            </a>
-          )}
+          {/* Overlay CTA */}
+          <a
+            href={business.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open our Calgary location in Google Maps"
+            className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-2 bg-[#8a8a5c] text-[#f5f2ee] px-3.5 py-2.5 rounded-md shadow-lg hover:bg-[#7a7a4e] transition-colors duration-300 text-[10px] font-black uppercase tracking-[0.12em] sm:bottom-4 sm:right-4 sm:px-5 sm:py-3 sm:text-xs sm:tracking-[0.15em]"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Open in Google Maps <ArrowIcon />
+          </a>
         </div>
       </div>
     </section>

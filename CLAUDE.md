@@ -18,9 +18,13 @@ TODOs that are intentionally deferred, not forgotten.
   `lib/site.ts` / Footer / Contact.
 - [ ] **Set `NEXT_PUBLIC_SITE_URL`** in Vercel once the real domain is live
   (SEO absolute links currently fall back to the Vercel/localhost URL).
-- [ ] **Provide/set `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`** (Google Cloud → Maps Embed
-  API, restricted by HTTP referrer) in `.env.local` + Vercel. Until then the Contact
-  map shows the branded fallback (which still links to Google Maps).
+- [x] ~~Google Maps API key~~ — **closed 2026-11-11, no key needed.** The owner has
+  no Google account access, so `MapCard.tsx` now uses the keyless Share → Embed
+  URL (`/maps/embed?pb=!1m3!2m1!1s<lat>,<lng>!6i13`). No Cloud project, no billing,
+  nothing to restrict or leak. Map labels follow the visitor's browser language;
+  that cannot be pinned (`hl` and the `pb` language block were both tested and are
+  ignored). `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` is now unused — safe to delete from
+  `.env.local`.
 
 ## Role
 Claude acts as **Senior Full-Stack Developer + Web Designer + Marketing Strategist + QA Tester** on this project.
