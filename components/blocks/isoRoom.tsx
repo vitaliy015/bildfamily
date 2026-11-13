@@ -72,17 +72,19 @@ const floorUp = (a: number, b: number, h: number) =>
 export { floorUp }
 
 /** The empty room: floor and the two walls behind it. */
-// Three distinct values, floor lightest. When the floor and a wall sit within
-// a hair of each other the drawing becomes a Necker cube — the eye flips it
-// between a corner seen from above and a box seen from outside. Separation is
-// what fixes that, not more detail.
-export function Shell({ leftTint = 0.26, rightTint = 0.2, tiles = false }) {
+// Floor darkest, walls light. This is the whole trick, and getting it backwards
+// is what makes these read inside-out: a light top with darker sides is the
+// shading of a solid cube seen from OUTSIDE, so that is what the eye obediently
+// sees. Looking INTO a corner, the floor is the surface in shade and the walls
+// are the ones catching the light. Three separated values, in that order, and
+// the figure stops flipping.
+export function Shell({ leftTint = 0.12, rightTint = 0.05, tiles = false }) {
   return (
     <>
       <path
         d={poly(floor(0, 1), floor(1, 1), floor(1, 0), floor(0, 0))}
         fill={OLIVE}
-        fillOpacity="0.06"
+        fillOpacity="0.26"
         stroke={INK}
         strokeWidth="1.8"
         strokeLinejoin="round"
