@@ -18,6 +18,12 @@ TODOs that are intentionally deferred, not forgotten.
   `lib/site.ts` / Footer / Contact.
 - [ ] **Set `NEXT_PUBLIC_SITE_URL`** in Vercel once the real domain is live
   (SEO absolute links currently fall back to the Vercel/localhost URL).
+- [ ] **January 2027 — licences.** (1) The Alberta/provincial contractor licence
+  was applied for and is expected around New Year 2027; when it arrives, add it
+  to `business.licence` in `lib/site.ts` so the FAQ and footer cite both. Until
+  then the site must NOT mention an Alberta licence. (2) City of Calgary licence
+  BL286908 expires **2027-01-27** — the number is printed in the footer and the
+  FAQ, so it must be refreshed at renewal.
 - [x] ~~Google Maps API key~~ — **closed 2026-11-11, no key needed.** The owner has
   no Google account access, so `MapCard.tsx` now uses the keyless Share → Embed
   URL (`/maps/embed?pb=!1m3!2m1!1s<lat>,<lng>!6i13`). No Cloud project, no billing,

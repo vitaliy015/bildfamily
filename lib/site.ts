@@ -11,6 +11,19 @@ export const siteUrl =
 
 export const business = {
   name: "Inside The House",
+  // The registered entity. Used in the copyright line, the JSON-LD and anywhere
+  // the business is named in a legal sense rather than a brand sense.
+  legalName: "Inside The House Corp",
+  // City of Calgary business licence BL286908, the document the FAQ and footer
+  // cite. There is no public licence registry in Calgary, so the only way a
+  // client can check it is to phone the city or ask us for a copy — which is
+  // why the FAQ offers one. EXPIRES 2027-01-27: the number must be renewed on
+  // the site at that point or it reads as stale.
+  licence: {
+    number: "BL286908",
+    issuer: "City of Calgary",
+    expires: "2027-01-27",
+  },
   description:
     "Family-owned bathroom renovation company in Calgary, AB. Full remodels, ensuites, custom tile & showers, vanities. Honest pricing, reliable timelines. Free quote.",
   phone: "+1 (403) 667-6148",

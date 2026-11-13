@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "motion/react"
+import { business } from "@/lib/site"
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -86,9 +87,12 @@ const FAQ_DATA: FAQEntry[] = [
   {
     id: 8,
     category: "permits",
-    question: "Are you licensed and insured in Alberta?",
+    question: "Are you licensed and insured?",
+    // The licence is municipal, not provincial — the document itself is marked
+    // "contractor (no provincial licence required)". Naming the issuer and the
+    // number is what makes this checkable; a bare "we are licensed" is not.
     answer:
-      "Yes. We carry full general liability insurance and operate under a valid Alberta contractor's licence. You can request our certificate of insurance at any time — we send it same-day. Because Anatolii and Nataliia personally stand behind every project, maintaining proper coverage is non-negotiable for us.",
+      `Yes. ${business.legalName} holds ${business.licence.issuer} Business Licence ${business.licence.number}, valid through January 2027 — we will send you a copy on request. We also carry general liability insurance and can provide our certificate of insurance at any time. Anatolii and Nataliia personally stand behind every project, so keeping that paperwork current is non-negotiable for us.`,
   },
   {
     id: 9,

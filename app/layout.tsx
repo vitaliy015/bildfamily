@@ -55,6 +55,7 @@ const jsonLd = {
   "@type": "GeneralContractor",
   "@id": `${siteUrl}/#business`,
   name: business.name,
+  legalName: business.legalName,
   description: business.description,
   url: siteUrl,
   telephone: business.phone,

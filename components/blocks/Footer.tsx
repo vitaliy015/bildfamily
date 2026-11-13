@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { business } from "@/lib/site"
 
 const INSTAGRAM_URL = "https://www.instagram.com/insidethehouse_renovations"
 const PHONE = "+1 (403) 667-6148"
@@ -114,7 +115,13 @@ export function Footer() {
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <p className="text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
-              © {year} Inside The House. All rights reserved.
+              © {year} {business.legalName}. All rights reserved.
+            </p>
+            {/* The licence belongs here rather than in a badge: a number read as a
+                quiet business detail is believed, the same number shouted as a
+                trust seal is not. */}
+            <p className="text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
+              {business.licence.issuer} Business Licence {business.licence.number}
             </p>
             <Link
               href="/privacy-policy"
