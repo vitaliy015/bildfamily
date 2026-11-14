@@ -7,7 +7,8 @@ const PHONE_TEL = `tel:${PHONE.replace(/\D/g, "")}`
 const EMAIL = "insidethehouseca@gmail.com"
 
 // Same order as the header, with Home kept in front: up there the logo does
-// that job, down here nothing else does.
+// that job, down here nothing else does. FAQ is the one entry the header has
+// no room for, and it is the only place the warranty is actually explained.
 const NAV_LINKS = [
   { label: "Home",       href: "/" },
   { label: "Works",      href: "/works" },
@@ -15,6 +16,7 @@ const NAV_LINKS = [
   { label: "About Us",   href: "/#about" },
   { label: "Services",   href: "/services" },
   { label: "Extra Work", href: "/additional-services" },
+  { label: "FAQ",        href: "/#faq" },
   { label: "Contact",    href: "/contact" },
 ]
 
