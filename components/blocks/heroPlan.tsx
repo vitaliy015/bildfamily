@@ -17,32 +17,31 @@ const EASE = [0.22, 1, 0.36, 1] as const
 type Stroke = { d: string; at: number; dur: number; fill?: string }
 
 const STROKES: Stroke[] = [
-  // Room — drawn as one continuous wall line with the doorway left open
-  { d: "M14 14 H306 V232 H70", at: 0.0, dur: 0.75 },
-  { d: "M14 232 V14", at: 0.5, dur: 0.3 },
+  // Room — one continuous wall line with the doorway left open
+  { d: "M14 14 H306 V232 H70", at: 0.0, dur: 0.6 },
+  { d: "M14 232 V14", at: 0.38, dur: 0.25 },
 
-  // Door swing: the leaf, then the arc it sweeps
-  { d: "M14 232 L14 176", at: 0.72, dur: 0.18 },
-  { d: "M14 176 A56 56 0 0 0 70 232", at: 0.82, dur: 0.42 },
+  // Door: the leaf, then the arc it sweeps
+  { d: "M14 232 L14 176", at: 0.54, dur: 0.15 },
+  { d: "M14 176 A56 56 0 0 0 70 232", at: 0.62, dur: 0.34 },
 
   // Bathtub, top right
-  { d: "M190 26 H296 V96 H190 Z", at: 0.95, dur: 0.45 },
-  { d: "M284 38 h0.01", at: 1.3, dur: 0.01 },
+  { d: "M190 26 H296 V96 H190 Z", at: 0.72, dur: 0.36 },
 
   // Vanity run along the bottom wall, with the basin
-  { d: "M96 192 H212 V222 H96 Z", at: 1.2, dur: 0.4 },
-  { d: "M140 198 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0", at: 1.45, dur: 0.35 },
+  { d: "M96 192 H212 V222 H96 Z", at: 0.90, dur: 0.32 },
+  { d: "M140 198 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0", at: 1.10, dur: 0.30 },
 
   // WC against the left wall
-  { d: "M28 96 H64 V140 H28 Z", at: 1.35, dur: 0.3 },
+  { d: "M28 96 H64 V140 H28 Z", at: 1.02, dur: 0.25 },
 
   // Dimension line under the room, with end ticks
-  { d: "M14 252 H306", at: 1.6, dur: 0.5 },
-  { d: "M14 246 V258", at: 1.95, dur: 0.12 },
-  { d: "M306 246 V258", at: 1.95, dur: 0.12 },
+  { d: "M14 252 H306", at: 1.22, dur: 0.40 },
+  { d: "M14 246 V258", at: 1.50, dur: 0.10 },
+  { d: "M306 246 V258", at: 1.50, dur: 0.10 },
 ]
 
-export function HeroPlan({ opacity = 0.95 }: { opacity?: number }) {
+export function HeroPlan({ opacity = 0.85 }: { opacity?: number }) {
   return (
     <svg
       viewBox="0 0 320 272"
@@ -56,7 +55,7 @@ export function HeroPlan({ opacity = 0.95 }: { opacity?: number }) {
           key={s.d}
           d={s.d}
           stroke={OLIVE}
-          strokeWidth="1.6"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           initial={{ pathLength: 0 }}
@@ -75,7 +74,7 @@ export function HeroPlan({ opacity = 0.95 }: { opacity?: number }) {
         style={{ fontFamily: "var(--font-heading)", letterSpacing: "0.18em" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.05, ease: EASE }}
+        transition={{ duration: 0.28, delay: 1.5, ease: EASE }}
       >
         Bathroom
       </motion.text>
