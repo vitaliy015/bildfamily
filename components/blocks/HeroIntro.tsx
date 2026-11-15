@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { HeroPlan } from "./heroPlan"
 
 // A drafting pen rules the sheet, then the ink dries away and leaves the hero.
 //
@@ -23,8 +24,10 @@ const OLIVE = "#8a8a5c"
 // The nib crosses the hero in SWEEP seconds; every rule is timed to appear as
 // the nib reaches it, so the drawing follows the pen rather than racing it.
 const SWEEP = 1.05
-const HOLD = 0.45
-const FADE = 0.65
+// The plan keeps drawing after the nib has crossed, so the hold has to cover
+// it: the last stroke lands at ~2.1s and the label at ~2.35s.
+const HOLD = 1.6
+const FADE = 0.7
 const TOTAL = SWEEP + HOLD + FADE
 
 // Rules land off-centre on purpose: evenly spaced thirds read as a table, not
@@ -64,18 +67,18 @@ function notPlayedYet() {
 function Cross({ x, y, delay }: { x: number; y: number; delay: number }) {
   return (
     <motion.svg
-      width="13"
-      height="13"
-      viewBox="0 0 13 13"
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
       fill="none"
       aria-hidden
       className="absolute -translate-x-1/2 -translate-y-1/2"
       style={{ left: `${x}%`, top: `${y}%` }}
       initial={{ opacity: 0, scale: 0.4 }}
-      animate={{ opacity: 0.55, scale: 1 }}
+      animate={{ opacity: 0.85, scale: 1 }}
       transition={{ duration: 0.28, delay, ease: EASE }}
     >
-      <path d="M6.5 0v13M0 6.5h13" stroke={OLIVE} strokeWidth="1" />
+      <path d="M8.5 0v17M0 8.5h17" stroke={OLIVE} strokeWidth="1.3" />
     </motion.svg>
   )
 }
@@ -119,12 +122,27 @@ export function HeroIntro() {
             },
           }}
         >
+          {/* A cream wash so the drawing reads. It sits at z-10, which is above
+              the photo but BELOW the content at z-20 — so it mutes the busy
+              autumn photograph the plan is drawn over and leaves the headline
+              and buttons at full strength. */}
+          <motion.div
+            className="absolute inset-0 bg-[#efece7]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.82, 0.82, 0] }}
+            transition={{
+              duration: TOTAL,
+              times: [0, SWEEP * 0.5 / TOTAL, (SWEEP + HOLD) / TOTAL, 1],
+              ease: "easeInOut",
+            }}
+          />
+
           {/* Horizontal rules — each grows from the left in the nib's wake */}
           {H_RULES.map((top, i) => (
             <motion.div
               key={`h${top}`}
               className="absolute left-0 right-0 h-px origin-left"
-              style={{ top: `${top}%`, backgroundColor: OLIVE, opacity: 0.22 }}
+              style={{ top: `${top}%`, backgroundColor: OLIVE, opacity: 0.38 }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: SWEEP, delay: i * 0.05, ease: EASE }}
@@ -136,7 +154,7 @@ export function HeroIntro() {
             <motion.div
               key={`v${left}`}
               className="absolute top-0 bottom-0 w-px origin-top"
-              style={{ left: `${left}%`, backgroundColor: OLIVE, opacity: 0.18 }}
+              style={{ left: `${left}%`, backgroundColor: OLIVE, opacity: 0.32 }}
               initial={{ scaleY: 0 }}
               animate={{ scaleY: 1 }}
               transition={{ duration: 0.5, delay: (left / 100) * SWEEP, ease: EASE }}
@@ -147,12 +165,14 @@ export function HeroIntro() {
             <Cross key={`${c.x}-${c.y}`} x={c.x} y={c.y} delay={(c.x / 100) * SWEEP + 0.12} />
           ))}
 
+          <HeroPlan />
+
           {/* The nib — one bright rule that crosses the hero and is gone */}
           <motion.div
-            className="absolute top-0 bottom-0 w-px"
-            style={{ backgroundColor: OLIVE, boxShadow: `0 0 14px 1px ${OLIVE}55` }}
+            className="absolute top-0 bottom-0 w-[2px]"
+            style={{ backgroundColor: OLIVE, boxShadow: `0 0 26px 3px ${OLIVE}88` }}
             initial={{ left: "-2%", opacity: 0 }}
-            animate={{ left: ["-2%", "102%"], opacity: [0, 0.75, 0.75, 0] }}
+            animate={{ left: ["-2%", "102%"], opacity: [0, 1, 1, 0] }}
             transition={{
               left: { duration: SWEEP, ease: [0.4, 0, 0.2, 1] },
               opacity: { duration: SWEEP, times: [0, 0.08, 0.85, 1] },
