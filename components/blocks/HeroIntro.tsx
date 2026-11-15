@@ -2,20 +2,14 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
-import { HeroPlan } from "./heroPlan"
 
-// The hero's intro, and it is two different things by width.
+// A drafting pen rules the sheet, then the ink dries away and leaves the hero.
 //
-// From md up the photograph is on screen, so the drawing has something to be
-// drawn over: a bathroom plan sets itself out in the right-hand third under a
-// soft haze, and the left half of the page — headline, copy, buttons — is left
-// completely alone. A detail in the corner rather than an event.
-//
-// Below md the photograph is hidden entirely (`hidden md:block` on it), so
-// there is nothing for a plan to sit against and it would land on the copy.
-// The phone keeps the earlier full-bleed treatment instead: rules ruled across
-// the screen, registration crosses, and a pen that crosses once. Same idea,
-// the only form of it that fits the width.
+// It went through a plan of a bathroom drawing itself here, which the client
+// did not want — and with the plan gone the cream wash that existed to make it
+// legible went too, along with the split that gave phones a different version.
+// One treatment at every width: rules in the pen's wake, four registration
+// crosses, and the nib itself.
 //
 // Why it mounts only AFTER hydration rather than animating the hero's own
 // elements: the home page already misses its LCP budget (~3.6s against 2.5s)
@@ -128,8 +122,7 @@ export function HeroIntro() {
           className="absolute inset-0 z-10 overflow-hidden pointer-events-none"
           exit={{ opacity: 0 }}
         >
-          {/* ── Phone: the full sheet ─────────────────────────────────── */}
-          <div className="absolute inset-0 md:hidden">
+          <div className="absolute inset-0">
             <motion.div
               className="absolute inset-0 bg-[#efece7]"
               initial={{ opacity: 0 }}
@@ -175,23 +168,6 @@ export function HeroIntro() {
             />
           </div>
 
-          {/* ── md and up: the plan alone ─────────────────────────────── */}
-          {/* The haze covers the right side only, feathered left so it has no
-              edge, and sits below the content at z-20 — enough for olive
-              hairlines to hold against a bright autumn photograph without
-              touching the headline. */}
-          <motion.div
-            className="absolute inset-y-0 right-0 hidden w-[52%] md:block"
-            style={{
-              background:
-                "linear-gradient(to right, transparent, rgba(239,236,231,0.62) 38%, rgba(239,236,231,0.62))",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 1, 0] }}
-            transition={washTimes}
-          />
-
-          <HeroPlan />
         </motion.div>
       )}
     </AnimatePresence>
