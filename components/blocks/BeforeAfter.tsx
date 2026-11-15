@@ -103,7 +103,13 @@ export function BeforeAfter({
       {/* Caption */}
       <figcaption className="mt-5">
         <span
-          className="block text-[10px] font-bold uppercase tracking-[0.3em] mb-1.5 text-[#c4a962]"
+          /* A darkened olive, not the brand gold. This figure sits on cream on
+             both pages that use it, and #c4a962 measures 2.17:1 on #faf9f5 and
+             1.94:1 on #efece7 — gold only holds contrast on the dark #1c1a17
+             sections. The brand olive #8a8a5c is better but still short at
+             3.04:1, so this label goes one step darker to clear AA on both:
+             5.90:1 and 5.27:1. */
+          className="block text-[10px] font-bold uppercase tracking-[0.3em] mb-1.5 text-[#63633c]"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           {type}

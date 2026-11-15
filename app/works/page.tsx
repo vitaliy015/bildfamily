@@ -3,6 +3,7 @@ import { Nav } from "@/components/blocks/Nav"
 import { Footer } from "@/components/blocks/Footer"
 import { WorksHero } from "@/components/blocks/WorksHero"
 import { BeforeAfter } from "@/components/blocks/BeforeAfter"
+import { TRANSFORMATIONS } from "@/lib/works"
 import { VideoFeature } from "@/components/blocks/VideoFeature"
 import { WorkGallery } from "@/components/blocks/WorkGallery"
 import { HowWeWork } from "@/components/blocks/HowWeWork"
@@ -49,42 +50,9 @@ export default function WorksPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-              <BeforeAfter
-                beforeSrc="/work/ensuite-before.jpg"
-                afterSrc="/work/ensuite-after.jpg"
-                beforeAlt="Dated master ensuite with green walls and corner tub before renovation, Calgary"
-                afterAlt="Renovated master ensuite with navy vanity, freestanding tub and marble tile, Calgary"
-                title="Master Ensuite"
-                type="Bathroom Remodel"
-                description="A dated corner-tub ensuite reworked into a bright spa bath — navy vanity, freestanding soaker, and full marble tile."
-              />
-              <BeforeAfter
-                beforeSrc="/work/basement-before.jpg"
-                afterSrc="/work/basement-after.jpg"
-                beforeAlt="Dark basement bathroom with brown walls and dated tile before renovation, Calgary"
-                afterAlt="Bright basement bathroom with white walls, black glass shower and vinyl plank floor, Calgary"
-                title="Basement Bathroom"
-                type="Bathroom Remodel"
-                description="A dim, brown basement bath opened up with white walls, a frameless black shower and warm vinyl plank."
-              />
-              <BeforeAfter
-                beforeSrc="/work/steam-before.jpg"
-                afterSrc="/work/steam-after.jpg"
-                beforeAlt="Dated beige tiled corner shower with bench before renovation, Calgary"
-                afterAlt="Modern stone steam shower with brushed-gold fixtures and hexagon floor, Calgary"
-                title="Steam Shower Suite"
-                type="Tile & Shower"
-                description="The same corner-bench footprint rebuilt as a stone steam room — seamless slabs, brushed gold, and a heated bench."
-              />
-              <BeforeAfter
-                beforeSrc="/work/tub-before.jpg"
-                afterSrc="/work/tub-after.jpg"
-                beforeAlt="Dated bathroom with beige tile-surround tub and busy border before renovation, Calgary"
-                afterAlt="Refreshed bathroom with clean tile surround, brushed-gold fixtures and dark vanity, Calgary"
-                title="Guest Bath Refresh"
-                type="Bathroom Update"
-                description="Busy tile and dated fittings swapped for calm large-format tile, warm brushed-gold taps and a dark vanity."
-              />
+              {TRANSFORMATIONS.map((t) => (
+                <BeforeAfter key={t.slug} {...t} />
+              ))}
             </div>
           </div>
         </section>

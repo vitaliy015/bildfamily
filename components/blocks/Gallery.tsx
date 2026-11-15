@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react"
 import Image from "next/image"
+import { BeforeAfter } from "./BeforeAfter"
+import { TRANSFORMATIONS } from "@/lib/works"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 const UPLOADS = "/uploads"
@@ -97,8 +99,13 @@ export function Gallery() {
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* ── General heading ── */}
-        <div className="mb-16 md:mb-20 max-w-3xl">
+        {/* ── General heading + lead before/after ──
+            The right half of this row used to be empty. The strongest thing a
+            renovation company owns is the same room photographed twice, so it
+            goes here, beside the claim it proves, rather than a click away on
+            /works. */}
+        <div className="mb-16 md:mb-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="max-w-xl">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -131,8 +138,11 @@ export function Gallery() {
             className="text-base md:text-lg leading-relaxed"
             style={{ color: "var(--brand-text-body)", fontFamily: "var(--font-body)" }}
           >
-            Every photo below is a real bathroom we transformed — no stock images, no staged showrooms. Hover any project to see what we did.
+            Every photo below is a real bathroom we transformed — no stock images, no staged showrooms. Drag the slider to see one of them before we started.
           </motion.p>
+          </div>
+
+          <BeforeAfter {...TRANSFORMATIONS[0]} />
         </div>
 
         {/* ── Masonry grid ── */}
@@ -140,6 +150,52 @@ export function Gallery() {
           {PROJECTS.map((project, i) => (
             <ProjectCard key={project.src} project={project} index={i} />
           ))}
+
+          {/* Seven photos across three columns leaves the foot of one column
+              bare. CSS columns balance by height, so a short tile drops into
+              whichever column is shortest — which is the hole. It pays for the
+              space by sending people to the four sliders on /works. */}
+          <motion.a
+            href="/works"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="group mb-5 break-inside-avoid flex flex-col justify-between gap-10 bg-[#8a8a5c] text-[#f5f2ee] p-8 hover:bg-[#7a7a4e] transition-colors duration-300"
+          >
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f5f2ee]/70"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Before &amp; After
+            </span>
+            <span className="flex items-end justify-between gap-4">
+              <span
+                className="text-2xl font-bold uppercase leading-[1.05]"
+                style={{ fontFamily: "var(--font-heading)", letterSpacing: "0.01em" }}
+              >
+                Drag to see
+                <br />
+                four of them
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden
+                className="shrink-0 mb-1 transition-transform duration-300 group-hover:translate-x-1"
+              >
+                <path
+                  d="M2 7h10M7.5 2.5L12 7l-4.5 4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </motion.a>
         </div>
 
         {/* ── CTA ── */}
