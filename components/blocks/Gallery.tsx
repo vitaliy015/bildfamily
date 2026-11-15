@@ -17,6 +17,10 @@ type Project = {
 // Real completed projects pulled from the client's photo library
 const PROJECTS: Project[] = [
   { src: `${UPLOADS}/2025/09/IMG_3494.jpg`, title: "Freestanding Tub Suite",      type: "Bathroom Remodel" },
+  // A wide establishing shot — the rest of this set is vanities and close-ups,
+  // and eight photos plus the before/after tile is nine cards, which is what
+  // three columns need to finish level.
+  { src: "/work/showcase-4.jpg",           title: "Freestanding Soaker",        type: "Bathroom Remodel" },
   { src: `${UPLOADS}/2025/09/IMG_5674.jpg`, title: "Emerald & Gold Shower",       type: "Tile & Shower"    },
   { src: `${UPLOADS}/2025/09/IMG_3481.jpg`, title: "Arched-Mirror Double Vanity", type: "Bathroom Remodel" },
   { src: `${UPLOADS}/2025/09/IMG_6731.jpg`, title: "Navy & Brass Powder Room",    type: "Bathroom Update"  },
