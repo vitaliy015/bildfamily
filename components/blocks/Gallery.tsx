@@ -161,7 +161,7 @@ export function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="group mb-5 break-inside-avoid flex flex-col justify-between gap-10 bg-[#8a8a5c] text-[#f5f2ee] p-8 hover:bg-[#7a7a4e] transition-colors duration-300"
+            className="group mb-5 break-inside-avoid flex aspect-[3/4] flex-col justify-between bg-[#8a8a5c] text-[#f5f2ee] p-8 hover:bg-[#7a7a4e] transition-colors duration-300"
           >
             <span
               className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f5f2ee]/70"
@@ -171,7 +171,7 @@ export function Gallery() {
             </span>
             <span className="flex items-end justify-between gap-4">
               <span
-                className="text-2xl font-bold uppercase leading-[1.05]"
+                className="text-3xl md:text-4xl font-bold uppercase leading-[1.02]"
                 style={{ fontFamily: "var(--font-heading)", letterSpacing: "0.01em" }}
               >
                 Drag to see
@@ -179,12 +179,12 @@ export function Gallery() {
                 four of them
               </span>
               <svg
-                width="20"
-                height="20"
+                width="26"
+                height="26"
                 viewBox="0 0 14 14"
                 fill="none"
                 aria-hidden
-                className="shrink-0 mb-1 transition-transform duration-300 group-hover:translate-x-1"
+                className="shrink-0 mb-2 transition-transform duration-300 group-hover:translate-x-1"
               >
                 <path
                   d="M2 7h10M7.5 2.5L12 7l-4.5 4.5"
