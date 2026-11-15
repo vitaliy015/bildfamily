@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { HeroHeadline } from "@/components/blocks/HeroHeadline"
+import { HeroIntro } from "@/components/blocks/HeroIntro"
 
 const PLASTER_SVG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
 
@@ -22,6 +23,12 @@ export function Hero() {
           backgroundSize: "60px 60px",
         }}
       />
+
+      {/* Drafting intro — mounts only after hydration, so it cannot touch LCP.
+          Sits above the photo and below the copy (z-10 against the content's
+          z-20) so the rules read as an underlay rather than as scratches
+          across the headline. */}
+      <HeroIntro />
 
       {/* Right side — couple photo */}
       <div className="absolute right-0 top-0 h-full w-[46%] hidden md:block">
