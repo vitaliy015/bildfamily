@@ -24,13 +24,24 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 const EASE = [0.22, 1, 0.36, 1] as const
 const OLIVE = "#8a8a5c"
 
-// The phone's pen crosses in SWEEP; every rule is timed to appear as it passes,
-// so the drawing follows the nib rather than racing it. Both tracks are done
-// drawing by DRAW, which is what the single unmount timer is set against.
-const SWEEP = 1.05
-const DRAW = 1.6
-const HOLD = 0.3
-const FADE = 1.2
+// The pen crosses in SWEEP; every rule is timed to appear as it passes, so the
+// drawing follows the nib rather than racing it. Both tracks are done drawing
+// by DRAW, which is what the single unmount timer is set against.
+//
+// Every number below is a third off an earlier, slower pass — the client asked
+// for a shorter intro. The hand moves faster but it still draws in the same
+// order, so the gesture reads the same; what it is NOT allowed to do is take
+// the cut out of FADE, because that fade is what stopped the photograph
+// snapping back. 0.9s is short of the 1.2s it had and still well clear of the
+// 0.55s that read as abrupt.
+//
+// DRAW must outlast the slowest track or the ink is cut off mid-stroke. At
+// SWEEP 0.7 the last vertical finishes at 0.78 * 0.7 + 0.34 = 0.886, the last
+// cross at 0.816, the last horizontal at 0.77. Hence 0.9.
+const SWEEP = 0.7
+const DRAW = 0.9
+const HOLD = 0.2
+const FADE = 0.9
 const TOTAL = DRAW + HOLD + FADE
 
 // Rules land off-centre on purpose: evenly spaced thirds read as a table, not
@@ -78,7 +89,7 @@ function Cross({ x, y, delay }: { x: number; y: number; delay: number }) {
       style={{ left: `${x}%`, top: `${y}%` }}
       initial={{ opacity: 0, scale: 0.4 }}
       animate={{ opacity: 0.85, scale: 1 }}
-      transition={{ duration: 0.28, delay, ease: EASE }}
+      transition={{ duration: 0.19, delay, ease: EASE }}
     >
       <path d="M8.5 0v17M0 8.5h17" stroke={OLIVE} strokeWidth="1.3" />
     </motion.svg>
@@ -138,7 +149,7 @@ export function HeroIntro() {
               // curves at once.
               transition={{
                 duration: TOTAL,
-                times: [0, 0.3 / TOTAL, 1],
+                times: [0, 0.2 / TOTAL, 1],
                 ease: ["easeOut", "linear"],
               }}
             />
@@ -150,7 +161,7 @@ export function HeroIntro() {
                 style={{ top: `${top}%`, backgroundColor: OLIVE, opacity: 0.38 }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: SWEEP, delay: i * 0.05, ease: EASE }}
+                transition={{ duration: SWEEP, delay: i * 0.035, ease: EASE }}
               />
             ))}
 
@@ -161,12 +172,12 @@ export function HeroIntro() {
                 style={{ left: `${left}%`, backgroundColor: OLIVE, opacity: 0.32 }}
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}
-                transition={{ duration: 0.5, delay: (left / 100) * SWEEP, ease: EASE }}
+                transition={{ duration: 0.34, delay: (left / 100) * SWEEP, ease: EASE }}
               />
             ))}
 
             {CROSSES.map((c) => (
-              <Cross key={`${c.x}-${c.y}`} x={c.x} y={c.y} delay={(c.x / 100) * SWEEP + 0.12} />
+              <Cross key={`${c.x}-${c.y}`} x={c.x} y={c.y} delay={(c.x / 100) * SWEEP + 0.08} />
             ))}
 
             <motion.div
