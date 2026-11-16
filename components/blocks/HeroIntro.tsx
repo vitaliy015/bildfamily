@@ -30,7 +30,7 @@ const OLIVE = "#8a8a5c"
 const SWEEP = 1.05
 const DRAW = 1.6
 const HOLD = 0.3
-const FADE = 0.55
+const FADE = 1.2
 const TOTAL = DRAW + HOLD + FADE
 
 // Rules land off-centre on purpose: evenly spaced thirds read as a table, not
@@ -107,12 +107,6 @@ export function HeroIntro() {
     return () => window.clearTimeout(t)
   }, [playing])
 
-  const washTimes = {
-    duration: TOTAL,
-    times: [0, 0.3 / TOTAL, (DRAW + HOLD) / TOTAL, 1],
-    ease: "easeInOut" as const,
-  }
-
   return (
     <AnimatePresence>
       {playing && (
@@ -121,13 +115,32 @@ export function HeroIntro() {
           aria-hidden
           className="absolute inset-0 z-10 overflow-hidden pointer-events-none"
           exit={{ opacity: 0 }}
+          // Everything dissolves together rather than the wash fading while the
+          // rules snap away at unmount — that mismatch is what made the photo
+          // appear to jump back rather than return. One gesture, and a slow one:
+          // the reveal is the part worth watching.
+          animate={{ opacity: [1, 1, 0] }}
+          transition={{
+            opacity: {
+              duration: TOTAL,
+              times: [0, (DRAW + HOLD) / TOTAL, 1],
+              ease: ["linear", [0.37, 0, 0.63, 1]],
+            },
+          }}
         >
           <div className="absolute inset-0">
             <motion.div
               className="absolute inset-0 bg-[#efece7]"
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.82, 0.82, 0] }}
-              transition={washTimes}
+              animate={{ opacity: [0, 0.82, 0.82] }}
+              // Fades in, then simply holds — the container's dissolve is what
+              // takes it away, so the photograph is never uncovered by two
+              // curves at once.
+              transition={{
+                duration: TOTAL,
+                times: [0, 0.3 / TOTAL, 1],
+                ease: ["easeOut", "linear"],
+              }}
             />
 
             {H_RULES.map((top, i) => (
