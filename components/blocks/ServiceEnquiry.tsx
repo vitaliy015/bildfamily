@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Select } from "@base-ui/react/select"
 import { sendServiceEnquiry } from "@/app/actions"
+import { trackLead } from "@/components/MetaPixel"
 import { ENQUIRY_SERVICES, isEnquiryService } from "@/lib/enquiry"
 import { business } from "@/lib/site"
 
@@ -118,8 +119,13 @@ export function ServiceEnquiry() {
     setSendError(null)
     const result = await sendServiceEnquiry({ ...form, company })
     setPending(false)
-    if (result.ok) setSent(true)
-    else setSendError(result.error)
+    if (result.ok) {
+      // Same honeypot caveat as the main form.
+      if (!company.trim()) {
+        trackLead({ form: "Additional work enquiry", service: form.service })
+      }
+      setSent(true)
+    } else setSendError(result.error)
   }
 
   // If the send fails, the enquiry is still in front of them — hand it over

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "motion/react"
 import { sendLead } from "@/app/actions"
+import { trackLead } from "@/components/MetaPixel"
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -121,6 +122,9 @@ export function Contact() {
     setPending(false)
 
     if (result.ok) {
+      // A filled honeypot gets {ok:true} and no email — reporting that as a
+      // Lead would teach Meta to buy more bots.
+      if (!company.trim()) trackLead({ form: "Bathroom quote request" })
       setSubmitted(true)
     } else {
       setSendError(result.error)

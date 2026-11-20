@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald, Source_Serif_4 } from "next/font/google";
 import { siteUrl, business } from "@/lib/site";
+import { MetaPixel } from "@/components/MetaPixel";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -107,6 +108,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <MetaPixel />
       </body>
     </html>
   );

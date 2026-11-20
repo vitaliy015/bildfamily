@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 // Shown to visitors and cited in the footer. Update this date whenever the
 // policy changes materially — Google Ads reviewers check that it is current.
-const EFFECTIVE_DATE = "November 8, 2026"
+const EFFECTIVE_DATE = "November 20, 2026"
 
 function Section({ heading, children }: { heading: string; children: React.ReactNode }) {
   return (
@@ -116,8 +116,8 @@ export default function PrivacyPolicyPage() {
 
           <Section heading="Who else handles your information">
             <p>
-              Running the website means two service providers touch your data on our
-              behalf. Neither uses it for their own purposes:
+              Running the website and advertising it means three service providers
+              touch your data on our behalf:
             </p>
             <ul className="flex flex-col gap-2 list-disc pl-5">
               <li>
@@ -128,10 +128,17 @@ export default function PrivacyPolicyPage() {
                 <strong>Resend</strong> delivers the quote form to our inbox, so the
                 contents of your submission pass through their email service.
               </li>
+              <li>
+                <strong>Meta</strong> (Facebook and Instagram) receives the visit data
+                described under &ldquo;Cookies and tracking&rdquo; below, so that we can
+                measure the ads we run. Unlike the other two, Meta also uses this for its
+                own advertising purposes.
+              </li>
             </ul>
             <p>
-              Both operate servers outside Canada, which means your information may be
-              stored or processed in another country and can be subject to the laws there.
+              All three operate servers outside Canada, which means your information may
+              be stored or processed in another country and can be subject to the laws
+              there.
             </p>
           </Section>
 
@@ -145,13 +152,27 @@ export default function PrivacyPolicyPage() {
 
           <Section heading="Cookies and tracking">
             <p>
-              This website uses no cookies at all. There are no advertising cookies, no
-              analytics cookies, and nothing is written to your browser&rsquo;s storage.
-              Nothing here tracks you between visits or follows you to other websites.
+              This website runs the <strong>Meta Pixel</strong>, so that the ads we pay
+              for on Facebook and Instagram can be measured. It is advertising
+              technology: it sets a cookie in your browser, records that you visited and
+              which pages you opened, and reports that to Meta together with your IP
+              address and browser details. Meta can match it to your Facebook or
+              Instagram account and can show you our ads afterwards.
             </p>
             <p>
-              If we add website analytics later, we will update this page before turning
-              them on.
+              We do not use the pixel to identify you to us, and we do not send it your
+              name, phone number or email address.
+            </p>
+            <p>
+              The site also stores one note in your browser so the opening animation on
+              the home page plays once per visit instead of on every page. It is cleared
+              when you close the tab, it is not a cookie, and it is not sent anywhere.
+            </p>
+            <p>
+              You can refuse all of this. Your browser&rsquo;s tracking protection, a
+              content blocker, or the ad settings in your Facebook or Instagram account
+              will stop the pixel, and nothing on this site stops working if you block
+              it &mdash; the forms and the phone number work exactly the same.
             </p>
           </Section>
 
