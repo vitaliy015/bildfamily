@@ -119,11 +119,14 @@ export function Footer() {
             <p className="text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
               © {year} {business.legalName}. All rights reserved.
             </p>
-            {/* The licence belongs here rather than in a badge: a number read as a
-                quiet business detail is believed, the same number shouted as a
-                trust seal is not. */}
+            {/* The licence and the WCB line belong here rather than in badges: a
+                detail read quietly in the footer is believed, the same detail
+                shouted as a trust seal is not. The FAQ carries what WCB
+                coverage actually means for the homeowner. */}
             <p className="text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
               {business.licence.issuer} Business Licence {business.licence.number}
+              <span aria-hidden className="mx-2 opacity-40">&middot;</span>
+              WCB Alberta covered
             </p>
             <Link
               href="/privacy-policy"

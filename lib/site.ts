@@ -17,12 +17,16 @@ export const business = {
   // City of Calgary business licence BL286908, the document the FAQ and footer
   // cite. There is no public licence registry in Calgary, so the only way a
   // client can check it is to phone the city or ask us for a copy — which is
-  // why the FAQ offers one. EXPIRES 2027-01-27: the number must be renewed on
-  // the site at that point or it reads as stale.
+  // why the FAQ offers one.
+  //
+  // No expiry date here or anywhere on the site: the owner asked for it out
+  // (2026-11-23), on the grounds that saying the licence exists is the point
+  // and a date only ever ages. The renewal itself still has to happen —
+  // BL286908 lapses 2027-01-27 and the NUMBER changes then, which is tracked
+  // in CLAUDE.md rather than printed to visitors.
   licence: {
     number: "BL286908",
     issuer: "City of Calgary",
-    expires: "2027-01-27",
   },
   description:
     "Family-owned bathroom renovation company in Calgary, AB. Full remodels, ensuites, custom tile & showers, vanities. Honest pricing, reliable timelines. Free quote.",

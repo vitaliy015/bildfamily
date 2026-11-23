@@ -92,8 +92,17 @@ export const FAQ_DATA: FAQEntry[] = [
     // The licence is municipal, not provincial — the document itself is marked
     // "contractor (no provincial licence required)". Naming the issuer and the
     // number is what makes this checkable; a bare "we are licensed" is not.
+    //
+    // No expiry date, by the owner's decision (2026-11-23) — the claim is that
+    // the licence exists, and a date in the copy only ever goes stale.
+    //
+    // WCB is the strongest line here and it is deliberately last and concrete:
+    // for a homeowner the licence is paperwork, but an injured worker in their
+    // bathroom is their problem unless the contractor carries coverage. The
+    // clearance letter is named because it is the thing they can actually ask
+    // for and read.
     answer:
-      `Yes. ${business.legalName} holds ${business.licence.issuer} Business Licence ${business.licence.number}, valid through January 2027 — we will send you a copy on request. We also carry general liability insurance and can provide our certificate of insurance at any time. Anatolii and Nataliia personally stand behind every project, so keeping that paperwork current is non-negotiable for us.`,
+      `Yes. ${business.legalName} holds ${business.licence.issuer} Business Licence ${business.licence.number} — we will send you a copy on request. We carry general liability insurance and we are covered by WCB Alberta, and you can ask us for the certificate of insurance or our WCB clearance letter at any time. That coverage matters to you directly: if anyone is hurt working in your home, the claim goes through our account and not yours. Anatolii and Nataliia personally stand behind every project, so keeping that paperwork current is non-negotiable for us.`,
   },
   {
     id: 9,
